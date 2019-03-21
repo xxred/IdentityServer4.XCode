@@ -1,0 +1,17 @@
+﻿<#@ template language="C#" hostSpecific="true" debug="true" #>
+<#@ assembly name="netstandard" #>
+<#@ assembly name="$(NuGetPackageRoot)\newlife.core\8.1.2019.314\lib\netstandard2.0\NewLife.Core.dll" #>
+<#@ assembly name="$(NuGetPackageRoot)\newlife.xcode\9.11.2019.314\lib\netstandard2.0\XCode.dll" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="XCode.Code" #>
+<#@ output extension=".log" #>
+<#
+    // 设置当前工作目录
+	PathHelper.BaseDirectory = Host.ResolvePath(".");
+	// 导入模型文件并生成实体类，模型文件、输出目录、命名空间、连接名
+	EntityBuilder.Build();
+
+	//var tables = DAL.ImportFrom("Company.Project.xml");
+	//EntityBuilder.Build(tables);
+#>

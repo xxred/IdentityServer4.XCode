@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Entities\Config\**" />
+    <Compile Remove="Entities\Log\**" />
+    <EmbeddedResource Remove="Entities\Config\**" />
+    <EmbeddedResource Remove="Entities\Log\**" />
+    <None Remove="Entities\Config\**" />
+    <None Remove="Entities\Log\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="2.3.2" />
+    <PackageReference Include="NewLife.Core" Version="8.1.2019.314" />
+    <PackageReference Include="NewLife.XCode" Version="9.11.2019.314" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Entities\aBuild.log">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>aBuild.tt</DependentUpon>
+    </None>
+    <None Update="Entities\aBuild.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>aBuild.log</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+</Project>
