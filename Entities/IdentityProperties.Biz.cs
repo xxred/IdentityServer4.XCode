@@ -24,6 +24,7 @@ using XCode.Membership;
 namespace IdentityServer4.XCode.Entities
 {
     /// <summary></summary>
+    [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
     public partial class IdentityProperties : Entity<IdentityProperties>
     {
         #region 对象操作

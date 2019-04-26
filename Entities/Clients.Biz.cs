@@ -24,6 +24,7 @@ using XCode.Membership;
 namespace IdentityServer4.XCode.Entities
 {
     /// <summary></summary>
+    [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
     public partial class Clients : Entity<Clients>
     {
         #region 对象操作
@@ -47,17 +48,6 @@ namespace IdentityServer4.XCode.Entities
             if (ClientId.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ClientId), "ClientId不能为空！");
             if (ProtocolType.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ProtocolType), "ProtocolType不能为空！");
             if (ClientName.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ClientName), "ClientName不能为空！");
-            if (Description.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Description), "Description不能为空！");
-            if (ClientUri.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ClientUri), "ClientUri不能为空！");
-            if (LogoUri.IsNullOrEmpty()) throw new ArgumentNullException(nameof(LogoUri), "LogoUri不能为空！");
-            if (FrontChannelLogoutUri.IsNullOrEmpty()) throw new ArgumentNullException(nameof(FrontChannelLogoutUri), "FrontChannelLogoutUri不能为空！");
-            if (BackChannelLogoutUri.IsNullOrEmpty()) throw new ArgumentNullException(nameof(BackChannelLogoutUri), "BackChannelLogoutUri不能为空！");
-            if (ClientClaimsPrefix.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ClientClaimsPrefix), "ClientClaimsPrefix不能为空！");
-            if (PairWiseSubjectSalt.IsNullOrEmpty()) throw new ArgumentNullException(nameof(PairWiseSubjectSalt), "PairWiseSubjectSalt不能为空！");
-            if (Created.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Created), "Created不能为空！");
-            if (Updated.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Updated), "Updated不能为空！");
-            if (LastAccessed.IsNullOrEmpty()) throw new ArgumentNullException(nameof(LastAccessed), "LastAccessed不能为空！");
-            if (UserCodeType.IsNullOrEmpty()) throw new ArgumentNullException(nameof(UserCodeType), "UserCodeType不能为空！");
 
             // 在新插入数据或者修改了指定字段时进行修正
 
@@ -65,62 +55,62 @@ namespace IdentityServer4.XCode.Entities
             // CheckExist(isNew, __.ClientId);
         }
 
-        ///// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
-        //[EditorBrowsable(EditorBrowsableState.Never)]
-        //protected override void InitData()
-        //{
-        //    // InitData一般用于当数据表没有数据时添加一些默认数据，该实体类的任何第一次数据库操作都会触发该方法，默认异步调用
-        //    if (Meta.Session.Count > 0) return;
+        /// <summary>首次连接数据库时初始化数据，仅用于实体类重载，用户不应该调用该方法</summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        protected override void InitData()
+        {
+            // InitData一般用于当数据表没有数据时添加一些默认数据，该实体类的任何第一次数据库操作都会触发该方法，默认异步调用
+            if (Meta.Session.Count > 0) return;
 
-        //    if (XTrace.Debug) XTrace.WriteLine("开始初始化Clients[Clients]数据……");
+            if (XTrace.Debug) XTrace.WriteLine("开始初始化Clients[Clients]数据……");
 
-        //    var entity = new Clients();
-        //    entity.Id = 0;
-        //    entity.Enabled = 0;
-        //    entity.ClientId = "abc";
-        //    entity.ProtocolType = "abc";
-        //    entity.RequireClientSecret = 0;
-        //    entity.ClientName = "abc";
-        //    entity.Description = "abc";
-        //    entity.ClientUri = "abc";
-        //    entity.LogoUri = "abc";
-        //    entity.RequireConsent = 0;
-        //    entity.AllowRememberConsent = 0;
-        //    entity.AlwaysIncludeUserClaimsInIdToken = 0;
-        //    entity.RequirePkce = 0;
-        //    entity.AllowPlainTextPkce = 0;
-        //    entity.AllowAccessTokensViaBrowser = 0;
-        //    entity.FrontChannelLogoutUri = "abc";
-        //    entity.FrontChannelLogoutSessionRequired = 0;
-        //    entity.BackChannelLogoutUri = "abc";
-        //    entity.BackChannelLogoutSessionRequired = 0;
-        //    entity.AllowOfflineAccess = 0;
-        //    entity.IdentityTokenLifetime = 0;
-        //    entity.AccessTokenLifetime = 0;
-        //    entity.AuthorizationCodeLifetime = 0;
-        //    entity.ConsentLifetime = 0;
-        //    entity.AbsoluteRefreshTokenLifetime = 0;
-        //    entity.SlidingRefreshTokenLifetime = 0;
-        //    entity.RefreshTokenUsage = 0;
-        //    entity.UpdateAccessTokenClaimsOnRefresh = 0;
-        //    entity.RefreshTokenExpiration = 0;
-        //    entity.AccessTokenType = 0;
-        //    entity.EnableLocalLogin = 0;
-        //    entity.IncludeJwtId = 0;
-        //    entity.AlwaysSendClientClaims = 0;
-        //    entity.ClientClaimsPrefix = "abc";
-        //    entity.PairWiseSubjectSalt = "abc";
-        //    entity.Created = "abc";
-        //    entity.Updated = "abc";
-        //    entity.LastAccessed = "abc";
-        //    entity.UserSsoLifetime = 0;
-        //    entity.UserCodeType = "abc";
-        //    entity.DeviceCodeLifetime = 0;
-        //    entity.NonEditable = 0;
-        //    entity.Insert();
+            var entity = new Clients();
+            entity.Id = 1;
+            entity.Enabled = true;
+            entity.ClientId = "client";
+            entity.ProtocolType = "oidc";
+            entity.RequireClientSecret = true;
+            entity.ClientName = "client";
+            entity.Description = "client";
+            entity.ClientUri = null;
+            entity.LogoUri = null;
+            entity.RequireConsent = false;
+            entity.AllowRememberConsent = false;
+            entity.AlwaysIncludeUserClaimsInIdToken = true;
+            entity.RequirePkce = false;
+            entity.AllowPlainTextPkce = false;
+            entity.AllowAccessTokensViaBrowser = false;
+            entity.FrontChannelLogoutUri = null;
+            entity.FrontChannelLogoutSessionRequired = false;
+            entity.BackChannelLogoutUri = null;
+            entity.BackChannelLogoutSessionRequired = false;
+            entity.AllowOfflineAccess = false;
+            entity.IdentityTokenLifetime = 300;
+            entity.AccessTokenLifetime = 3600;
+            entity.AuthorizationCodeLifetime = 300;
+            entity.ConsentLifetime = 300;
+            entity.AbsoluteRefreshTokenLifetime = 2592000;
+            entity.SlidingRefreshTokenLifetime = 1296000;
+            entity.RefreshTokenUsage = 0;
+            entity.UpdateAccessTokenClaimsOnRefresh = 0;
+            entity.RefreshTokenExpiration = 0;
+            entity.AccessTokenType = 0;
+            entity.EnableLocalLogin = true;
+            entity.IncludeJwtId = true;
+            entity.AlwaysSendClientClaims = true;
+            entity.ClientClaimsPrefix = "client_";
+            entity.PairWiseSubjectSalt = null;
+            entity.Created = "admin";
+            entity.Updated = "admin";
+            entity.LastAccessed = null;
+            entity.UserSsoLifetime = 30000;
+            entity.UserCodeType = null;
+            entity.DeviceCodeLifetime = 300;
+            entity.NonEditable = false;
+            entity.Insert();
 
-        //    if (XTrace.Debug) XTrace.WriteLine("完成初始化Clients[Clients]数据！");
-        //}
+            if (XTrace.Debug) XTrace.WriteLine("完成初始化Clients[Clients]数据！");
+        }
 
         ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
         ///// <returns></returns>

@@ -22,12 +22,12 @@ namespace IdentityServer4.XCode.Entities
         [BindColumn("Id", "", "INTEGER")]
         public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
 
-        private Int64 _Enabled;
+        private Boolean _Enabled;
         /// <summary></summary>
         [DisplayName("Enabled")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("Enabled", "", "INTEGER")]
-        public Int64 Enabled { get { return _Enabled; } set { if (OnPropertyChanging(__.Enabled, value)) { _Enabled = value; OnPropertyChanged(__.Enabled); } } }
+        [BindColumn("Enabled", "", "")]
+        public Boolean Enabled { get { return _Enabled; } set { if (OnPropertyChanging(__.Enabled, value)) { _Enabled = value; OnPropertyChanged(__.Enabled); } } }
 
         private String _Name;
         /// <summary></summary>
@@ -46,36 +46,37 @@ namespace IdentityServer4.XCode.Entities
         private String _Description;
         /// <summary></summary>
         [DisplayName("Description")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("Description", "", "TEXT")]
         public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
 
         private String _Created;
         /// <summary></summary>
         [DisplayName("Created")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("Created", "", "TEXT")]
         public String Created { get { return _Created; } set { if (OnPropertyChanging(__.Created, value)) { _Created = value; OnPropertyChanged(__.Created); } } }
 
         private String _Updated;
         /// <summary></summary>
         [DisplayName("Updated")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("Updated", "", "TEXT")]
         public String Updated { get { return _Updated; } set { if (OnPropertyChanging(__.Updated, value)) { _Updated = value; OnPropertyChanged(__.Updated); } } }
 
         private String _LastAccessed;
         /// <summary></summary>
         [DisplayName("LastAccessed")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("LastAccessed", "", "TEXT")]
         public String LastAccessed { get { return _LastAccessed; } set { if (OnPropertyChanging(__.LastAccessed, value)) { _LastAccessed = value; OnPropertyChanged(__.LastAccessed); } } }
 
         private Int64 _NonEditable;
-        /// <summary></summary>
-        [DisplayName("NonEditable")]
+        /// <summary>不可编辑</summary>
+        [DisplayName("不可编辑")]
+        [Description("不可编辑")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("NonEditable", "", "INTEGER")]
+        [BindColumn("NonEditable", "不可编辑", "INTEGER")]
         public Int64 NonEditable { get { return _NonEditable; } set { if (OnPropertyChanging(__.NonEditable, value)) { _NonEditable = value; OnPropertyChanged(__.NonEditable); } } }
         #endregion
 
@@ -106,7 +107,7 @@ namespace IdentityServer4.XCode.Entities
                 switch (name)
                 {
                     case __.Id : _Id = value.ToInt(); break;
-                    case __.Enabled : _Enabled = value.ToLong(); break;
+                    case __.Enabled : _Enabled = value.ToBoolean(); break;
                     case __.Name : _Name = Convert.ToString(value); break;
                     case __.DisplayName : _DisplayName = Convert.ToString(value); break;
                     case __.Description : _Description = Convert.ToString(value); break;
@@ -148,7 +149,7 @@ namespace IdentityServer4.XCode.Entities
             /// <summary></summary>
             public static readonly Field LastAccessed = FindByName(__.LastAccessed);
 
-            /// <summary></summary>
+            /// <summary>不可编辑</summary>
             public static readonly Field NonEditable = FindByName(__.NonEditable);
 
             static Field FindByName(String name) { return Meta.Table.FindByName(name); }
@@ -181,7 +182,7 @@ namespace IdentityServer4.XCode.Entities
             /// <summary></summary>
             public const String LastAccessed = "LastAccessed";
 
-            /// <summary></summary>
+            /// <summary>不可编辑</summary>
             public const String NonEditable = "NonEditable";
         }
         #endregion
@@ -195,7 +196,7 @@ namespace IdentityServer4.XCode.Entities
         Int32 Id { get; set; }
 
         /// <summary></summary>
-        Int64 Enabled { get; set; }
+        Boolean Enabled { get; set; }
 
         /// <summary></summary>
         String Name { get; set; }
@@ -215,7 +216,7 @@ namespace IdentityServer4.XCode.Entities
         /// <summary></summary>
         String LastAccessed { get; set; }
 
-        /// <summary></summary>
+        /// <summary>不可编辑</summary>
         Int64 NonEditable { get; set; }
         #endregion
 

@@ -24,14 +24,14 @@
   <Table Name="ApiResources">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
-      <Column Name="Enabled" DataType="Int64" RawType="INTEGER" />
+      <Column Name="Enabled" DataType="Boolean" />
       <Column Name="Name" DataType="String" RawType="TEXT" Master="True" Length="0" Nullable="False" />
       <Column Name="DisplayName" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Updated" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="LastAccessed" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="NonEditable" DataType="Int64" RawType="INTEGER" />
+      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="Updated" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="LastAccessed" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="NonEditable" DataType="Int64" RawType="INTEGER" Description="不可编辑" />
     </Columns>
     <Indexes>
       <Index Name="IX_ApiResources_Name" Columns="Name" Unique="True" />
@@ -175,25 +175,25 @@
   <Table Name="Clients">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
-      <Column Name="Enabled" DataType="Int64" RawType="INTEGER" />
+      <Column Name="Enabled" DataType="Boolean" />
       <Column Name="ClientId" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="ProtocolType" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="RequireClientSecret" DataType="Int64" RawType="INTEGER" />
+      <Column Name="RequireClientSecret" DataType="Boolean" />
       <Column Name="ClientName" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="ClientUri" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="LogoUri" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="RequireConsent" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AllowRememberConsent" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AlwaysIncludeUserClaimsInIdToken" DataType="Int64" RawType="INTEGER" />
-      <Column Name="RequirePkce" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AllowPlainTextPkce" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AllowAccessTokensViaBrowser" DataType="Int64" RawType="INTEGER" />
-      <Column Name="FrontChannelLogoutUri" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="FrontChannelLogoutSessionRequired" DataType="Int64" RawType="INTEGER" />
-      <Column Name="BackChannelLogoutUri" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="BackChannelLogoutSessionRequired" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AllowOfflineAccess" DataType="Int64" RawType="INTEGER" />
+      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="ClientUri" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="LogoUri" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="RequireConsent" DataType="Boolean" Description="需要同意" />
+      <Column Name="AllowRememberConsent" DataType="Boolean" />
+      <Column Name="AlwaysIncludeUserClaimsInIdToken" DataType="Boolean" />
+      <Column Name="RequirePkce" DataType="Boolean" />
+      <Column Name="AllowPlainTextPkce" DataType="Boolean" />
+      <Column Name="AllowAccessTokensViaBrowser" DataType="Boolean" />
+      <Column Name="FrontChannelLogoutUri" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="FrontChannelLogoutSessionRequired" DataType="Boolean" />
+      <Column Name="BackChannelLogoutUri" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="BackChannelLogoutSessionRequired" DataType="Boolean" />
+      <Column Name="AllowOfflineAccess" DataType="Boolean" />
       <Column Name="IdentityTokenLifetime" DataType="Int64" RawType="INTEGER" />
       <Column Name="AccessTokenLifetime" DataType="Int64" RawType="INTEGER" />
       <Column Name="AuthorizationCodeLifetime" DataType="Int64" RawType="INTEGER" />
@@ -204,18 +204,18 @@
       <Column Name="UpdateAccessTokenClaimsOnRefresh" DataType="Int64" RawType="INTEGER" />
       <Column Name="RefreshTokenExpiration" DataType="Int64" RawType="INTEGER" />
       <Column Name="AccessTokenType" DataType="Int64" RawType="INTEGER" />
-      <Column Name="EnableLocalLogin" DataType="Int64" RawType="INTEGER" />
-      <Column Name="IncludeJwtId" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AlwaysSendClientClaims" DataType="Int64" RawType="INTEGER" />
-      <Column Name="ClientClaimsPrefix" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="PairWiseSubjectSalt" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Updated" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="LastAccessed" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
+      <Column Name="EnableLocalLogin" DataType="Boolean" />
+      <Column Name="IncludeJwtId" DataType="Boolean" />
+      <Column Name="AlwaysSendClientClaims" DataType="Boolean" />
+      <Column Name="ClientClaimsPrefix" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="PairWiseSubjectSalt" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="Updated" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="LastAccessed" DataType="String" RawType="TEXT" Length="0" />
       <Column Name="UserSsoLifetime" DataType="Int64" RawType="INTEGER" />
       <Column Name="UserCodeType" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="DeviceCodeLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="NonEditable" DataType="Int64" RawType="INTEGER" />
+      <Column Name="NonEditable" DataType="Boolean" />
     </Columns>
     <Indexes>
       <Index Name="IX_Clients_ClientId" Columns="ClientId" Unique="True" />
@@ -233,10 +233,10 @@
   </Table>
   <Table Name="ClientSecrets">
     <Columns>
-      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Expiration" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
-      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
+      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="Expiration" DataType="DateTime" RawType="TEXT" />
+      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" />
       <Column Name="Value" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Type" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="ClientId" DataType="Int64" RawType="INTEGER" />
@@ -329,7 +329,7 @@
   <Table Name="IdentityResources">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
-      <Column Name="Enabled" DataType="Int64" RawType="INTEGER" />
+      <Column Name="Enabled" DataType="Boolean" />
       <Column Name="Name" DataType="String" RawType="TEXT" Master="True" Length="0" Nullable="False" />
       <Column Name="DisplayName" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -346,6 +346,7 @@
   </Table>
   <Table Name="PersistedGrants">
     <Columns>
+      <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Key" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Type" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="SubjectId" DataType="String" RawType="TEXT" Length="0" Nullable="False" />

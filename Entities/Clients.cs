@@ -22,12 +22,12 @@ namespace IdentityServer4.XCode.Entities
         [BindColumn("Id", "", "INTEGER")]
         public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
 
-        private Int64 _Enabled;
+        private Boolean _Enabled;
         /// <summary></summary>
         [DisplayName("Enabled")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("Enabled", "", "INTEGER")]
-        public Int64 Enabled { get { return _Enabled; } set { if (OnPropertyChanging(__.Enabled, value)) { _Enabled = value; OnPropertyChanged(__.Enabled); } } }
+        [BindColumn("Enabled", "", "")]
+        public Boolean Enabled { get { return _Enabled; } set { if (OnPropertyChanging(__.Enabled, value)) { _Enabled = value; OnPropertyChanged(__.Enabled); } } }
 
         private String _ClientId;
         /// <summary></summary>
@@ -43,12 +43,12 @@ namespace IdentityServer4.XCode.Entities
         [BindColumn("ProtocolType", "", "TEXT")]
         public String ProtocolType { get { return _ProtocolType; } set { if (OnPropertyChanging(__.ProtocolType, value)) { _ProtocolType = value; OnPropertyChanged(__.ProtocolType); } } }
 
-        private Int64 _RequireClientSecret;
+        private Boolean _RequireClientSecret;
         /// <summary></summary>
         [DisplayName("RequireClientSecret")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("RequireClientSecret", "", "INTEGER")]
-        public Int64 RequireClientSecret { get { return _RequireClientSecret; } set { if (OnPropertyChanging(__.RequireClientSecret, value)) { _RequireClientSecret = value; OnPropertyChanged(__.RequireClientSecret); } } }
+        [BindColumn("RequireClientSecret", "", "")]
+        public Boolean RequireClientSecret { get { return _RequireClientSecret; } set { if (OnPropertyChanging(__.RequireClientSecret, value)) { _RequireClientSecret = value; OnPropertyChanged(__.RequireClientSecret); } } }
 
         private String _ClientName;
         /// <summary></summary>
@@ -60,100 +60,101 @@ namespace IdentityServer4.XCode.Entities
         private String _Description;
         /// <summary></summary>
         [DisplayName("Description")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("Description", "", "TEXT")]
         public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
 
         private String _ClientUri;
         /// <summary></summary>
         [DisplayName("ClientUri")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("ClientUri", "", "TEXT")]
         public String ClientUri { get { return _ClientUri; } set { if (OnPropertyChanging(__.ClientUri, value)) { _ClientUri = value; OnPropertyChanged(__.ClientUri); } } }
 
         private String _LogoUri;
         /// <summary></summary>
         [DisplayName("LogoUri")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("LogoUri", "", "TEXT")]
         public String LogoUri { get { return _LogoUri; } set { if (OnPropertyChanging(__.LogoUri, value)) { _LogoUri = value; OnPropertyChanged(__.LogoUri); } } }
 
-        private Int64 _RequireConsent;
-        /// <summary></summary>
-        [DisplayName("RequireConsent")]
+        private Boolean _RequireConsent;
+        /// <summary>需要同意</summary>
+        [DisplayName("需要同意")]
+        [Description("需要同意")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("RequireConsent", "", "INTEGER")]
-        public Int64 RequireConsent { get { return _RequireConsent; } set { if (OnPropertyChanging(__.RequireConsent, value)) { _RequireConsent = value; OnPropertyChanged(__.RequireConsent); } } }
+        [BindColumn("RequireConsent", "需要同意", "")]
+        public Boolean RequireConsent { get { return _RequireConsent; } set { if (OnPropertyChanging(__.RequireConsent, value)) { _RequireConsent = value; OnPropertyChanged(__.RequireConsent); } } }
 
-        private Int64 _AllowRememberConsent;
+        private Boolean _AllowRememberConsent;
         /// <summary></summary>
         [DisplayName("AllowRememberConsent")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("AllowRememberConsent", "", "INTEGER")]
-        public Int64 AllowRememberConsent { get { return _AllowRememberConsent; } set { if (OnPropertyChanging(__.AllowRememberConsent, value)) { _AllowRememberConsent = value; OnPropertyChanged(__.AllowRememberConsent); } } }
+        [BindColumn("AllowRememberConsent", "", "")]
+        public Boolean AllowRememberConsent { get { return _AllowRememberConsent; } set { if (OnPropertyChanging(__.AllowRememberConsent, value)) { _AllowRememberConsent = value; OnPropertyChanged(__.AllowRememberConsent); } } }
 
-        private Int64 _AlwaysIncludeUserClaimsInIdToken;
+        private Boolean _AlwaysIncludeUserClaimsInIdToken;
         /// <summary></summary>
         [DisplayName("AlwaysIncludeUserClaimsInIdToken")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("AlwaysIncludeUserClaimsInIdToken", "", "INTEGER")]
-        public Int64 AlwaysIncludeUserClaimsInIdToken { get { return _AlwaysIncludeUserClaimsInIdToken; } set { if (OnPropertyChanging(__.AlwaysIncludeUserClaimsInIdToken, value)) { _AlwaysIncludeUserClaimsInIdToken = value; OnPropertyChanged(__.AlwaysIncludeUserClaimsInIdToken); } } }
+        [BindColumn("AlwaysIncludeUserClaimsInIdToken", "", "")]
+        public Boolean AlwaysIncludeUserClaimsInIdToken { get { return _AlwaysIncludeUserClaimsInIdToken; } set { if (OnPropertyChanging(__.AlwaysIncludeUserClaimsInIdToken, value)) { _AlwaysIncludeUserClaimsInIdToken = value; OnPropertyChanged(__.AlwaysIncludeUserClaimsInIdToken); } } }
 
-        private Int64 _RequirePkce;
+        private Boolean _RequirePkce;
         /// <summary></summary>
         [DisplayName("RequirePkce")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("RequirePkce", "", "INTEGER")]
-        public Int64 RequirePkce { get { return _RequirePkce; } set { if (OnPropertyChanging(__.RequirePkce, value)) { _RequirePkce = value; OnPropertyChanged(__.RequirePkce); } } }
+        [BindColumn("RequirePkce", "", "")]
+        public Boolean RequirePkce { get { return _RequirePkce; } set { if (OnPropertyChanging(__.RequirePkce, value)) { _RequirePkce = value; OnPropertyChanged(__.RequirePkce); } } }
 
-        private Int64 _AllowPlainTextPkce;
+        private Boolean _AllowPlainTextPkce;
         /// <summary></summary>
         [DisplayName("AllowPlainTextPkce")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("AllowPlainTextPkce", "", "INTEGER")]
-        public Int64 AllowPlainTextPkce { get { return _AllowPlainTextPkce; } set { if (OnPropertyChanging(__.AllowPlainTextPkce, value)) { _AllowPlainTextPkce = value; OnPropertyChanged(__.AllowPlainTextPkce); } } }
+        [BindColumn("AllowPlainTextPkce", "", "")]
+        public Boolean AllowPlainTextPkce { get { return _AllowPlainTextPkce; } set { if (OnPropertyChanging(__.AllowPlainTextPkce, value)) { _AllowPlainTextPkce = value; OnPropertyChanged(__.AllowPlainTextPkce); } } }
 
-        private Int64 _AllowAccessTokensViaBrowser;
+        private Boolean _AllowAccessTokensViaBrowser;
         /// <summary></summary>
         [DisplayName("AllowAccessTokensViaBrowser")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("AllowAccessTokensViaBrowser", "", "INTEGER")]
-        public Int64 AllowAccessTokensViaBrowser { get { return _AllowAccessTokensViaBrowser; } set { if (OnPropertyChanging(__.AllowAccessTokensViaBrowser, value)) { _AllowAccessTokensViaBrowser = value; OnPropertyChanged(__.AllowAccessTokensViaBrowser); } } }
+        [BindColumn("AllowAccessTokensViaBrowser", "", "")]
+        public Boolean AllowAccessTokensViaBrowser { get { return _AllowAccessTokensViaBrowser; } set { if (OnPropertyChanging(__.AllowAccessTokensViaBrowser, value)) { _AllowAccessTokensViaBrowser = value; OnPropertyChanged(__.AllowAccessTokensViaBrowser); } } }
 
         private String _FrontChannelLogoutUri;
         /// <summary></summary>
         [DisplayName("FrontChannelLogoutUri")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("FrontChannelLogoutUri", "", "TEXT")]
         public String FrontChannelLogoutUri { get { return _FrontChannelLogoutUri; } set { if (OnPropertyChanging(__.FrontChannelLogoutUri, value)) { _FrontChannelLogoutUri = value; OnPropertyChanged(__.FrontChannelLogoutUri); } } }
 
-        private Int64 _FrontChannelLogoutSessionRequired;
+        private Boolean _FrontChannelLogoutSessionRequired;
         /// <summary></summary>
         [DisplayName("FrontChannelLogoutSessionRequired")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("FrontChannelLogoutSessionRequired", "", "INTEGER")]
-        public Int64 FrontChannelLogoutSessionRequired { get { return _FrontChannelLogoutSessionRequired; } set { if (OnPropertyChanging(__.FrontChannelLogoutSessionRequired, value)) { _FrontChannelLogoutSessionRequired = value; OnPropertyChanged(__.FrontChannelLogoutSessionRequired); } } }
+        [BindColumn("FrontChannelLogoutSessionRequired", "", "")]
+        public Boolean FrontChannelLogoutSessionRequired { get { return _FrontChannelLogoutSessionRequired; } set { if (OnPropertyChanging(__.FrontChannelLogoutSessionRequired, value)) { _FrontChannelLogoutSessionRequired = value; OnPropertyChanged(__.FrontChannelLogoutSessionRequired); } } }
 
         private String _BackChannelLogoutUri;
         /// <summary></summary>
         [DisplayName("BackChannelLogoutUri")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("BackChannelLogoutUri", "", "TEXT")]
         public String BackChannelLogoutUri { get { return _BackChannelLogoutUri; } set { if (OnPropertyChanging(__.BackChannelLogoutUri, value)) { _BackChannelLogoutUri = value; OnPropertyChanged(__.BackChannelLogoutUri); } } }
 
-        private Int64 _BackChannelLogoutSessionRequired;
+        private Boolean _BackChannelLogoutSessionRequired;
         /// <summary></summary>
         [DisplayName("BackChannelLogoutSessionRequired")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("BackChannelLogoutSessionRequired", "", "INTEGER")]
-        public Int64 BackChannelLogoutSessionRequired { get { return _BackChannelLogoutSessionRequired; } set { if (OnPropertyChanging(__.BackChannelLogoutSessionRequired, value)) { _BackChannelLogoutSessionRequired = value; OnPropertyChanged(__.BackChannelLogoutSessionRequired); } } }
+        [BindColumn("BackChannelLogoutSessionRequired", "", "")]
+        public Boolean BackChannelLogoutSessionRequired { get { return _BackChannelLogoutSessionRequired; } set { if (OnPropertyChanging(__.BackChannelLogoutSessionRequired, value)) { _BackChannelLogoutSessionRequired = value; OnPropertyChanged(__.BackChannelLogoutSessionRequired); } } }
 
-        private Int64 _AllowOfflineAccess;
+        private Boolean _AllowOfflineAccess;
         /// <summary></summary>
         [DisplayName("AllowOfflineAccess")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("AllowOfflineAccess", "", "INTEGER")]
-        public Int64 AllowOfflineAccess { get { return _AllowOfflineAccess; } set { if (OnPropertyChanging(__.AllowOfflineAccess, value)) { _AllowOfflineAccess = value; OnPropertyChanged(__.AllowOfflineAccess); } } }
+        [BindColumn("AllowOfflineAccess", "", "")]
+        public Boolean AllowOfflineAccess { get { return _AllowOfflineAccess; } set { if (OnPropertyChanging(__.AllowOfflineAccess, value)) { _AllowOfflineAccess = value; OnPropertyChanged(__.AllowOfflineAccess); } } }
 
         private Int64 _IdentityTokenLifetime;
         /// <summary></summary>
@@ -225,59 +226,59 @@ namespace IdentityServer4.XCode.Entities
         [BindColumn("AccessTokenType", "", "INTEGER")]
         public Int64 AccessTokenType { get { return _AccessTokenType; } set { if (OnPropertyChanging(__.AccessTokenType, value)) { _AccessTokenType = value; OnPropertyChanged(__.AccessTokenType); } } }
 
-        private Int64 _EnableLocalLogin;
+        private Boolean _EnableLocalLogin;
         /// <summary></summary>
         [DisplayName("EnableLocalLogin")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("EnableLocalLogin", "", "INTEGER")]
-        public Int64 EnableLocalLogin { get { return _EnableLocalLogin; } set { if (OnPropertyChanging(__.EnableLocalLogin, value)) { _EnableLocalLogin = value; OnPropertyChanged(__.EnableLocalLogin); } } }
+        [BindColumn("EnableLocalLogin", "", "")]
+        public Boolean EnableLocalLogin { get { return _EnableLocalLogin; } set { if (OnPropertyChanging(__.EnableLocalLogin, value)) { _EnableLocalLogin = value; OnPropertyChanged(__.EnableLocalLogin); } } }
 
-        private Int64 _IncludeJwtId;
+        private Boolean _IncludeJwtId;
         /// <summary></summary>
         [DisplayName("IncludeJwtId")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("IncludeJwtId", "", "INTEGER")]
-        public Int64 IncludeJwtId { get { return _IncludeJwtId; } set { if (OnPropertyChanging(__.IncludeJwtId, value)) { _IncludeJwtId = value; OnPropertyChanged(__.IncludeJwtId); } } }
+        [BindColumn("IncludeJwtId", "", "")]
+        public Boolean IncludeJwtId { get { return _IncludeJwtId; } set { if (OnPropertyChanging(__.IncludeJwtId, value)) { _IncludeJwtId = value; OnPropertyChanged(__.IncludeJwtId); } } }
 
-        private Int64 _AlwaysSendClientClaims;
+        private Boolean _AlwaysSendClientClaims;
         /// <summary></summary>
         [DisplayName("AlwaysSendClientClaims")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("AlwaysSendClientClaims", "", "INTEGER")]
-        public Int64 AlwaysSendClientClaims { get { return _AlwaysSendClientClaims; } set { if (OnPropertyChanging(__.AlwaysSendClientClaims, value)) { _AlwaysSendClientClaims = value; OnPropertyChanged(__.AlwaysSendClientClaims); } } }
+        [BindColumn("AlwaysSendClientClaims", "", "")]
+        public Boolean AlwaysSendClientClaims { get { return _AlwaysSendClientClaims; } set { if (OnPropertyChanging(__.AlwaysSendClientClaims, value)) { _AlwaysSendClientClaims = value; OnPropertyChanged(__.AlwaysSendClientClaims); } } }
 
         private String _ClientClaimsPrefix;
         /// <summary></summary>
         [DisplayName("ClientClaimsPrefix")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("ClientClaimsPrefix", "", "TEXT")]
         public String ClientClaimsPrefix { get { return _ClientClaimsPrefix; } set { if (OnPropertyChanging(__.ClientClaimsPrefix, value)) { _ClientClaimsPrefix = value; OnPropertyChanged(__.ClientClaimsPrefix); } } }
 
         private String _PairWiseSubjectSalt;
         /// <summary></summary>
         [DisplayName("PairWiseSubjectSalt")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("PairWiseSubjectSalt", "", "TEXT")]
         public String PairWiseSubjectSalt { get { return _PairWiseSubjectSalt; } set { if (OnPropertyChanging(__.PairWiseSubjectSalt, value)) { _PairWiseSubjectSalt = value; OnPropertyChanged(__.PairWiseSubjectSalt); } } }
 
         private String _Created;
         /// <summary></summary>
         [DisplayName("Created")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("Created", "", "TEXT")]
         public String Created { get { return _Created; } set { if (OnPropertyChanging(__.Created, value)) { _Created = value; OnPropertyChanged(__.Created); } } }
 
         private String _Updated;
         /// <summary></summary>
         [DisplayName("Updated")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("Updated", "", "TEXT")]
         public String Updated { get { return _Updated; } set { if (OnPropertyChanging(__.Updated, value)) { _Updated = value; OnPropertyChanged(__.Updated); } } }
 
         private String _LastAccessed;
         /// <summary></summary>
         [DisplayName("LastAccessed")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("LastAccessed", "", "TEXT")]
         public String LastAccessed { get { return _LastAccessed; } set { if (OnPropertyChanging(__.LastAccessed, value)) { _LastAccessed = value; OnPropertyChanged(__.LastAccessed); } } }
 
@@ -302,12 +303,12 @@ namespace IdentityServer4.XCode.Entities
         [BindColumn("DeviceCodeLifetime", "", "INTEGER")]
         public Int64 DeviceCodeLifetime { get { return _DeviceCodeLifetime; } set { if (OnPropertyChanging(__.DeviceCodeLifetime, value)) { _DeviceCodeLifetime = value; OnPropertyChanged(__.DeviceCodeLifetime); } } }
 
-        private Int64 _NonEditable;
+        private Boolean _NonEditable;
         /// <summary></summary>
         [DisplayName("NonEditable")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("NonEditable", "", "INTEGER")]
-        public Int64 NonEditable { get { return _NonEditable; } set { if (OnPropertyChanging(__.NonEditable, value)) { _NonEditable = value; OnPropertyChanged(__.NonEditable); } } }
+        [BindColumn("NonEditable", "", "")]
+        public Boolean NonEditable { get { return _NonEditable; } set { if (OnPropertyChanging(__.NonEditable, value)) { _NonEditable = value; OnPropertyChanged(__.NonEditable); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -370,25 +371,25 @@ namespace IdentityServer4.XCode.Entities
                 switch (name)
                 {
                     case __.Id : _Id = value.ToInt(); break;
-                    case __.Enabled : _Enabled = value.ToLong(); break;
+                    case __.Enabled : _Enabled = value.ToBoolean(); break;
                     case __.ClientId : _ClientId = Convert.ToString(value); break;
                     case __.ProtocolType : _ProtocolType = Convert.ToString(value); break;
-                    case __.RequireClientSecret : _RequireClientSecret = value.ToLong(); break;
+                    case __.RequireClientSecret : _RequireClientSecret = value.ToBoolean(); break;
                     case __.ClientName : _ClientName = Convert.ToString(value); break;
                     case __.Description : _Description = Convert.ToString(value); break;
                     case __.ClientUri : _ClientUri = Convert.ToString(value); break;
                     case __.LogoUri : _LogoUri = Convert.ToString(value); break;
-                    case __.RequireConsent : _RequireConsent = value.ToLong(); break;
-                    case __.AllowRememberConsent : _AllowRememberConsent = value.ToLong(); break;
-                    case __.AlwaysIncludeUserClaimsInIdToken : _AlwaysIncludeUserClaimsInIdToken = value.ToLong(); break;
-                    case __.RequirePkce : _RequirePkce = value.ToLong(); break;
-                    case __.AllowPlainTextPkce : _AllowPlainTextPkce = value.ToLong(); break;
-                    case __.AllowAccessTokensViaBrowser : _AllowAccessTokensViaBrowser = value.ToLong(); break;
+                    case __.RequireConsent : _RequireConsent = value.ToBoolean(); break;
+                    case __.AllowRememberConsent : _AllowRememberConsent = value.ToBoolean(); break;
+                    case __.AlwaysIncludeUserClaimsInIdToken : _AlwaysIncludeUserClaimsInIdToken = value.ToBoolean(); break;
+                    case __.RequirePkce : _RequirePkce = value.ToBoolean(); break;
+                    case __.AllowPlainTextPkce : _AllowPlainTextPkce = value.ToBoolean(); break;
+                    case __.AllowAccessTokensViaBrowser : _AllowAccessTokensViaBrowser = value.ToBoolean(); break;
                     case __.FrontChannelLogoutUri : _FrontChannelLogoutUri = Convert.ToString(value); break;
-                    case __.FrontChannelLogoutSessionRequired : _FrontChannelLogoutSessionRequired = value.ToLong(); break;
+                    case __.FrontChannelLogoutSessionRequired : _FrontChannelLogoutSessionRequired = value.ToBoolean(); break;
                     case __.BackChannelLogoutUri : _BackChannelLogoutUri = Convert.ToString(value); break;
-                    case __.BackChannelLogoutSessionRequired : _BackChannelLogoutSessionRequired = value.ToLong(); break;
-                    case __.AllowOfflineAccess : _AllowOfflineAccess = value.ToLong(); break;
+                    case __.BackChannelLogoutSessionRequired : _BackChannelLogoutSessionRequired = value.ToBoolean(); break;
+                    case __.AllowOfflineAccess : _AllowOfflineAccess = value.ToBoolean(); break;
                     case __.IdentityTokenLifetime : _IdentityTokenLifetime = value.ToLong(); break;
                     case __.AccessTokenLifetime : _AccessTokenLifetime = value.ToLong(); break;
                     case __.AuthorizationCodeLifetime : _AuthorizationCodeLifetime = value.ToLong(); break;
@@ -399,9 +400,9 @@ namespace IdentityServer4.XCode.Entities
                     case __.UpdateAccessTokenClaimsOnRefresh : _UpdateAccessTokenClaimsOnRefresh = value.ToLong(); break;
                     case __.RefreshTokenExpiration : _RefreshTokenExpiration = value.ToLong(); break;
                     case __.AccessTokenType : _AccessTokenType = value.ToLong(); break;
-                    case __.EnableLocalLogin : _EnableLocalLogin = value.ToLong(); break;
-                    case __.IncludeJwtId : _IncludeJwtId = value.ToLong(); break;
-                    case __.AlwaysSendClientClaims : _AlwaysSendClientClaims = value.ToLong(); break;
+                    case __.EnableLocalLogin : _EnableLocalLogin = value.ToBoolean(); break;
+                    case __.IncludeJwtId : _IncludeJwtId = value.ToBoolean(); break;
+                    case __.AlwaysSendClientClaims : _AlwaysSendClientClaims = value.ToBoolean(); break;
                     case __.ClientClaimsPrefix : _ClientClaimsPrefix = Convert.ToString(value); break;
                     case __.PairWiseSubjectSalt : _PairWiseSubjectSalt = Convert.ToString(value); break;
                     case __.Created : _Created = Convert.ToString(value); break;
@@ -410,7 +411,7 @@ namespace IdentityServer4.XCode.Entities
                     case __.UserSsoLifetime : _UserSsoLifetime = value.ToLong(); break;
                     case __.UserCodeType : _UserCodeType = Convert.ToString(value); break;
                     case __.DeviceCodeLifetime : _DeviceCodeLifetime = value.ToLong(); break;
-                    case __.NonEditable : _NonEditable = value.ToLong(); break;
+                    case __.NonEditable : _NonEditable = value.ToBoolean(); break;
                     default: base[name] = value; break;
                 }
             }
@@ -448,7 +449,7 @@ namespace IdentityServer4.XCode.Entities
             /// <summary></summary>
             public static readonly Field LogoUri = FindByName(__.LogoUri);
 
-            /// <summary></summary>
+            /// <summary>需要同意</summary>
             public static readonly Field RequireConsent = FindByName(__.RequireConsent);
 
             /// <summary></summary>
@@ -580,7 +581,7 @@ namespace IdentityServer4.XCode.Entities
             /// <summary></summary>
             public const String LogoUri = "LogoUri";
 
-            /// <summary></summary>
+            /// <summary>需要同意</summary>
             public const String RequireConsent = "RequireConsent";
 
             /// <summary></summary>
@@ -690,7 +691,7 @@ namespace IdentityServer4.XCode.Entities
         Int32 Id { get; set; }
 
         /// <summary></summary>
-        Int64 Enabled { get; set; }
+        Boolean Enabled { get; set; }
 
         /// <summary></summary>
         String ClientId { get; set; }
@@ -699,7 +700,7 @@ namespace IdentityServer4.XCode.Entities
         String ProtocolType { get; set; }
 
         /// <summary></summary>
-        Int64 RequireClientSecret { get; set; }
+        Boolean RequireClientSecret { get; set; }
 
         /// <summary></summary>
         String ClientName { get; set; }
@@ -713,38 +714,38 @@ namespace IdentityServer4.XCode.Entities
         /// <summary></summary>
         String LogoUri { get; set; }
 
-        /// <summary></summary>
-        Int64 RequireConsent { get; set; }
+        /// <summary>需要同意</summary>
+        Boolean RequireConsent { get; set; }
 
         /// <summary></summary>
-        Int64 AllowRememberConsent { get; set; }
+        Boolean AllowRememberConsent { get; set; }
 
         /// <summary></summary>
-        Int64 AlwaysIncludeUserClaimsInIdToken { get; set; }
+        Boolean AlwaysIncludeUserClaimsInIdToken { get; set; }
 
         /// <summary></summary>
-        Int64 RequirePkce { get; set; }
+        Boolean RequirePkce { get; set; }
 
         /// <summary></summary>
-        Int64 AllowPlainTextPkce { get; set; }
+        Boolean AllowPlainTextPkce { get; set; }
 
         /// <summary></summary>
-        Int64 AllowAccessTokensViaBrowser { get; set; }
+        Boolean AllowAccessTokensViaBrowser { get; set; }
 
         /// <summary></summary>
         String FrontChannelLogoutUri { get; set; }
 
         /// <summary></summary>
-        Int64 FrontChannelLogoutSessionRequired { get; set; }
+        Boolean FrontChannelLogoutSessionRequired { get; set; }
 
         /// <summary></summary>
         String BackChannelLogoutUri { get; set; }
 
         /// <summary></summary>
-        Int64 BackChannelLogoutSessionRequired { get; set; }
+        Boolean BackChannelLogoutSessionRequired { get; set; }
 
         /// <summary></summary>
-        Int64 AllowOfflineAccess { get; set; }
+        Boolean AllowOfflineAccess { get; set; }
 
         /// <summary></summary>
         Int64 IdentityTokenLifetime { get; set; }
@@ -777,13 +778,13 @@ namespace IdentityServer4.XCode.Entities
         Int64 AccessTokenType { get; set; }
 
         /// <summary></summary>
-        Int64 EnableLocalLogin { get; set; }
+        Boolean EnableLocalLogin { get; set; }
 
         /// <summary></summary>
-        Int64 IncludeJwtId { get; set; }
+        Boolean IncludeJwtId { get; set; }
 
         /// <summary></summary>
-        Int64 AlwaysSendClientClaims { get; set; }
+        Boolean AlwaysSendClientClaims { get; set; }
 
         /// <summary></summary>
         String ClientClaimsPrefix { get; set; }
@@ -810,7 +811,7 @@ namespace IdentityServer4.XCode.Entities
         Int64 DeviceCodeLifetime { get; set; }
 
         /// <summary></summary>
-        Int64 NonEditable { get; set; }
+        Boolean NonEditable { get; set; }
         #endregion
 
         #region 获取/设置 字段值

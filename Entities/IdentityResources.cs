@@ -22,12 +22,12 @@ namespace IdentityServer4.XCode.Entities
         [BindColumn("Id", "", "INTEGER")]
         public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
 
-        private Int64 _Enabled;
+        private Boolean _Enabled;
         /// <summary></summary>
         [DisplayName("Enabled")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("Enabled", "", "INTEGER")]
-        public Int64 Enabled { get { return _Enabled; } set { if (OnPropertyChanging(__.Enabled, value)) { _Enabled = value; OnPropertyChanged(__.Enabled); } } }
+        [BindColumn("Enabled", "", "")]
+        public Boolean Enabled { get { return _Enabled; } set { if (OnPropertyChanging(__.Enabled, value)) { _Enabled = value; OnPropertyChanged(__.Enabled); } } }
 
         private String _Name;
         /// <summary></summary>
@@ -122,7 +122,7 @@ namespace IdentityServer4.XCode.Entities
                 switch (name)
                 {
                     case __.Id : _Id = value.ToInt(); break;
-                    case __.Enabled : _Enabled = value.ToLong(); break;
+                    case __.Enabled : _Enabled = value.ToBoolean(); break;
                     case __.Name : _Name = Convert.ToString(value); break;
                     case __.DisplayName : _DisplayName = Convert.ToString(value); break;
                     case __.Description : _Description = Convert.ToString(value); break;
@@ -225,7 +225,7 @@ namespace IdentityServer4.XCode.Entities
         Int32 Id { get; set; }
 
         /// <summary></summary>
-        Int64 Enabled { get; set; }
+        Boolean Enabled { get; set; }
 
         /// <summary></summary>
         String Name { get; set; }
