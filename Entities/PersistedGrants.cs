@@ -15,6 +15,13 @@ namespace IdentityServer4.XCode.Entities
     public partial class PersistedGrants : IPersistedGrants
     {
         #region 属性
+        private Int32 _Id;
+        /// <summary></summary>
+        [DisplayName("Id")]
+        [DataObjectField(true, true, false, 0)]
+        [BindColumn("Id", "", "INTEGER")]
+        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+
         private String _Key;
         /// <summary></summary>
         [DisplayName("Key")]
@@ -75,6 +82,7 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
+                    case __.Id : return _Id;
                     case __.Key : return _Key;
                     case __.Type : return _Type;
                     case __.SubjectId : return _SubjectId;
@@ -89,6 +97,7 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
+                    case __.Id : _Id = value.ToInt(); break;
                     case __.Key : _Key = Convert.ToString(value); break;
                     case __.Type : _Type = Convert.ToString(value); break;
                     case __.SubjectId : _SubjectId = Convert.ToString(value); break;
@@ -106,6 +115,9 @@ namespace IdentityServer4.XCode.Entities
         /// <summary>取得PersistedGrants字段信息的快捷方式</summary>
         public partial class _
         {
+            /// <summary></summary>
+            public static readonly Field Id = FindByName(__.Id);
+
             /// <summary></summary>
             public static readonly Field Key = FindByName(__.Key);
 
@@ -134,6 +146,9 @@ namespace IdentityServer4.XCode.Entities
         public partial class __
         {
             /// <summary></summary>
+            public const String Id = "Id";
+
+            /// <summary></summary>
             public const String Key = "Key";
 
             /// <summary></summary>
@@ -161,6 +176,9 @@ namespace IdentityServer4.XCode.Entities
     public partial interface IPersistedGrants
     {
         #region 属性
+        /// <summary></summary>
+        Int32 Id { get; set; }
+
         /// <summary></summary>
         String Key { get; set; }
 

@@ -141,7 +141,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientPostLogoutRedirectUris">
+  <Table Name="ClientPostLogoutRedirectUris" Description="注销重定向url" DisplayName="ClientPostLogoutRedirectUris2333">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="PostLogoutRedirectUri" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -175,47 +175,47 @@
   <Table Name="Clients">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
-      <Column Name="Enabled" DataType="Boolean" />
-      <Column Name="ClientId" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="ProtocolType" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="RequireClientSecret" DataType="Boolean" />
-      <Column Name="ClientName" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="ClientUri" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="LogoUri" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="RequireConsent" DataType="Boolean" Description="需要同意" />
-      <Column Name="AllowRememberConsent" DataType="Boolean" />
-      <Column Name="AlwaysIncludeUserClaimsInIdToken" DataType="Boolean" />
-      <Column Name="RequirePkce" DataType="Boolean" />
-      <Column Name="AllowPlainTextPkce" DataType="Boolean" />
-      <Column Name="AllowAccessTokensViaBrowser" DataType="Boolean" />
-      <Column Name="FrontChannelLogoutUri" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="FrontChannelLogoutSessionRequired" DataType="Boolean" />
-      <Column Name="BackChannelLogoutUri" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="BackChannelLogoutSessionRequired" DataType="Boolean" />
-      <Column Name="AllowOfflineAccess" DataType="Boolean" />
-      <Column Name="IdentityTokenLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AccessTokenLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AuthorizationCodeLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="ConsentLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AbsoluteRefreshTokenLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="SlidingRefreshTokenLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="RefreshTokenUsage" DataType="Int64" RawType="INTEGER" />
-      <Column Name="UpdateAccessTokenClaimsOnRefresh" DataType="Int64" RawType="INTEGER" />
-      <Column Name="RefreshTokenExpiration" DataType="Int64" RawType="INTEGER" />
-      <Column Name="AccessTokenType" DataType="Int64" RawType="INTEGER" />
-      <Column Name="EnableLocalLogin" DataType="Boolean" />
-      <Column Name="IncludeJwtId" DataType="Boolean" />
-      <Column Name="AlwaysSendClientClaims" DataType="Boolean" />
-      <Column Name="ClientClaimsPrefix" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="PairWiseSubjectSalt" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="Updated" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="LastAccessed" DataType="String" RawType="TEXT" Length="0" />
-      <Column Name="UserSsoLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="UserCodeType" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="DeviceCodeLifetime" DataType="Int64" RawType="INTEGER" />
-      <Column Name="NonEditable" DataType="Boolean" />
+      <Column Name="Enabled" DataType="Boolean" Description="启用(默认为true)" />
+      <Column Name="ClientId" DataType="String" RawType="TEXT" Length="0" Nullable="False" Description="客户端ID(应用程序的唯一识别标识)" />
+      <Column Name="ProtocolType" DataType="String" RawType="TEXT" Length="0" Nullable="False" Description="协议类型(默认oidc)" />
+      <Column Name="RequireClientSecret" DataType="Boolean" Description="需要密钥(指定此客户端是否需要密钥才能从令牌端点请求令牌（默认为true）)" />
+      <Column Name="RequirePkce" DataType="Boolean" Description="校验密钥(使用基于授权代码authorization_code的授权类型的客户端是否必须发送校验密钥)" />
+      <Column Name="AllowPlainTextPkce" DataType="Boolean" Description="允许纯文本密钥(指定是否可以使用文本方法发送证明密钥（不推荐，默认false）)" />
+      <Column Name="AllowOfflineAccess" DataType="Boolean" Description="允许刷新token(需要offline_access范围scope)" />
+      <Column Name="AllowAccessTokensViaBrowser" DataType="Boolean" Description="允许通过浏览器接收token(这对于强化允许多种响应类型的流很有用（例如，不允许使用代码id_token添加令牌响应类型的混合流客户端，从而将令牌泄漏到浏览器中）)" />
+      <Column Name="FrontChannelLogoutUri" DataType="String" RawType="TEXT" Length="0" Description="客户端前端注销URI(用于基于HTTP的前端通道注销。有关详细信息，请参阅 https://openid.net/specs/openid-connect-frontchannel-1_0.html)" />
+      <Column Name="FrontChannelLogoutSessionRequired" DataType="Boolean" Description="发送会话id到前端注销URI(是否应将用户的会话ID发送到FrontChannelLogoutUri。默认为true)" />
+      <Column Name="BackChannelLogoutUri" DataType="String" RawType="TEXT" Length="0" Description="客户端注销URI(用于基于HTTP的反向通道注销。有关更多详细信息，请参阅 https://openid.net/specs/openid-connect-backchannel-1_0.html)" />
+      <Column Name="BackChannelLogoutSessionRequired" DataType="Boolean" Description="发送会话id到注销URI(是否应在请求中将用户的会话ID发送到BackChannelLogoutUri。默认为true)" />
+      <Column Name="EnableLocalLogin" DataType="Boolean" Description="仅用本地登录(此客户端是否可以仅使用本地帐户或外部IdP。默认为true)" />
+      <Column Name="UserSsoLifetime" DataType="Int64" RawType="INTEGER" Description="用户身份持续时间(自上次用户进行身份验证以来的最长持续时间（以秒为单位）。默认为0。您可以调整会话令牌的生命周期，以控制在使用Web应用程序时，用户需要重新输入凭据的时间和频率，而不是进行静默身份验证)" />
+      <Column Name="IdentityTokenLifetime" DataType="Int64" RawType="INTEGER" Description="识别令牌生命周期(秒为单位，默认为300秒/5分钟)" />
+      <Column Name="AccessTokenLifetime" DataType="Int64" RawType="INTEGER" Description="访问令牌生命周期(秒为单位，默认为3600秒/1小时)" />
+      <Column Name="AuthorizationCodeLifetime" DataType="Int64" RawType="INTEGER" Description="访问令牌生命周期(秒为单位，默认为300秒/5分钟)" />
+      <Column Name="AbsoluteRefreshTokenLifetime" DataType="Int64" RawType="INTEGER" Description="刷新令牌生命周期(秒为单位，默认为2592000秒/30天)" />
+      <Column Name="SlidingRefreshTokenLifetime" DataType="Int64" RawType="INTEGER" Description="滑动刷新令牌生命周期(秒为单位，默认为1296000秒/15天)" />
+      <Column Name="RefreshTokenUsage" DataType="Int64" RawType="INTEGER" Description="刷新令牌句柄是否保持不变(ReUse，OneTime)" Type="IdentityServer4.Models.TokenUsage" />
+      <Column Name="RefreshTokenExpiration" DataType="Int64" RawType="INTEGER" Description="刷新令牌期限(Absolute 刷新令牌将在固定时间点到期（由AbsoluteRefreshTokenLifetime指定），Sliding刷新令牌时，将刷新刷新令牌的生命周期（按SlidingRefreshTokenLifetime中指定的数量）。生命周期不会超过AbsoluteRefreshTokenLifetime)" Type="IdentityServer4.Models.TokenExpiration" />
+      <Column Name="UpdateAccessTokenClaimsOnRefresh" DataType="Boolean" Description="更新访问令牌(是否应在刷新令牌请求上更新访问令牌（及其声明）)" />
+      <Column Name="AccessTokenType" DataType="Int64" RawType="INTEGER" Description="访问令牌类型(指定访问令牌是引用令牌还是自包含JWT令牌（默认为Jwt）)" Type="IdentityServer4.Models.AccessTokenType" />
+      <Column Name="IncludeJwtId" DataType="Boolean" Description="是否嵌入JwtId(指定JWT访问令牌是否应具有嵌入的唯一ID（通过jti声明）)" />
+      <Column Name="AlwaysSendClientClaims" DataType="Boolean" Description="发送客户端声明(如果设置，将为每个流发送客户端声明。如果不是，仅用于客户端凭证流（默认为false）)" />
+      <Column Name="AlwaysIncludeUserClaimsInIdToken" DataType="Boolean" Description="用户声明添加到ID令牌(当同时请求ID令牌和访问令牌时，是否应始终将用户声明添加到ID令牌，而不是重新请求客户端使用userinfo端点。默认值为false)" />
+      <Column Name="ClientClaimsPrefix" DataType="String" RawType="TEXT" Length="0" Description="客户端声明前缀(如果设置，客户端声明将以此为前缀。默认为client_。目的是确保它们不会意外地与用户声明冲突)" />
+      <Column Name="PairWiseSubjectSalt" DataType="String" RawType="TEXT" Length="0" Description="生成成对subjectId使用的盐值" />
+      <Column Name="RequireConsent" DataType="Boolean" Description="需要同意(默认为true)" />
+      <Column Name="AllowRememberConsent" DataType="Boolean" Description="存储同意决策(默认true)" />
+      <Column Name="ConsentLifetime" DataType="Int64" RawType="INTEGER" Description="用户同意的生命周期(默认null，无到期)" />
+      <Column Name="ClientName" DataType="String" RawType="TEXT" Length="0" Nullable="False" Description="显示名称" />
+      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Description="说明" />
+      <Column Name="ClientUri" DataType="String" RawType="TEXT" Length="0" Description="客户端信息url(有关客户端的更多信息的URI（在同意页面上使用）)" />
+      <Column Name="LogoUri" DataType="String" RawType="TEXT" Length="0" Description="客户端logo地址(在同意页面上使用)" />
+      <Column Name="UserCodeType" DataType="String" RawType="TEXT" Length="0" Description="设备流用户代码的类型" />
+      <Column Name="DeviceCodeLifetime" DataType="Int64" RawType="INTEGER" Description="设备代码的生命周期(秒为单位，默认为300秒/5分钟)" />
+      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" Description="创建" />
+      <Column Name="Updated" DataType="String" RawType="TEXT" Length="0" Description="更新" />
+      <Column Name="LastAccessed" DataType="DateTime" Description="上次授权时间" />
+      <Column Name="NonEditable" DataType="Boolean" Description="不可编辑" />
     </Columns>
     <Indexes>
       <Index Name="IX_Clients_ClientId" Columns="ClientId" Unique="True" />
