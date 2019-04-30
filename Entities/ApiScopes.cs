@@ -44,26 +44,26 @@ namespace IdentityServer4.XCode.Entities
         [BindColumn("Description", "", "TEXT")]
         public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
 
-        private Int64 _Required;
+        private Boolean _Required;
         /// <summary></summary>
         [DisplayName("Required")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("Required", "", "INTEGER")]
-        public Int64 Required { get { return _Required; } set { if (OnPropertyChanging(__.Required, value)) { _Required = value; OnPropertyChanged(__.Required); } } }
+        [BindColumn("Required", "", "")]
+        public Boolean Required { get { return _Required; } set { if (OnPropertyChanging(__.Required, value)) { _Required = value; OnPropertyChanged(__.Required); } } }
 
-        private Int64 _Emphasize;
+        private Boolean _Emphasize;
         /// <summary></summary>
         [DisplayName("Emphasize")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("Emphasize", "", "INTEGER")]
-        public Int64 Emphasize { get { return _Emphasize; } set { if (OnPropertyChanging(__.Emphasize, value)) { _Emphasize = value; OnPropertyChanged(__.Emphasize); } } }
+        [BindColumn("Emphasize", "", "")]
+        public Boolean Emphasize { get { return _Emphasize; } set { if (OnPropertyChanging(__.Emphasize, value)) { _Emphasize = value; OnPropertyChanged(__.Emphasize); } } }
 
-        private Int64 _ShowInDiscoveryDocument;
+        private Boolean _ShowInDiscoveryDocument;
         /// <summary></summary>
         [DisplayName("ShowInDiscoveryDocument")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("ShowInDiscoveryDocument", "", "INTEGER")]
-        public Int64 ShowInDiscoveryDocument { get { return _ShowInDiscoveryDocument; } set { if (OnPropertyChanging(__.ShowInDiscoveryDocument, value)) { _ShowInDiscoveryDocument = value; OnPropertyChanged(__.ShowInDiscoveryDocument); } } }
+        [BindColumn("ShowInDiscoveryDocument", "", "")]
+        public Boolean ShowInDiscoveryDocument { get { return _ShowInDiscoveryDocument; } set { if (OnPropertyChanging(__.ShowInDiscoveryDocument, value)) { _ShowInDiscoveryDocument = value; OnPropertyChanged(__.ShowInDiscoveryDocument); } } }
 
         private Int64 _ApiResourceId;
         /// <summary></summary>
@@ -102,9 +102,9 @@ namespace IdentityServer4.XCode.Entities
                     case __.Name : _Name = Convert.ToString(value); break;
                     case __.DisplayName : _DisplayName = Convert.ToString(value); break;
                     case __.Description : _Description = Convert.ToString(value); break;
-                    case __.Required : _Required = value.ToLong(); break;
-                    case __.Emphasize : _Emphasize = value.ToLong(); break;
-                    case __.ShowInDiscoveryDocument : _ShowInDiscoveryDocument = value.ToLong(); break;
+                    case __.Required : _Required = value.ToBoolean(); break;
+                    case __.Emphasize : _Emphasize = value.ToBoolean(); break;
+                    case __.ShowInDiscoveryDocument : _ShowInDiscoveryDocument = value.ToBoolean(); break;
                     case __.ApiResourceId : _ApiResourceId = value.ToLong(); break;
                     default: base[name] = value; break;
                 }
@@ -190,13 +190,13 @@ namespace IdentityServer4.XCode.Entities
         String Description { get; set; }
 
         /// <summary></summary>
-        Int64 Required { get; set; }
+        Boolean Required { get; set; }
 
         /// <summary></summary>
-        Int64 Emphasize { get; set; }
+        Boolean Emphasize { get; set; }
 
         /// <summary></summary>
-        Int64 ShowInDiscoveryDocument { get; set; }
+        Boolean ShowInDiscoveryDocument { get; set; }
 
         /// <summary></summary>
         Int64 ApiResourceId { get; set; }

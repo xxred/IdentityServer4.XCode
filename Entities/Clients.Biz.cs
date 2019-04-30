@@ -130,10 +130,17 @@ namespace IdentityServer4.XCode.Entities
         #endregion
 
         #region 扩展属性
+
         /// <summary>
         /// Client secrets - only relevant for flows that require a secret
         /// </summary>
-        public ICollection<Secret> ClientSecrets { get; set; }
+        public ICollection<Secret> ClientSecrets =>
+            Entities.ClientSecrets.FindAllByClientId(Id)
+            .Select(s => new Secret(s.Value, s.Description, s.Expiration)
+            {
+                Type = s.Type
+            }).ToList();
+
 
         /// <summary>
         /// Specifies the allowed grant types (legal combinations of AuthorizationCode, Implicit, Hybrid, ResourceOwner, ClientCredentials).
@@ -221,10 +228,10 @@ namespace IdentityServer4.XCode.Entities
 
         #endregion
 
-            #region 扩展查询
-            /// <summary>根据Id查找</summary>
-            /// <param name="id">Id</param>
-            /// <returns>实体对象</returns>
+        #region 扩展查询
+        /// <summary>根据Id查找</summary>
+        /// <param name="id">Id</param>
+        /// <returns>实体对象</returns>
         public static Clients FindById(Int32 id)
         {
             if (id <= 0) return null;

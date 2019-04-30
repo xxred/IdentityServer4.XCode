@@ -95,7 +95,7 @@ namespace IdentityServer4.XCode.Entities
         private String _Description;
         /// <summary></summary>
         [DisplayName("Description")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("Description", "", "TEXT")]
         public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
 

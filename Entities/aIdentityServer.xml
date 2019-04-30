@@ -53,9 +53,9 @@
       <Column Name="Name" DataType="String" RawType="TEXT" Master="True" Length="0" Nullable="False" />
       <Column Name="DisplayName" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Required" DataType="Int64" RawType="INTEGER" />
-      <Column Name="Emphasize" DataType="Int64" RawType="INTEGER" />
-      <Column Name="ShowInDiscoveryDocument" DataType="Int64" RawType="INTEGER" />
+      <Column Name="Required" DataType="Boolean" />
+      <Column Name="Emphasize" DataType="Boolean" />
+      <Column Name="ShowInDiscoveryDocument" DataType="Boolean" />
       <Column Name="ApiResourceId" DataType="Int64" RawType="INTEGER" />
     </Columns>
     <Indexes>
@@ -66,9 +66,9 @@
   <Table Name="ApiSecrets">
     <Columns>
       <Column Name="Created" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Expiration" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
+      <Column Name="Expiration" DataType="DateTime" Nullable="False" />
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
-      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
+      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" />
       <Column Name="Value" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Type" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="ApiResourceId" DataType="Int64" RawType="INTEGER" />
@@ -90,7 +90,7 @@
       <Column Name="Resource" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="ResourceIdentifier" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Succeeded" DataType="Int64" RawType="INTEGER" />
-      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
+      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" />
       <Column Name="NormalisedSubject" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="NormalisedAction" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="NormalisedResource" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -141,7 +141,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientPostLogoutRedirectUris" Description="注销重定向url" DisplayName="ClientPostLogoutRedirectUris2333">
+  <Table Name="ClientPostLogoutRedirectUris">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="PostLogoutRedirectUri" DataType="String" RawType="TEXT" Length="0" Nullable="False" />

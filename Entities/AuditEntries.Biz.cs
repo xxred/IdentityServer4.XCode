@@ -54,7 +54,6 @@ namespace IdentityServer4.XCode.Entities
             if (ResourceType.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ResourceType), "ResourceType不能为空！");
             if (Resource.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Resource), "Resource不能为空！");
             if (ResourceIdentifier.IsNullOrEmpty()) throw new ArgumentNullException(nameof(ResourceIdentifier), "ResourceIdentifier不能为空！");
-            if (Description.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Description), "Description不能为空！");
             if (NormalisedSubject.IsNullOrEmpty()) throw new ArgumentNullException(nameof(NormalisedSubject), "NormalisedSubject不能为空！");
             if (NormalisedAction.IsNullOrEmpty()) throw new ArgumentNullException(nameof(NormalisedAction), "NormalisedAction不能为空！");
             if (NormalisedResource.IsNullOrEmpty()) throw new ArgumentNullException(nameof(NormalisedResource), "NormalisedResource不能为空！");

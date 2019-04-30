@@ -22,12 +22,12 @@ namespace IdentityServer4.XCode.Entities
         [BindColumn("Created", "", "TEXT")]
         public String Created { get { return _Created; } set { if (OnPropertyChanging(__.Created, value)) { _Created = value; OnPropertyChanged(__.Created); } } }
 
-        private String _Expiration;
+        private DateTime _Expiration;
         /// <summary></summary>
         [DisplayName("Expiration")]
         [DataObjectField(false, false, false, 0)]
-        [BindColumn("Expiration", "", "TEXT")]
-        public String Expiration { get { return _Expiration; } set { if (OnPropertyChanging(__.Expiration, value)) { _Expiration = value; OnPropertyChanged(__.Expiration); } } }
+        [BindColumn("Expiration", "", "")]
+        public DateTime Expiration { get { return _Expiration; } set { if (OnPropertyChanging(__.Expiration, value)) { _Expiration = value; OnPropertyChanged(__.Expiration); } } }
 
         private Int32 _Id;
         /// <summary></summary>
@@ -39,7 +39,7 @@ namespace IdentityServer4.XCode.Entities
         private String _Description;
         /// <summary></summary>
         [DisplayName("Description")]
-        [DataObjectField(false, false, false, 0)]
+        [DataObjectField(false, false, true, 0)]
         [BindColumn("Description", "", "TEXT")]
         public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
 
@@ -90,7 +90,7 @@ namespace IdentityServer4.XCode.Entities
                 switch (name)
                 {
                     case __.Created : _Created = Convert.ToString(value); break;
-                    case __.Expiration : _Expiration = Convert.ToString(value); break;
+                    case __.Expiration : _Expiration = value.ToDateTime(); break;
                     case __.Id : _Id = value.ToInt(); break;
                     case __.Description : _Description = Convert.ToString(value); break;
                     case __.Value : _Value = Convert.ToString(value); break;
@@ -165,7 +165,7 @@ namespace IdentityServer4.XCode.Entities
         String Created { get; set; }
 
         /// <summary></summary>
-        String Expiration { get; set; }
+        DateTime Expiration { get; set; }
 
         /// <summary></summary>
         Int32 Id { get; set; }

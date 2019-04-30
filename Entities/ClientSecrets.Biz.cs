@@ -66,7 +66,7 @@ namespace IdentityServer4.XCode.Entities
             entity.Expiration = DateTime.Now.AddYears(1);
             // "client" Sha256()或者Sha512()
             entity.Value = "lI/mA/YdwDa1xZbcCf484/PTDckPAkyF88gtssyrZ50=";
-            entity.Type = "ShareSecret";
+            entity.Type = "SharedSecret";
             entity.ClientId = 1;
             entity.Insert();
 

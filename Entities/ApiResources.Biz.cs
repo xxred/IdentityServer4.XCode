@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml.Serialization;
+using IdentityServer4.Models;
 using NewLife;
 using NewLife.Data;
 using NewLife.Log;
@@ -51,7 +52,6 @@ namespace IdentityServer4.XCode.Entities
 
             // 这里验证参数范围，建议抛出参数异常，指定参数名，前端用户界面可以捕获参数异常并聚焦到对应的参数输入框
             if (Name.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Name), "Name不能为空！");
-            if (DisplayName.IsNullOrEmpty()) throw new ArgumentNullException(nameof(DisplayName), "DisplayName不能为空！");
 
             // 在新插入数据或者修改了指定字段时进行修正
 
@@ -69,17 +69,17 @@ namespace IdentityServer4.XCode.Entities
             if (XTrace.Debug) XTrace.WriteLine("开始初始化ApiResources[ApiResources]数据……");
 
             var entity = new ApiResources();
-            entity.Id = 1;
+            //entity.Id = 1;
             entity.Enabled = true;
             entity.Name = "api1";
             entity.Insert();
 
-            entity.Id = 2;
+            //entity.Id = 2;
             entity.Enabled = true;
             entity.Name = "openid";
             entity.Insert();
 
-            entity.Id = 3;
+            //entity.Id = 3;
             entity.Enabled = true;
             entity.Name = "profile";
             entity.Insert();
@@ -103,6 +103,33 @@ namespace IdentityServer4.XCode.Entities
         #endregion
 
         #region 扩展属性
+
+        /// <summary>
+        /// The API secret is used for the introspection endpoint. The API can authenticate with introspection using the API name and secret.
+        /// </summary>
+        public ICollection<Secret> ApiSecrets =>
+            Entities.ApiSecrets.FindAllByApiResourceId(Id)
+                .Select(s => new Secret(s.Value, s.Description, s.Expiration)
+                {
+                    Type = s.Type
+                }).ToList();
+
+        /// <summary>
+        /// An API must have at least one scope. Each scope can have different settings.
+        /// </summary>
+        public ICollection<Scope> Scopes =>
+            ApiScopes.FindAllByApiResourceId(Id)
+                .Select(s => new Scope()
+                {
+                    Name = s.Name,
+                    DisplayName = s.DisplayName,
+                    Description = s.Description,
+                    Required = s.Required,
+                    Emphasize = s.Emphasize,
+                    ShowInDiscoveryDocument = s.ShowInDiscoveryDocument,
+                    UserClaims = s.UserClaims
+                })
+                .ToList();
         #endregion
 
         #region 扩展查询

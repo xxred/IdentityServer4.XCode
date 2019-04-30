@@ -46,8 +46,6 @@ namespace IdentityServer4.XCode.Entities
 
             // 这里验证参数范围，建议抛出参数异常，指定参数名，前端用户界面可以捕获参数异常并聚焦到对应的参数输入框
             if (Created.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Created), "Created不能为空！");
-            if (Expiration.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Expiration), "Expiration不能为空！");
-            if (Description.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Description), "Description不能为空！");
             if (Value.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Value), "Value不能为空！");
             if (Type.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Type), "Type不能为空！");
 

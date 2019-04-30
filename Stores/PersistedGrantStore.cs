@@ -69,7 +69,7 @@ namespace IdentityServer4.XCode.Stores
         /// <returns></returns>
         public Task<PersistedGrant> GetAsync(string key)
         {
-            var persistedGrant = PersistedGrants.FindByKey(key);
+            var persistedGrant = PersistedGrants.Find(PersistedGrants._.Key == key);
             var model = persistedGrant?.ToModel();
 
             _logger.LogDebug("{persistedGrantKey} found in database: {persistedGrantKeyFound}", key, model != null);
