@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
@@ -129,12 +130,99 @@ namespace IdentityServer4.XCode.Entities
         #endregion
 
         #region 扩展属性
+        /// <summary>
+        /// Client secrets - only relevant for flows that require a secret
+        /// </summary>
+        public ICollection<Secret> ClientSecrets { get; set; }
+
+        /// <summary>
+        /// Specifies the allowed grant types (legal combinations of AuthorizationCode, Implicit, Hybrid, ResourceOwner, ClientCredentials).
+        /// </summary>
+        public ICollection<string> AllowedGrantTypes =>
+            ClientGrantTypes.FindAllByClientId(Id)
+                .Select(s => s.GrantType)
+                .ToList();
+
+        /// <summary>
+        /// Specifies allowed URIs to return tokens or authorization codes to
+        /// </summary>
+        public ICollection<string> RedirectUris =>
+            ClientRedirectUris.FindAllByClientId(Id)
+                .Select(s => s.RedirectUri)
+                .ToList();
+
+        /// <summary>
+        /// Specifies allowed URIs to redirect to after logout
+        /// </summary>
+        public ICollection<string> PostLogoutRedirectUris =>
+            ClientPostLogoutRedirectUris.FindAllByClientId(Id)
+                .Select(s => s.PostLogoutRedirectUri)
+                .ToList();
+
+        /// <summary>
+        /// Specifies the api scopes that the client is allowed to request. If empty, the client can't access any scope
+        /// </summary>
+        public ICollection<string> AllowedScopes =>
+            ClientScopes.FindAllByClientId(Id)
+                .Select(s => s.Scope)
+                .ToList();
+
+        /// <summary>
+        /// Specifies which external IdPs can be used with this client (if list is empty all IdPs are allowed). Defaults to empty.
+        /// </summary>
+        public ICollection<string> IdentityProviderRestrictions =>
+            ClientIdPRestrictions.FindAllByClientId(Id)
+                .Select(s => s.Provider)
+                .ToList();
+
+        /// <summary>
+        /// Allows settings claims for the client (will be included in the access token).
+        /// </summary>
+        /// <value>
+        /// The claims.
+        /// </value>
+        public ICollection<Claim> Claims =>
+            ClientClaims.FindAllByClientId(Id)
+                .Select(s => new Claim(s.Type, s.Value))
+                .ToList();
+
+        /// <summary>
+        /// Gets or sets the allowed CORS origins for JavaScript clients.
+        /// </summary>
+        /// <value>
+        /// The allowed CORS origins.
+        /// </value>
+        public ICollection<string> AllowedCorsOrigins =>
+            ClientCorsOrigins.FindAllByClientId(Id)
+                .Select(s => s.Origin)
+                .ToList();
+
+        /// <summary>
+        /// Gets or sets the custom properties for the client.
+        /// </summary>
+        /// <value>
+        /// The properties.
+        /// </value>
+        public IDictionary<string, string> Properties
+
+        {
+            get
+            {
+                var dic = new Dictionary<string, string>();
+                var list = ClientProperties.FindAllByClientId(Id);
+                foreach (var item in list)
+                {
+                    dic[item.Key] = item.Value;
+                }
+
+                return dic;
+            }
         #endregion
 
-        #region 扩展查询
-        /// <summary>根据Id查找</summary>
-        /// <param name="id">Id</param>
-        /// <returns>实体对象</returns>
+            #region 扩展查询
+            /// <summary>根据Id查找</summary>
+            /// <param name="id">Id</param>
+            /// <returns>实体对象</returns>
         public static Clients FindById(Int32 id)
         {
             if (id <= 0) return null;
