@@ -217,6 +217,8 @@ namespace IdentityServer4.XCode.Entities
 
                 return dic;
             }
+        }
+
         #endregion
 
             #region 扩展查询
