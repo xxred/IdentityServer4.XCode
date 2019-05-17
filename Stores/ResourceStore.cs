@@ -22,7 +22,6 @@ namespace IdentityServer4.XCode.Stores
         /// <summary>
         /// Initializes a new instance of the <see cref="ResourceStore"/> class.
         /// </summary>
-        /// <param name="context">The context.</param>
         /// <param name="logger">The logger.</param>
         /// <exception cref="ArgumentNullException">context</exception>
         public ResourceStore(ILogger<ResourceStore> logger)

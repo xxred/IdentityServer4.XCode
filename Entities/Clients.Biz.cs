@@ -25,6 +25,37 @@ using XCode.Membership;
 
 namespace IdentityServer4.XCode.Entities
 {
+    /// <summary>
+    /// 设备类型
+    /// </summary>
+    public enum ClientType
+    {
+        /// <summary>
+        /// 空，默认
+        /// </summary>
+        Empty = 0,
+        /// <summary>
+        /// Web 应用程序 - 服务器端 混合流
+        /// </summary>
+        WebHybrid = 1,
+        /// <summary>
+        /// 单页应用程序 - Javascript Authorization Code Flow with PKCE
+        /// </summary>
+        Spa = 2,
+        /// <summary>
+        /// 原生应用程序 - 移动/桌面 混合流
+        /// </summary>
+        Native = 3,
+        /// <summary>
+        /// 机械/机器人 资源所有者密码和客户端凭据流
+        /// </summary>
+        Machine = 4,
+        /// <summary>
+        /// 电视和限制输入设备应用程序 设备流程
+        /// </summary>
+        Device = 5
+    }
+
     /// <summary></summary>
     [ModelCheckMode(ModelCheckModes.CheckTableWhenFirstUse)]
     public partial class Clients : Entity<Clients>
@@ -130,6 +161,11 @@ namespace IdentityServer4.XCode.Entities
         #endregion
 
         #region 扩展属性
+
+        /// <summary>
+        /// 设备类型，用于前端传值，根据类型进行设置
+        /// </summary>
+        public ClientType ClientType { get; set; }
 
         /// <summary>
         /// Client secrets - only relevant for flows that require a secret
@@ -261,6 +297,13 @@ namespace IdentityServer4.XCode.Entities
         #endregion
 
         #region 业务操作
+
+        protected override int OnInsert()
+        {
+
+            return base.OnInsert();
+        }
+
         #endregion
     }
 }

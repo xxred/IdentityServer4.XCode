@@ -39,7 +39,7 @@ namespace IdentityServer4.XCode.Stores
             var model = Clients.FindByClientId(clientId)?.ToModel();
 
             _logger.LogDebug("{clientId} found in database: {clientIdFound}", clientId, model != null);
-            
+
             return Task.FromResult(model);
         }
     }
