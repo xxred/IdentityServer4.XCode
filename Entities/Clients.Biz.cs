@@ -1,27 +1,11 @@
+using IdentityServer4.Models;
+using NewLife.Log;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.IO;
 using System.Linq;
-using System.Reflection;
 using System.Security.Claims;
-using System.Text;
-using System.Threading.Tasks;
-using System.Web;
-using System.Xml.Serialization;
-using IdentityServer4.Models;
-using NewLife;
-using NewLife.Data;
-using NewLife.Log;
-using NewLife.Model;
-using NewLife.Reflection;
-using NewLife.Threading;
-using NewLife.Web;
 using XCode;
-using XCode.Cache;
-using XCode.Configuration;
-using XCode.DataAccessLayer;
-using XCode.Membership;
 
 namespace IdentityServer4.XCode.Entities
 {
@@ -167,16 +151,20 @@ namespace IdentityServer4.XCode.Entities
         /// </summary>
         public ClientType ClientType { get; set; }
 
+        public ICollection<Secret> _ClientSecrets;
         /// <summary>
         /// Client secrets - only relevant for flows that require a secret
         /// </summary>
-        public ICollection<Secret> ClientSecrets =>
-            Entities.ClientSecrets.FindAllByClientId(Id)
-            .Select(s => new Secret(s.Value, s.Description, s.Expiration)
-            {
-                Type = s.Type
-            }).ToList();
-
+        public ICollection<Secret> ClientSecrets
+        {
+            get =>
+                        Entities.ClientSecrets.FindAllByClientId(Id)
+                        .Select(s => new Secret(s.Value, s.Description, s.Expiration)
+                        {
+                            Type = s.Type
+                        }).ToList();
+            set => _ClientSecrets = value;
+        }
 
         /// <summary>
         /// Specifies the allowed grant types (legal combinations of AuthorizationCode, Implicit, Hybrid, ResourceOwner, ClientCredentials).
@@ -186,37 +174,69 @@ namespace IdentityServer4.XCode.Entities
                 .Select(s => s.GrantType)
                 .ToList();
 
+        public ICollection<string> _RedirectUris;
         /// <summary>
         /// Specifies allowed URIs to return tokens or authorization codes to
         /// </summary>
-        public ICollection<string> RedirectUris =>
-            ClientRedirectUris.FindAllByClientId(Id)
-                .Select(s => s.RedirectUri)
-                .ToList();
+        public ICollection<string> RedirectUris
+        {
+            get
+            {
+                return ClientRedirectUris.FindAllByClientId(Id)
+                    .Select(s => s.RedirectUri)
+                    .ToList();
+            }
+            set => _RedirectUris = value;
+        }
+
 
         /// <summary>
         /// Specifies allowed URIs to redirect to after logout
         /// </summary>
-        public ICollection<string> PostLogoutRedirectUris =>
-            ClientPostLogoutRedirectUris.FindAllByClientId(Id)
-                .Select(s => s.PostLogoutRedirectUri)
-                .ToList();
+        private ICollection<string> _postLogoutRedirectUris;
+        /// <summary>
+        /// Specifies allowed URIs to redirect to after logout
+        /// </summary>
+        public ICollection<string> PostLogoutRedirectUris
+        {
+            get =>
+                ClientPostLogoutRedirectUris.FindAllByClientId(Id)
+                    .Select(s => s.PostLogoutRedirectUri)
+                    .ToList();
+            set => _postLogoutRedirectUris = value;
+        }
 
         /// <summary>
         /// Specifies the api scopes that the client is allowed to request. If empty, the client can't access any scope
         /// </summary>
-        public ICollection<string> AllowedScopes =>
-            ClientScopes.FindAllByClientId(Id)
-                .Select(s => s.Scope)
-                .ToList();
+        private ICollection<string> _allowedScopes;
+        /// <summary>
+        /// Specifies the api scopes that the client is allowed to request. If empty, the client can't access any scope
+        /// </summary>
+        public ICollection<string> AllowedScopes
+        {
+            get =>
+                ClientScopes.FindAllByClientId(Id)
+                    .Select(s => s.Scope)
+                    .ToList();
+            set => _allowedScopes = value;
+        }
 
         /// <summary>
         /// Specifies which external IdPs can be used with this client (if list is empty all IdPs are allowed). Defaults to empty.
         /// </summary>
-        public ICollection<string> IdentityProviderRestrictions =>
-            ClientIdPRestrictions.FindAllByClientId(Id)
-                .Select(s => s.Provider)
-                .ToList();
+        private ICollection<string> _identityProviderRestrictions;
+        /// <summary>
+        /// Specifies which external IdPs can be used with this client (if list is empty all IdPs are allowed). Defaults to empty.
+        /// </summary>
+        public ICollection<string> IdentityProviderRestrictions
+        {
+            get =>
+                ClientIdPRestrictions.FindAllByClientId(Id)
+                    .Select(s => s.Provider)
+                    .ToList();
+            set => _identityProviderRestrictions = value;
+        }
 
         /// <summary>
         /// Allows settings claims for the client (will be included in the access token).
@@ -224,10 +244,21 @@ namespace IdentityServer4.XCode.Entities
         /// <value>
         /// The claims.
         /// </value>
-        public ICollection<Claim> Claims =>
-            ClientClaims.FindAllByClientId(Id)
-                .Select(s => new Claim(s.Type, s.Value))
-                .ToList();
+        private ICollection<Claim> _claims;
+        /// <summary>
+        /// Allows settings claims for the client (will be included in the access token).
+        /// </summary>
+        /// <value>
+        /// The claims.
+        /// </value>
+        public ICollection<Claim> Claims
+        {
+            get =>
+                ClientClaims.FindAllByClientId(Id)
+                    .Select(s => new Claim(s.Type, s.Value))
+                    .ToList();
+            set => _claims = value;
+        }
 
         /// <summary>
         /// Gets or sets the allowed CORS origins for JavaScript clients.
@@ -235,10 +266,21 @@ namespace IdentityServer4.XCode.Entities
         /// <value>
         /// The allowed CORS origins.
         /// </value>
-        public ICollection<string> AllowedCorsOrigins =>
-            ClientCorsOrigins.FindAllByClientId(Id)
-                .Select(s => s.Origin)
-                .ToList();
+        private ICollection<string> _allowedCorsOrigins;
+        /// <summary>
+        /// Gets or sets the allowed CORS origins for JavaScript clients.
+        /// </summary>
+        /// <value>
+        /// The allowed CORS origins.
+        /// </value>
+        public ICollection<string> AllowedCorsOrigins
+        {
+            get =>
+                ClientCorsOrigins.FindAllByClientId(Id)
+                    .Select(s => s.Origin)
+                    .ToList();
+            set => _allowedCorsOrigins = value;
+        }
 
         /// <summary>
         /// Gets or sets the custom properties for the client.
@@ -246,8 +288,14 @@ namespace IdentityServer4.XCode.Entities
         /// <value>
         /// The properties.
         /// </value>
+        private IDictionary<string, string> _properties;
+        /// <summary>
+        /// Gets or sets the custom properties for the client.
+        /// </summary>
+        /// <value>
+        /// The properties.
+        /// </value>
         public IDictionary<string, string> Properties
-
         {
             get
             {
@@ -260,8 +308,8 @@ namespace IdentityServer4.XCode.Entities
 
                 return dic;
             }
+            set { _properties = value; }
         }
-
         #endregion
 
         #region 扩展查询
@@ -297,11 +345,335 @@ namespace IdentityServer4.XCode.Entities
         #endregion
 
         #region 业务操作
-
-        protected override int OnInsert()
+        /// <summary>
+        /// 重载插入，根据客户端类型处理
+        /// </summary>
+        /// <returns></returns>
+        public override int Insert()
         {
+            if (ClientId.IsNullOrWhiteSpace())
+            {
+                ClientId = Guid.NewGuid().ToString().Replace("-", "");
+            }
 
-            return base.OnInsert();
+            if (ProtocolType.IsNullOrWhiteSpace())
+            {
+                ProtocolType = "oidc";
+            }
+
+            {
+                Enabled = true;
+                RequireClientSecret = true;
+                RequireConsent = true;
+                AllowRememberConsent = true;
+                AlwaysIncludeUserClaimsInIdToken = false;
+                RequirePkce = false;
+                AllowPlainTextPkce = false;
+                AllowAccessTokensViaBrowser = false;
+                FrontChannelLogoutUri = null;
+                FrontChannelLogoutSessionRequired = true;
+                BackChannelLogoutUri = null;
+                BackChannelLogoutSessionRequired = true;
+                AllowOfflineAccess = false;
+                IdentityTokenLifetime = 300;
+                AccessTokenLifetime = 3600;
+                AuthorizationCodeLifetime = 300;
+                ConsentLifetime = 300;
+                AbsoluteRefreshTokenLifetime = 2592000;
+                SlidingRefreshTokenLifetime = 1296000;
+                RefreshTokenUsage = TokenUsage.ReUse;
+                UpdateAccessTokenClaimsOnRefresh = false;
+                RefreshTokenExpiration = TokenExpiration.Sliding;
+                AccessTokenType = AccessTokenType.Jwt;
+                EnableLocalLogin = true;
+                IncludeJwtId = true;
+                AlwaysSendClientClaims = false;
+                ClientClaimsPrefix = "client_";
+                PairWiseSubjectSalt = null;
+                LastAccessed = DateTime.MinValue;
+                UserSsoLifetime = 30000;
+                UserCodeType = null;
+                DeviceCodeLifetime = 300;
+                NonEditable = false;
+            }
+
+            var client = this;
+
+            switch (client.ClientType)
+            {
+                case ClientType.Empty:
+                    break;
+                case ClientType.WebHybrid:
+                    break;
+                case ClientType.Spa:
+                    client.RequirePkce = true;
+                    client.RequireClientSecret = false;
+                    break;
+                case ClientType.Native:
+                    break;
+                case ClientType.Machine:
+                    break;
+                case ClientType.Device:
+                    client.RequireClientSecret = false;
+                    client.AllowOfflineAccess = true;
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            base.Insert();
+
+            AllowedGrantType();
+
+            return 1;
+        }
+
+        /// <summary>
+        /// 根据客户端类型设置GrantType
+        /// </summary>
+        public void AllowedGrantType()
+        {
+            var client = this;
+
+            switch (client.ClientType)
+            {
+                case ClientType.Empty:
+                    break;
+                case ClientType.WebHybrid:
+                    SaveGrantType(GrantTypes.Hybrid);
+                    break;
+                case ClientType.Spa:
+                    SaveGrantType(GrantTypes.Code);
+                    break;
+                case ClientType.Native:
+                    SaveGrantType(GrantTypes.Hybrid);
+                    break;
+                case ClientType.Machine:
+                    SaveGrantType(GrantTypes.ResourceOwnerPasswordAndClientCredentials);
+                    break;
+                case ClientType.Device:
+                    SaveGrantType(GrantTypes.DeviceFlow);
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        public void SaveGrantType(ICollection<string> grantTypes)
+        {
+            foreach (var item in grantTypes)
+            {
+                var grantType = new ClientGrantTypes();
+                grantType.ClientId = Id;
+                grantType.GrantType = item;
+                grantType.Save();
+            }
+        }
+
+        /// <summary>
+        /// 重载更新，处理关联表数据
+        /// </summary>
+        /// <returns></returns>
+        public override int Update()
+        {
+            base.Update();
+
+            var old = FindById(Id);
+
+            UpdateScopes(old);
+            UpdateRedirectUris(old);
+            UpdateGrantTypes(old);
+            UpdatePostLogoutRedirectUris(old);
+            UpdateIdentityProviderRestrictions(old);
+            UpdateAllowedCorsOrigins(old);
+
+            return 1;
+        }
+
+        public void UpdateScopes(Clients old)
+        {
+            var oldScopes = old.AllowedScopes;
+            foreach (var scope in AllowedScopes)
+            {
+                if (oldScopes.Contains(scope))
+                {
+                    // 旧的移出列表
+                    oldScopes.Remove(scope);
+                }
+                else
+                {
+                    // 新的添加
+                    new ClientScopes()
+                    {
+                        ClientId = Id,
+                        Scope = scope
+                    }.Save();
+                }
+            }
+
+            // 剩下的移除
+            foreach (var oldScope in oldScopes)
+            {
+                ClientScopes.Find(
+                    ClientScopes._.ClientId == Id & 
+                    ClientScopes._.Scope == oldScope)
+                    ?.Delete();
+            }
+        }
+
+        public void UpdateRedirectUris(Clients client)
+        {
+            var olds = client.RedirectUris;
+            foreach (var newItem in RedirectUris)
+            {
+                if (olds.Contains(newItem))
+                {
+                    // 旧的移出列表
+                    olds.Remove(newItem);
+                }
+                else
+                {
+                    // 新的添加
+                    new ClientRedirectUris()
+                    {
+                        ClientId = Id,
+                        RedirectUri = newItem
+                    }.Save();
+                }
+            }
+
+            // 剩下的移除
+            foreach (var old in olds)
+            {
+                ClientRedirectUris.Find(
+                        ClientRedirectUris._.ClientId == Id &
+                        ClientRedirectUris._.RedirectUri == old)
+                    ?.Delete();
+            }
+        }
+
+        public void UpdateGrantTypes(Clients client)
+        {
+            var olds = client.AllowedGrantTypes;
+            foreach (var newItem in AllowedGrantTypes)
+            {
+                if (olds.Contains(newItem))
+                {
+                    // 旧的移出列表
+                    olds.Remove(newItem);
+                }
+                else
+                {
+                    // 新的添加
+                    new ClientGrantTypes()
+                    {
+                        ClientId = Id,
+                        GrantType = newItem
+                    }.Save();
+                }
+            }
+
+            // 剩下的移除
+            foreach (var old in olds)
+            {
+                ClientGrantTypes.Find(
+                        ClientGrantTypes._.ClientId == Id &
+                        ClientGrantTypes._.GrantType == old)
+                    ?.Delete();
+            }
+        }
+
+        public void UpdatePostLogoutRedirectUris(Clients client)
+        {
+            var olds = client.PostLogoutRedirectUris;
+            foreach (var newItem in PostLogoutRedirectUris)
+            {
+                if (olds.Contains(newItem))
+                {
+                    // 旧的移出列表
+                    olds.Remove(newItem);
+                }
+                else
+                {
+                    // 新的添加
+                    new ClientPostLogoutRedirectUris()
+                    {
+                        ClientId = Id,
+                        PostLogoutRedirectUri = newItem
+                    }.Save();
+                }
+            }
+
+            // 剩下的移除
+            foreach (var old in olds)
+            {
+                ClientPostLogoutRedirectUris.Find(
+                        ClientPostLogoutRedirectUris._.ClientId == Id &
+                        ClientPostLogoutRedirectUris._.PostLogoutRedirectUri == old)
+                    ?.Delete();
+            }
+        }
+
+        public void UpdateIdentityProviderRestrictions(Clients client)
+        {
+            var olds = client.IdentityProviderRestrictions;
+            foreach (var newItem in IdentityProviderRestrictions)
+            {
+                if (olds.Contains(newItem))
+                {
+                    // 旧的移出列表
+                    olds.Remove(newItem);
+                }
+                else
+                {
+                    // 新的添加
+                    new ClientIdPRestrictions()
+                    {
+                        ClientId = Id,
+                        Provider = newItem
+                    }.Save();
+                }
+            }
+
+            // 剩下的移除
+            foreach (var old in olds)
+            {
+                ClientIdPRestrictions.Find(
+                        ClientIdPRestrictions._.ClientId == Id &
+                        ClientIdPRestrictions._.Provider == old)
+                    ?.Delete();
+            }
+        }
+
+        public void UpdateAllowedCorsOrigins(Clients client)
+        {
+            var olds = client.AllowedCorsOrigins;
+            foreach (var newItem in AllowedCorsOrigins)
+            {
+                if (olds.Contains(newItem))
+                {
+                    // 旧的移出列表
+                    olds.Remove(newItem);
+                }
+                else
+                {
+                    // 新的添加
+                    new ClientCorsOrigins()
+                    {
+                        ClientId = Id,
+                        Origin = newItem
+                    }.Save();
+                }
+            }
+
+            // 剩下的移除
+            foreach (var old in olds)
+            {
+                ClientCorsOrigins.Find(
+                        ClientCorsOrigins._.ClientId == Id &
+                        ClientCorsOrigins._.Origin == old)
+                    ?.Delete();
+            }
         }
 
         #endregion
