@@ -73,12 +73,17 @@ namespace IdentityServer4.XCode.Entities
             if (XTrace.Debug) XTrace.WriteLine("完成初始化ClientSecrets[ClientSecrets]数据！");
         }
 
-        ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
-        ///// <returns></returns>
-        //public override Int32 Insert()
-        //{
-        //    return base.Insert();
-        //}
+        /// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
+        /// <returns></returns>
+        public override Int32 Insert()
+        {
+            if (Value.Length != 32 || Value.Length!= 64)
+            {
+                Value = Value.Sha256();
+            }
+
+            return base.Insert();
+        }
 
         ///// <summary>已重载。在事务保护范围内处理业务，位于Valid之后</summary>
         ///// <returns></returns>

@@ -104,6 +104,13 @@ namespace IdentityServer4.XCode.Entities
         #endregion
 
         #region 扩展属性
+        /// <summary>
+        /// List of user-claim types that should be included in the access token.
+        /// </summary>
+        public ICollection<string> UserClaims =>
+            IdentityClaims.FindAllByIdentityResourceId(Id)
+                .Select(s => s.Type)
+                .ToList();
         #endregion
 
         #region 扩展查询

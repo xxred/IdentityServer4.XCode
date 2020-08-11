@@ -15,8 +15,8 @@
 
   <ItemGroup>
     <PackageReference Include="IdentityServer4" Version="2.4.0" />
-    <PackageReference Include="NewLife.Core" Version="8.1.2019.327" />
-    <PackageReference Include="NewLife.XCode" Version="9.11.2019.327" />
+    <PackageReference Include="NewLife.Core" Version="8.9.2020.802" />
+    <PackageReference Include="NewLife.XCode" Version="9.19.2020.802" />
   </ItemGroup>
 
   <ItemGroup>

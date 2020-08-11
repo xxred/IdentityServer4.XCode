@@ -73,12 +73,15 @@ namespace IdentityServer4.XCode.Entities
         //    if (XTrace.Debug) XTrace.WriteLine("完成初始化PersistedGrants[PersistedGrants]数据！");
         //}
 
-        ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
-        ///// <returns></returns>
-        //public override Int32 Insert()
-        //{
-        //    return base.Insert();
-        //}
+        /// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
+        /// <returns></returns>
+        public override Int32 Insert()
+        {
+            CreationTime = CreationTime.ToLocalTime();
+            Expiration = Expiration.ToLocalTime();
+
+            return base.Insert();
+        }
 
         ///// <summary>已重载。在事务保护范围内处理业务，位于Valid之后</summary>
         ///// <returns></returns>
@@ -136,12 +139,12 @@ namespace IdentityServer4.XCode.Entities
         {
             // 实体缓存
             if (Meta.Session.Count < 1000) return Meta.Cache.FindAll(e => e.Expiration < DateTime.Now)
-                .OrderBy(o=>o.Key).Take(batchSize).ToList();
+                .OrderBy(o => o.Key).Take(batchSize).ToList();
 
-            return FindAll(_.Expiration < DateTime.Now & _.Key.Asc(),new PageParameter(){ PageSize = batchSize});
+            return FindAll(_.Expiration < DateTime.Now & _.Key.Asc(), new PageParameter() { PageSize = batchSize });
         }
 
-        
+
         #endregion
 
         #region 高级查询

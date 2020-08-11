@@ -1,4 +1,5 @@
 using IdentityServer4.Models;
+using NewLife;
 using NewLife.Log;
 using System;
 using System.Collections.Generic;
