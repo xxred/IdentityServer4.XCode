@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -20,49 +23,49 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private String _Created;
         /// <summary></summary>
         [DisplayName("Created")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("Created", "", "TEXT")]
-        public String Created { get { return _Created; } set { if (OnPropertyChanging(__.Created, value)) { _Created = value; OnPropertyChanged(__.Created); } } }
+        public String Created { get => _Created; set { if (OnPropertyChanging("Created", value)) { _Created = value; OnPropertyChanged("Created"); } } }
 
         private DateTime _Expiration;
         /// <summary></summary>
         [DisplayName("Expiration")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("Expiration", "", "TEXT")]
-        public DateTime Expiration { get { return _Expiration; } set { if (OnPropertyChanging(__.Expiration, value)) { _Expiration = value; OnPropertyChanged(__.Expiration); } } }
+        public DateTime Expiration { get => _Expiration; set { if (OnPropertyChanging("Expiration", value)) { _Expiration = value; OnPropertyChanged("Expiration"); } } }
 
         private String _Description;
         /// <summary></summary>
         [DisplayName("Description")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("Description", "", "TEXT")]
-        public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
+        public String Description { get => _Description; set { if (OnPropertyChanging("Description", value)) { _Description = value; OnPropertyChanged("Description"); } } }
 
         private String _Value;
         /// <summary></summary>
         [DisplayName("Value")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Value", "", "TEXT")]
-        public String Value { get { return _Value; } set { if (OnPropertyChanging(__.Value, value)) { _Value = value; OnPropertyChanged(__.Value); } } }
+        public String Value { get => _Value; set { if (OnPropertyChanging("Value", value)) { _Value = value; OnPropertyChanged("Value"); } } }
 
         private String _Type;
         /// <summary></summary>
         [DisplayName("Type")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Type", "", "TEXT")]
-        public String Type { get { return _Type; } set { if (OnPropertyChanging(__.Type, value)) { _Type = value; OnPropertyChanged(__.Type); } } }
+        public String Type { get => _Type; set { if (OnPropertyChanging("Type", value)) { _Type = value; OnPropertyChanged("Type"); } } }
 
         private Int64 _ClientId;
         /// <summary></summary>
         [DisplayName("ClientId")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ClientId", "", "INTEGER")]
-        public Int64 ClientId { get { return _ClientId; } set { if (OnPropertyChanging(__.ClientId, value)) { _ClientId = value; OnPropertyChanged(__.ClientId); } } }
+        public Int64 ClientId { get => _ClientId; set { if (OnPropertyChanging("ClientId", value)) { _ClientId = value; OnPropertyChanged("ClientId"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -75,13 +78,13 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.Created : return _Created;
-                    case __.Expiration : return _Expiration;
-                    case __.Description : return _Description;
-                    case __.Value : return _Value;
-                    case __.Type : return _Type;
-                    case __.ClientId : return _ClientId;
+                    case "Id": return _Id;
+                    case "Created": return _Created;
+                    case "Expiration": return _Expiration;
+                    case "Description": return _Description;
+                    case "Value": return _Value;
+                    case "Type": return _Type;
+                    case "ClientId": return _ClientId;
                     default: return base[name];
                 }
             }
@@ -89,13 +92,13 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.Created : _Created = Convert.ToString(value); break;
-                    case __.Expiration : _Expiration = value.ToDateTime(); break;
-                    case __.Description : _Description = Convert.ToString(value); break;
-                    case __.Value : _Value = Convert.ToString(value); break;
-                    case __.Type : _Type = Convert.ToString(value); break;
-                    case __.ClientId : _ClientId = value.ToLong(); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "Created": _Created = Convert.ToString(value); break;
+                    case "Expiration": _Expiration = value.ToDateTime(); break;
+                    case "Description": _Description = Convert.ToString(value); break;
+                    case "Value": _Value = Convert.ToString(value); break;
+                    case "Type": _Type = Convert.ToString(value); break;
+                    case "ClientId": _ClientId = value.ToLong(); break;
                     default: base[name] = value; break;
                 }
             }
@@ -107,27 +110,27 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary></summary>
-            public static readonly Field Created = FindByName(__.Created);
+            public static readonly Field Created = FindByName("Created");
 
             /// <summary></summary>
-            public static readonly Field Expiration = FindByName(__.Expiration);
+            public static readonly Field Expiration = FindByName("Expiration");
 
             /// <summary></summary>
-            public static readonly Field Description = FindByName(__.Description);
+            public static readonly Field Description = FindByName("Description");
 
             /// <summary></summary>
-            public static readonly Field Value = FindByName(__.Value);
+            public static readonly Field Value = FindByName("Value");
 
             /// <summary></summary>
-            public static readonly Field Type = FindByName(__.Type);
+            public static readonly Field Type = FindByName("Type");
 
             /// <summary></summary>
-            public static readonly Field ClientId = FindByName(__.ClientId);
+            public static readonly Field ClientId = FindByName("ClientId");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得ClientSecrets字段名称的快捷方式</summary>

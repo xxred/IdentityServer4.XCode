@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<Tables Version="9.11.7012.14588" Output="" NameSpace="IdentityServer4.XCode.Entities" ConnName="IdentityServer" BaseClass="Entity" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="http://www.newlifex.com https://doc.newlifex.com/ModelSchema.xsd" xmlns="http://www.newlifex.com/ModelSchema.xsd">
-  <Table Name="ApiClaims">
+<Tables Version="9.19.7520.67" xmlns:xs="http://www.w3.org/2001/XMLSchema-instance" xs:schemaLocation="http://www.newlifex.com https://doc.newlifex.com/Model2020.xsd" Output="" NameSpace="IdentityServer4.XCode.Entities" ConnName="IdentityServer" BaseClass="Entity" IgnoreNameCase="True" xmlns="http://www.newlifex.com/Model2020.xsd">
+  <Table Name="ApiClaims" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Type" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -10,7 +10,7 @@
       <Index Columns="ApiResourceId" />
     </Indexes>
   </Table>
-  <Table Name="ApiProperties">
+  <Table Name="ApiProperties" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Key" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -21,7 +21,7 @@
       <Index Columns="ApiResourceId" />
     </Indexes>
   </Table>
-  <Table Name="ApiResources">
+  <Table Name="ApiResources" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Enabled" DataType="Boolean" />
@@ -37,7 +37,7 @@
       <Index Name="IX_ApiResources_Name" Columns="Name" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="ApiScopeClaims">
+  <Table Name="ApiScopeClaims" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Type" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -47,7 +47,7 @@
       <Index Columns="ApiScopeId" />
     </Indexes>
   </Table>
-  <Table Name="ApiScopes">
+  <Table Name="ApiScopes" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Name" DataType="String" RawType="TEXT" Master="True" Length="0" Nullable="False" />
@@ -63,7 +63,7 @@
       <Index Name="IX_ApiScopes_Name" Columns="Name" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="ApiSecrets">
+  <Table Name="ApiSecrets" IgnoreNameCase="False">
     <Columns>
       <Column Name="Created" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Expiration" DataType="DateTime" Nullable="False" />
@@ -77,7 +77,7 @@
       <Index Columns="ApiResourceId" />
     </Indexes>
   </Table>
-  <Table Name="AuditEntries">
+  <Table Name="AuditEntries" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="When" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -100,7 +100,7 @@
       <Index Columns="When" />
     </Indexes>
   </Table>
-  <Table Name="ClientClaims">
+  <Table Name="ClientClaims" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Type" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -111,7 +111,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientCorsOrigins">
+  <Table Name="ClientCorsOrigins" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Origin" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -121,7 +121,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientGrantTypes">
+  <Table Name="ClientGrantTypes" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="GrantType" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -131,7 +131,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientIdPRestrictions">
+  <Table Name="ClientIdPRestrictions" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Provider" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -141,7 +141,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientPostLogoutRedirectUris">
+  <Table Name="ClientPostLogoutRedirectUris" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="PostLogoutRedirectUri" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -151,7 +151,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientProperties">
+  <Table Name="ClientProperties" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Key" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -162,7 +162,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientRedirectUris">
+  <Table Name="ClientRedirectUris" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="RedirectUri" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -172,7 +172,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="Clients">
+  <Table Name="Clients" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Enabled" DataType="Boolean" Description="启用(默认为true)" />
@@ -221,7 +221,7 @@
       <Index Name="IX_Clients_ClientId" Columns="ClientId" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="ClientScopes">
+  <Table Name="ClientScopes" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Scope" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -231,7 +231,7 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ClientSecrets">
+  <Table Name="ClientSecrets" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Created" DataType="String" RawType="TEXT" Length="0" />
@@ -245,13 +245,13 @@
       <Index Columns="ClientId" />
     </Indexes>
   </Table>
-  <Table Name="ConfigurationEntries">
+  <Table Name="ConfigurationEntries" IgnoreNameCase="False">
     <Columns>
       <Column Name="Key" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="Value" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
     </Columns>
   </Table>
-  <Table Name="DeviceCodes">
+  <Table Name="DeviceCodes" IgnoreNameCase="False">
     <Columns>
       <Column Name="DeviceCode" DataType="String" RawType="TEXT" PrimaryKey="True" Length="0" Nullable="False" />
       <Column Name="UserCode" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -266,7 +266,7 @@
       <Index Name="IX_DeviceCodes_UserCode" Columns="UserCode" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="ExtendedApiResources">
+  <Table Name="ExtendedApiResources" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="ApiResourceName" DataType="String" RawType="TEXT" PrimaryKey="True" Length="0" Nullable="False" />
@@ -278,7 +278,7 @@
       <Index Name="ApiResourceNameIndex" Columns="NormalizedName" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="ExtendedClients">
+  <Table Name="ExtendedClients" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="ClientId" DataType="String" RawType="TEXT" PrimaryKey="True" Length="0" Nullable="False" />
@@ -293,7 +293,7 @@
       <Index Name="ClientNameIndex" Columns="NormalizedClientName" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="ExtendedIdentityResources">
+  <Table Name="ExtendedIdentityResources" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
       <Column Name="IdentityResourceName" DataType="String" RawType="TEXT" PrimaryKey="True" Length="0" Nullable="False" />
@@ -305,7 +305,7 @@
       <Index Name="IdentityResourceNameIndex" Columns="NormalizedName" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="IdentityClaims">
+  <Table Name="IdentityClaims" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Type" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -315,7 +315,7 @@
       <Index Columns="IdentityResourceId" />
     </Indexes>
   </Table>
-  <Table Name="IdentityProperties">
+  <Table Name="IdentityProperties" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Key" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
@@ -326,25 +326,25 @@
       <Index Columns="IdentityResourceId" />
     </Indexes>
   </Table>
-  <Table Name="IdentityResources">
+  <Table Name="IdentityResources" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Enabled" DataType="Boolean" />
       <Column Name="Name" DataType="String" RawType="TEXT" Master="True" Length="0" Nullable="False" />
-      <Column Name="DisplayName" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
+      <Column Name="DisplayName" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="Description" DataType="String" RawType="TEXT" Length="0" />
       <Column Name="Required" DataType="Int64" RawType="INTEGER" />
       <Column Name="Emphasize" DataType="Int64" RawType="INTEGER" />
       <Column Name="ShowInDiscoveryDocument" DataType="Int64" RawType="INTEGER" />
-      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
-      <Column Name="Updated" DataType="String" RawType="TEXT" Length="0" Nullable="False" />
+      <Column Name="Created" DataType="String" RawType="TEXT" Length="0" />
+      <Column Name="Updated" DataType="String" RawType="TEXT" Length="0" />
       <Column Name="NonEditable" DataType="Int64" RawType="INTEGER" />
     </Columns>
     <Indexes>
       <Index Name="IX_IdentityResources_Name" Columns="Name" Unique="True" />
     </Indexes>
   </Table>
-  <Table Name="PersistedGrants">
+  <Table Name="PersistedGrants" IgnoreNameCase="False">
     <Columns>
       <Column Name="Id" DataType="Int32" RawType="INTEGER" Identity="True" PrimaryKey="True" />
       <Column Name="Key" DataType="String" RawType="TEXT" Length="0" Nullable="False" />

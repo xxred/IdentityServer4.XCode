@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -20,56 +23,56 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private String _Key;
         /// <summary></summary>
         [DisplayName("Key")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Key", "", "TEXT")]
-        public String Key { get { return _Key; } set { if (OnPropertyChanging(__.Key, value)) { _Key = value; OnPropertyChanged(__.Key); } } }
+        public String Key { get => _Key; set { if (OnPropertyChanging("Key", value)) { _Key = value; OnPropertyChanged("Key"); } } }
 
         private String _Type;
         /// <summary></summary>
         [DisplayName("Type")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Type", "", "TEXT")]
-        public String Type { get { return _Type; } set { if (OnPropertyChanging(__.Type, value)) { _Type = value; OnPropertyChanged(__.Type); } } }
+        public String Type { get => _Type; set { if (OnPropertyChanging("Type", value)) { _Type = value; OnPropertyChanged("Type"); } } }
 
         private String _SubjectId;
         /// <summary></summary>
         [DisplayName("SubjectId")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("SubjectId", "", "TEXT")]
-        public String SubjectId { get { return _SubjectId; } set { if (OnPropertyChanging(__.SubjectId, value)) { _SubjectId = value; OnPropertyChanged(__.SubjectId); } } }
+        public String SubjectId { get => _SubjectId; set { if (OnPropertyChanging("SubjectId", value)) { _SubjectId = value; OnPropertyChanged("SubjectId"); } } }
 
         private String _ClientId;
         /// <summary></summary>
         [DisplayName("ClientId")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ClientId", "", "TEXT")]
-        public String ClientId { get { return _ClientId; } set { if (OnPropertyChanging(__.ClientId, value)) { _ClientId = value; OnPropertyChanged(__.ClientId); } } }
+        public String ClientId { get => _ClientId; set { if (OnPropertyChanging("ClientId", value)) { _ClientId = value; OnPropertyChanged("ClientId"); } } }
 
         private DateTime _CreationTime;
         /// <summary></summary>
         [DisplayName("CreationTime")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("CreationTime", "", "")]
-        public DateTime CreationTime { get { return _CreationTime; } set { if (OnPropertyChanging(__.CreationTime, value)) { _CreationTime = value; OnPropertyChanged(__.CreationTime); } } }
+        public DateTime CreationTime { get => _CreationTime; set { if (OnPropertyChanging("CreationTime", value)) { _CreationTime = value; OnPropertyChanged("CreationTime"); } } }
 
         private DateTime _Expiration;
         /// <summary></summary>
         [DisplayName("Expiration")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Expiration", "", "")]
-        public DateTime Expiration { get { return _Expiration; } set { if (OnPropertyChanging(__.Expiration, value)) { _Expiration = value; OnPropertyChanged(__.Expiration); } } }
+        public DateTime Expiration { get => _Expiration; set { if (OnPropertyChanging("Expiration", value)) { _Expiration = value; OnPropertyChanged("Expiration"); } } }
 
         private String _Data;
         /// <summary></summary>
         [DisplayName("Data")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Data", "", "TEXT")]
-        public String Data { get { return _Data; } set { if (OnPropertyChanging(__.Data, value)) { _Data = value; OnPropertyChanged(__.Data); } } }
+        public String Data { get => _Data; set { if (OnPropertyChanging("Data", value)) { _Data = value; OnPropertyChanged("Data"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -82,14 +85,14 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.Key : return _Key;
-                    case __.Type : return _Type;
-                    case __.SubjectId : return _SubjectId;
-                    case __.ClientId : return _ClientId;
-                    case __.CreationTime : return _CreationTime;
-                    case __.Expiration : return _Expiration;
-                    case __.Data : return _Data;
+                    case "Id": return _Id;
+                    case "Key": return _Key;
+                    case "Type": return _Type;
+                    case "SubjectId": return _SubjectId;
+                    case "ClientId": return _ClientId;
+                    case "CreationTime": return _CreationTime;
+                    case "Expiration": return _Expiration;
+                    case "Data": return _Data;
                     default: return base[name];
                 }
             }
@@ -97,14 +100,14 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.Key : _Key = Convert.ToString(value); break;
-                    case __.Type : _Type = Convert.ToString(value); break;
-                    case __.SubjectId : _SubjectId = Convert.ToString(value); break;
-                    case __.ClientId : _ClientId = Convert.ToString(value); break;
-                    case __.CreationTime : _CreationTime = value.ToDateTime(); break;
-                    case __.Expiration : _Expiration = value.ToDateTime(); break;
-                    case __.Data : _Data = Convert.ToString(value); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "Key": _Key = Convert.ToString(value); break;
+                    case "Type": _Type = Convert.ToString(value); break;
+                    case "SubjectId": _SubjectId = Convert.ToString(value); break;
+                    case "ClientId": _ClientId = Convert.ToString(value); break;
+                    case "CreationTime": _CreationTime = value.ToDateTime(); break;
+                    case "Expiration": _Expiration = value.ToDateTime(); break;
+                    case "Data": _Data = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -116,30 +119,30 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary></summary>
-            public static readonly Field Key = FindByName(__.Key);
+            public static readonly Field Key = FindByName("Key");
 
             /// <summary></summary>
-            public static readonly Field Type = FindByName(__.Type);
+            public static readonly Field Type = FindByName("Type");
 
             /// <summary></summary>
-            public static readonly Field SubjectId = FindByName(__.SubjectId);
+            public static readonly Field SubjectId = FindByName("SubjectId");
 
             /// <summary></summary>
-            public static readonly Field ClientId = FindByName(__.ClientId);
+            public static readonly Field ClientId = FindByName("ClientId");
 
             /// <summary></summary>
-            public static readonly Field CreationTime = FindByName(__.CreationTime);
+            public static readonly Field CreationTime = FindByName("CreationTime");
 
             /// <summary></summary>
-            public static readonly Field Expiration = FindByName(__.Expiration);
+            public static readonly Field Expiration = FindByName("Expiration");
 
             /// <summary></summary>
-            public static readonly Field Data = FindByName(__.Data);
+            public static readonly Field Data = FindByName("Data");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得PersistedGrants字段名称的快捷方式</summary>

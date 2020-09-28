@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -20,21 +23,21 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private String _GrantType;
         /// <summary></summary>
         [DisplayName("GrantType")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("GrantType", "", "TEXT")]
-        public String GrantType { get { return _GrantType; } set { if (OnPropertyChanging(__.GrantType, value)) { _GrantType = value; OnPropertyChanged(__.GrantType); } } }
+        public String GrantType { get => _GrantType; set { if (OnPropertyChanging("GrantType", value)) { _GrantType = value; OnPropertyChanged("GrantType"); } } }
 
         private Int64 _ClientId;
         /// <summary></summary>
         [DisplayName("ClientId")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ClientId", "", "INTEGER")]
-        public Int64 ClientId { get { return _ClientId; } set { if (OnPropertyChanging(__.ClientId, value)) { _ClientId = value; OnPropertyChanged(__.ClientId); } } }
+        public Int64 ClientId { get => _ClientId; set { if (OnPropertyChanging("ClientId", value)) { _ClientId = value; OnPropertyChanged("ClientId"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -47,9 +50,9 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.GrantType : return _GrantType;
-                    case __.ClientId : return _ClientId;
+                    case "Id": return _Id;
+                    case "GrantType": return _GrantType;
+                    case "ClientId": return _ClientId;
                     default: return base[name];
                 }
             }
@@ -57,9 +60,9 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.GrantType : _GrantType = Convert.ToString(value); break;
-                    case __.ClientId : _ClientId = value.ToLong(); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "GrantType": _GrantType = Convert.ToString(value); break;
+                    case "ClientId": _ClientId = value.ToLong(); break;
                     default: base[name] = value; break;
                 }
             }
@@ -71,15 +74,15 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary></summary>
-            public static readonly Field GrantType = FindByName(__.GrantType);
+            public static readonly Field GrantType = FindByName("GrantType");
 
             /// <summary></summary>
-            public static readonly Field ClientId = FindByName(__.ClientId);
+            public static readonly Field ClientId = FindByName("ClientId");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得ClientGrantTypes字段名称的快捷方式</summary>

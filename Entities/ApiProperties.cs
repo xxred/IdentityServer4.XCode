@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -20,28 +23,28 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private String _Key;
         /// <summary></summary>
         [DisplayName("Key")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Key", "", "TEXT")]
-        public String Key { get { return _Key; } set { if (OnPropertyChanging(__.Key, value)) { _Key = value; OnPropertyChanged(__.Key); } } }
+        public String Key { get => _Key; set { if (OnPropertyChanging("Key", value)) { _Key = value; OnPropertyChanged("Key"); } } }
 
         private String _Value;
         /// <summary></summary>
         [DisplayName("Value")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Value", "", "TEXT")]
-        public String Value { get { return _Value; } set { if (OnPropertyChanging(__.Value, value)) { _Value = value; OnPropertyChanged(__.Value); } } }
+        public String Value { get => _Value; set { if (OnPropertyChanging("Value", value)) { _Value = value; OnPropertyChanged("Value"); } } }
 
         private Int64 _ApiResourceId;
         /// <summary></summary>
         [DisplayName("ApiResourceId")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ApiResourceId", "", "INTEGER")]
-        public Int64 ApiResourceId { get { return _ApiResourceId; } set { if (OnPropertyChanging(__.ApiResourceId, value)) { _ApiResourceId = value; OnPropertyChanged(__.ApiResourceId); } } }
+        public Int64 ApiResourceId { get => _ApiResourceId; set { if (OnPropertyChanging("ApiResourceId", value)) { _ApiResourceId = value; OnPropertyChanged("ApiResourceId"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -54,10 +57,10 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.Key : return _Key;
-                    case __.Value : return _Value;
-                    case __.ApiResourceId : return _ApiResourceId;
+                    case "Id": return _Id;
+                    case "Key": return _Key;
+                    case "Value": return _Value;
+                    case "ApiResourceId": return _ApiResourceId;
                     default: return base[name];
                 }
             }
@@ -65,10 +68,10 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.Key : _Key = Convert.ToString(value); break;
-                    case __.Value : _Value = Convert.ToString(value); break;
-                    case __.ApiResourceId : _ApiResourceId = value.ToLong(); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "Key": _Key = Convert.ToString(value); break;
+                    case "Value": _Value = Convert.ToString(value); break;
+                    case "ApiResourceId": _ApiResourceId = value.ToLong(); break;
                     default: base[name] = value; break;
                 }
             }
@@ -80,18 +83,18 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary></summary>
-            public static readonly Field Key = FindByName(__.Key);
+            public static readonly Field Key = FindByName("Key");
 
             /// <summary></summary>
-            public static readonly Field Value = FindByName(__.Value);
+            public static readonly Field Value = FindByName("Value");
 
             /// <summary></summary>
-            public static readonly Field ApiResourceId = FindByName(__.ApiResourceId);
+            public static readonly Field ApiResourceId = FindByName("ApiResourceId");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得ApiProperties字段名称的快捷方式</summary>

@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -20,21 +23,21 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private String _Type;
         /// <summary></summary>
         [DisplayName("Type")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Type", "", "TEXT")]
-        public String Type { get { return _Type; } set { if (OnPropertyChanging(__.Type, value)) { _Type = value; OnPropertyChanged(__.Type); } } }
+        public String Type { get => _Type; set { if (OnPropertyChanging("Type", value)) { _Type = value; OnPropertyChanged("Type"); } } }
 
         private Int64 _IdentityResourceId;
         /// <summary></summary>
         [DisplayName("IdentityResourceId")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("IdentityResourceId", "", "INTEGER")]
-        public Int64 IdentityResourceId { get { return _IdentityResourceId; } set { if (OnPropertyChanging(__.IdentityResourceId, value)) { _IdentityResourceId = value; OnPropertyChanged(__.IdentityResourceId); } } }
+        public Int64 IdentityResourceId { get => _IdentityResourceId; set { if (OnPropertyChanging("IdentityResourceId", value)) { _IdentityResourceId = value; OnPropertyChanged("IdentityResourceId"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -47,9 +50,9 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.Type : return _Type;
-                    case __.IdentityResourceId : return _IdentityResourceId;
+                    case "Id": return _Id;
+                    case "Type": return _Type;
+                    case "IdentityResourceId": return _IdentityResourceId;
                     default: return base[name];
                 }
             }
@@ -57,9 +60,9 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.Type : _Type = Convert.ToString(value); break;
-                    case __.IdentityResourceId : _IdentityResourceId = value.ToLong(); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "Type": _Type = Convert.ToString(value); break;
+                    case "IdentityResourceId": _IdentityResourceId = value.ToLong(); break;
                     default: base[name] = value; break;
                 }
             }
@@ -71,15 +74,15 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary></summary>
-            public static readonly Field Type = FindByName(__.Type);
+            public static readonly Field Type = FindByName("Type");
 
             /// <summary></summary>
-            public static readonly Field IdentityResourceId = FindByName(__.IdentityResourceId);
+            public static readonly Field IdentityResourceId = FindByName("IdentityResourceId");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得IdentityClaims字段名称的快捷方式</summary>

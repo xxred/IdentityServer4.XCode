@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -20,28 +23,28 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private String _Key;
         /// <summary></summary>
         [DisplayName("Key")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Key", "", "TEXT")]
-        public String Key { get { return _Key; } set { if (OnPropertyChanging(__.Key, value)) { _Key = value; OnPropertyChanged(__.Key); } } }
+        public String Key { get => _Key; set { if (OnPropertyChanging("Key", value)) { _Key = value; OnPropertyChanged("Key"); } } }
 
         private String _Value;
         /// <summary></summary>
         [DisplayName("Value")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Value", "", "TEXT")]
-        public String Value { get { return _Value; } set { if (OnPropertyChanging(__.Value, value)) { _Value = value; OnPropertyChanged(__.Value); } } }
+        public String Value { get => _Value; set { if (OnPropertyChanging("Value", value)) { _Value = value; OnPropertyChanged("Value"); } } }
 
         private Int64 _IdentityResourceId;
         /// <summary></summary>
         [DisplayName("IdentityResourceId")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("IdentityResourceId", "", "INTEGER")]
-        public Int64 IdentityResourceId { get { return _IdentityResourceId; } set { if (OnPropertyChanging(__.IdentityResourceId, value)) { _IdentityResourceId = value; OnPropertyChanged(__.IdentityResourceId); } } }
+        public Int64 IdentityResourceId { get => _IdentityResourceId; set { if (OnPropertyChanging("IdentityResourceId", value)) { _IdentityResourceId = value; OnPropertyChanged("IdentityResourceId"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -54,10 +57,10 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.Key : return _Key;
-                    case __.Value : return _Value;
-                    case __.IdentityResourceId : return _IdentityResourceId;
+                    case "Id": return _Id;
+                    case "Key": return _Key;
+                    case "Value": return _Value;
+                    case "IdentityResourceId": return _IdentityResourceId;
                     default: return base[name];
                 }
             }
@@ -65,10 +68,10 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.Key : _Key = Convert.ToString(value); break;
-                    case __.Value : _Value = Convert.ToString(value); break;
-                    case __.IdentityResourceId : _IdentityResourceId = value.ToLong(); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "Key": _Key = Convert.ToString(value); break;
+                    case "Value": _Value = Convert.ToString(value); break;
+                    case "IdentityResourceId": _IdentityResourceId = value.ToLong(); break;
                     default: base[name] = value; break;
                 }
             }
@@ -80,18 +83,18 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary></summary>
-            public static readonly Field Key = FindByName(__.Key);
+            public static readonly Field Key = FindByName("Key");
 
             /// <summary></summary>
-            public static readonly Field Value = FindByName(__.Value);
+            public static readonly Field Value = FindByName("Value");
 
             /// <summary></summary>
-            public static readonly Field IdentityResourceId = FindByName(__.IdentityResourceId);
+            public static readonly Field IdentityResourceId = FindByName("IdentityResourceId");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得IdentityProperties字段名称的快捷方式</summary>

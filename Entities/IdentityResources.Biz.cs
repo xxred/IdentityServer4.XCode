@@ -51,10 +51,6 @@ namespace IdentityServer4.XCode.Entities
 
             // 这里验证参数范围，建议抛出参数异常，指定参数名，前端用户界面可以捕获参数异常并聚焦到对应的参数输入框
             if (Name.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Name), "Name不能为空！");
-            if (DisplayName.IsNullOrEmpty()) throw new ArgumentNullException(nameof(DisplayName), "DisplayName不能为空！");
-            if (Description.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Description), "Description不能为空！");
-            if (Created.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Created), "Created不能为空！");
-            if (Updated.IsNullOrEmpty()) throw new ArgumentNullException(nameof(Updated), "Updated不能为空！");
 
             // 在新插入数据或者修改了指定字段时进行修正
 
@@ -88,12 +84,14 @@ namespace IdentityServer4.XCode.Entities
         //    if (XTrace.Debug) XTrace.WriteLine("完成初始化IdentityResources[IdentityResources]数据！");
         //}
 
-        ///// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
-        ///// <returns></returns>
-        //public override Int32 Insert()
-        //{
-        //    return base.Insert();
-        //}
+        /// <summary>已重载。基类先调用Valid(true)验证数据，然后在事务保护内调用OnInsert</summary>
+        /// <returns></returns>
+        public override Int32 Insert()
+        {
+            Created = DateTime.Now.ToFullString();
+            Enabled = true;
+            return base.Insert();
+        }
 
         ///// <summary>已重载。在事务保护范围内处理业务，位于Valid之后</summary>
         ///// <returns></returns>

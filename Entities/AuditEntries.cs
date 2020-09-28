@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -20,112 +23,112 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private String _When;
         /// <summary></summary>
         [DisplayName("When")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("When", "", "TEXT")]
-        public String When { get { return _When; } set { if (OnPropertyChanging(__.When, value)) { _When = value; OnPropertyChanged(__.When); } } }
+        public String When { get => _When; set { if (OnPropertyChanging("When", value)) { _When = value; OnPropertyChanged("When"); } } }
 
         private String _Source;
         /// <summary></summary>
         [DisplayName("Source")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Source", "", "TEXT")]
-        public String Source { get { return _Source; } set { if (OnPropertyChanging(__.Source, value)) { _Source = value; OnPropertyChanged(__.Source); } } }
+        public String Source { get => _Source; set { if (OnPropertyChanging("Source", value)) { _Source = value; OnPropertyChanged("Source"); } } }
 
         private String _SubjectType;
         /// <summary></summary>
         [DisplayName("SubjectType")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("SubjectType", "", "TEXT")]
-        public String SubjectType { get { return _SubjectType; } set { if (OnPropertyChanging(__.SubjectType, value)) { _SubjectType = value; OnPropertyChanged(__.SubjectType); } } }
+        public String SubjectType { get => _SubjectType; set { if (OnPropertyChanging("SubjectType", value)) { _SubjectType = value; OnPropertyChanged("SubjectType"); } } }
 
         private String _SubjectIdentifier;
         /// <summary></summary>
         [DisplayName("SubjectIdentifier")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("SubjectIdentifier", "", "TEXT")]
-        public String SubjectIdentifier { get { return _SubjectIdentifier; } set { if (OnPropertyChanging(__.SubjectIdentifier, value)) { _SubjectIdentifier = value; OnPropertyChanged(__.SubjectIdentifier); } } }
+        public String SubjectIdentifier { get => _SubjectIdentifier; set { if (OnPropertyChanging("SubjectIdentifier", value)) { _SubjectIdentifier = value; OnPropertyChanged("SubjectIdentifier"); } } }
 
         private String _Subject;
         /// <summary></summary>
         [DisplayName("Subject")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Subject", "", "TEXT")]
-        public String Subject { get { return _Subject; } set { if (OnPropertyChanging(__.Subject, value)) { _Subject = value; OnPropertyChanged(__.Subject); } } }
+        public String Subject { get => _Subject; set { if (OnPropertyChanging("Subject", value)) { _Subject = value; OnPropertyChanged("Subject"); } } }
 
         private String _Action;
         /// <summary></summary>
         [DisplayName("Action")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Action", "", "TEXT")]
-        public String Action { get { return _Action; } set { if (OnPropertyChanging(__.Action, value)) { _Action = value; OnPropertyChanged(__.Action); } } }
+        public String Action { get => _Action; set { if (OnPropertyChanging("Action", value)) { _Action = value; OnPropertyChanged("Action"); } } }
 
         private String _ResourceType;
         /// <summary></summary>
         [DisplayName("ResourceType")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ResourceType", "", "TEXT")]
-        public String ResourceType { get { return _ResourceType; } set { if (OnPropertyChanging(__.ResourceType, value)) { _ResourceType = value; OnPropertyChanged(__.ResourceType); } } }
+        public String ResourceType { get => _ResourceType; set { if (OnPropertyChanging("ResourceType", value)) { _ResourceType = value; OnPropertyChanged("ResourceType"); } } }
 
         private String _Resource;
         /// <summary></summary>
         [DisplayName("Resource")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Resource", "", "TEXT")]
-        public String Resource { get { return _Resource; } set { if (OnPropertyChanging(__.Resource, value)) { _Resource = value; OnPropertyChanged(__.Resource); } } }
+        public String Resource { get => _Resource; set { if (OnPropertyChanging("Resource", value)) { _Resource = value; OnPropertyChanged("Resource"); } } }
 
         private String _ResourceIdentifier;
         /// <summary></summary>
         [DisplayName("ResourceIdentifier")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ResourceIdentifier", "", "TEXT")]
-        public String ResourceIdentifier { get { return _ResourceIdentifier; } set { if (OnPropertyChanging(__.ResourceIdentifier, value)) { _ResourceIdentifier = value; OnPropertyChanged(__.ResourceIdentifier); } } }
+        public String ResourceIdentifier { get => _ResourceIdentifier; set { if (OnPropertyChanging("ResourceIdentifier", value)) { _ResourceIdentifier = value; OnPropertyChanged("ResourceIdentifier"); } } }
 
         private Int64 _Succeeded;
         /// <summary></summary>
         [DisplayName("Succeeded")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Succeeded", "", "INTEGER")]
-        public Int64 Succeeded { get { return _Succeeded; } set { if (OnPropertyChanging(__.Succeeded, value)) { _Succeeded = value; OnPropertyChanged(__.Succeeded); } } }
+        public Int64 Succeeded { get => _Succeeded; set { if (OnPropertyChanging("Succeeded", value)) { _Succeeded = value; OnPropertyChanged("Succeeded"); } } }
 
         private String _Description;
         /// <summary></summary>
         [DisplayName("Description")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("Description", "", "TEXT")]
-        public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
+        public String Description { get => _Description; set { if (OnPropertyChanging("Description", value)) { _Description = value; OnPropertyChanged("Description"); } } }
 
         private String _NormalisedSubject;
         /// <summary></summary>
         [DisplayName("NormalisedSubject")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("NormalisedSubject", "", "TEXT")]
-        public String NormalisedSubject { get { return _NormalisedSubject; } set { if (OnPropertyChanging(__.NormalisedSubject, value)) { _NormalisedSubject = value; OnPropertyChanged(__.NormalisedSubject); } } }
+        public String NormalisedSubject { get => _NormalisedSubject; set { if (OnPropertyChanging("NormalisedSubject", value)) { _NormalisedSubject = value; OnPropertyChanged("NormalisedSubject"); } } }
 
         private String _NormalisedAction;
         /// <summary></summary>
         [DisplayName("NormalisedAction")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("NormalisedAction", "", "TEXT")]
-        public String NormalisedAction { get { return _NormalisedAction; } set { if (OnPropertyChanging(__.NormalisedAction, value)) { _NormalisedAction = value; OnPropertyChanged(__.NormalisedAction); } } }
+        public String NormalisedAction { get => _NormalisedAction; set { if (OnPropertyChanging("NormalisedAction", value)) { _NormalisedAction = value; OnPropertyChanged("NormalisedAction"); } } }
 
         private String _NormalisedResource;
         /// <summary></summary>
         [DisplayName("NormalisedResource")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("NormalisedResource", "", "TEXT")]
-        public String NormalisedResource { get { return _NormalisedResource; } set { if (OnPropertyChanging(__.NormalisedResource, value)) { _NormalisedResource = value; OnPropertyChanged(__.NormalisedResource); } } }
+        public String NormalisedResource { get => _NormalisedResource; set { if (OnPropertyChanging("NormalisedResource", value)) { _NormalisedResource = value; OnPropertyChanged("NormalisedResource"); } } }
 
         private String _NormalisedSource;
         /// <summary></summary>
         [DisplayName("NormalisedSource")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("NormalisedSource", "", "TEXT")]
-        public String NormalisedSource { get { return _NormalisedSource; } set { if (OnPropertyChanging(__.NormalisedSource, value)) { _NormalisedSource = value; OnPropertyChanged(__.NormalisedSource); } } }
+        public String NormalisedSource { get => _NormalisedSource; set { if (OnPropertyChanging("NormalisedSource", value)) { _NormalisedSource = value; OnPropertyChanged("NormalisedSource"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -138,22 +141,22 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.When : return _When;
-                    case __.Source : return _Source;
-                    case __.SubjectType : return _SubjectType;
-                    case __.SubjectIdentifier : return _SubjectIdentifier;
-                    case __.Subject : return _Subject;
-                    case __.Action : return _Action;
-                    case __.ResourceType : return _ResourceType;
-                    case __.Resource : return _Resource;
-                    case __.ResourceIdentifier : return _ResourceIdentifier;
-                    case __.Succeeded : return _Succeeded;
-                    case __.Description : return _Description;
-                    case __.NormalisedSubject : return _NormalisedSubject;
-                    case __.NormalisedAction : return _NormalisedAction;
-                    case __.NormalisedResource : return _NormalisedResource;
-                    case __.NormalisedSource : return _NormalisedSource;
+                    case "Id": return _Id;
+                    case "When": return _When;
+                    case "Source": return _Source;
+                    case "SubjectType": return _SubjectType;
+                    case "SubjectIdentifier": return _SubjectIdentifier;
+                    case "Subject": return _Subject;
+                    case "Action": return _Action;
+                    case "ResourceType": return _ResourceType;
+                    case "Resource": return _Resource;
+                    case "ResourceIdentifier": return _ResourceIdentifier;
+                    case "Succeeded": return _Succeeded;
+                    case "Description": return _Description;
+                    case "NormalisedSubject": return _NormalisedSubject;
+                    case "NormalisedAction": return _NormalisedAction;
+                    case "NormalisedResource": return _NormalisedResource;
+                    case "NormalisedSource": return _NormalisedSource;
                     default: return base[name];
                 }
             }
@@ -161,22 +164,22 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.When : _When = Convert.ToString(value); break;
-                    case __.Source : _Source = Convert.ToString(value); break;
-                    case __.SubjectType : _SubjectType = Convert.ToString(value); break;
-                    case __.SubjectIdentifier : _SubjectIdentifier = Convert.ToString(value); break;
-                    case __.Subject : _Subject = Convert.ToString(value); break;
-                    case __.Action : _Action = Convert.ToString(value); break;
-                    case __.ResourceType : _ResourceType = Convert.ToString(value); break;
-                    case __.Resource : _Resource = Convert.ToString(value); break;
-                    case __.ResourceIdentifier : _ResourceIdentifier = Convert.ToString(value); break;
-                    case __.Succeeded : _Succeeded = value.ToLong(); break;
-                    case __.Description : _Description = Convert.ToString(value); break;
-                    case __.NormalisedSubject : _NormalisedSubject = Convert.ToString(value); break;
-                    case __.NormalisedAction : _NormalisedAction = Convert.ToString(value); break;
-                    case __.NormalisedResource : _NormalisedResource = Convert.ToString(value); break;
-                    case __.NormalisedSource : _NormalisedSource = Convert.ToString(value); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "When": _When = Convert.ToString(value); break;
+                    case "Source": _Source = Convert.ToString(value); break;
+                    case "SubjectType": _SubjectType = Convert.ToString(value); break;
+                    case "SubjectIdentifier": _SubjectIdentifier = Convert.ToString(value); break;
+                    case "Subject": _Subject = Convert.ToString(value); break;
+                    case "Action": _Action = Convert.ToString(value); break;
+                    case "ResourceType": _ResourceType = Convert.ToString(value); break;
+                    case "Resource": _Resource = Convert.ToString(value); break;
+                    case "ResourceIdentifier": _ResourceIdentifier = Convert.ToString(value); break;
+                    case "Succeeded": _Succeeded = value.ToLong(); break;
+                    case "Description": _Description = Convert.ToString(value); break;
+                    case "NormalisedSubject": _NormalisedSubject = Convert.ToString(value); break;
+                    case "NormalisedAction": _NormalisedAction = Convert.ToString(value); break;
+                    case "NormalisedResource": _NormalisedResource = Convert.ToString(value); break;
+                    case "NormalisedSource": _NormalisedSource = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -188,54 +191,54 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary></summary>
-            public static readonly Field When = FindByName(__.When);
+            public static readonly Field When = FindByName("When");
 
             /// <summary></summary>
-            public static readonly Field Source = FindByName(__.Source);
+            public static readonly Field Source = FindByName("Source");
 
             /// <summary></summary>
-            public static readonly Field SubjectType = FindByName(__.SubjectType);
+            public static readonly Field SubjectType = FindByName("SubjectType");
 
             /// <summary></summary>
-            public static readonly Field SubjectIdentifier = FindByName(__.SubjectIdentifier);
+            public static readonly Field SubjectIdentifier = FindByName("SubjectIdentifier");
 
             /// <summary></summary>
-            public static readonly Field Subject = FindByName(__.Subject);
+            public static readonly Field Subject = FindByName("Subject");
 
             /// <summary></summary>
-            public static readonly Field Action = FindByName(__.Action);
+            public static readonly Field Action = FindByName("Action");
 
             /// <summary></summary>
-            public static readonly Field ResourceType = FindByName(__.ResourceType);
+            public static readonly Field ResourceType = FindByName("ResourceType");
 
             /// <summary></summary>
-            public static readonly Field Resource = FindByName(__.Resource);
+            public static readonly Field Resource = FindByName("Resource");
 
             /// <summary></summary>
-            public static readonly Field ResourceIdentifier = FindByName(__.ResourceIdentifier);
+            public static readonly Field ResourceIdentifier = FindByName("ResourceIdentifier");
 
             /// <summary></summary>
-            public static readonly Field Succeeded = FindByName(__.Succeeded);
+            public static readonly Field Succeeded = FindByName("Succeeded");
 
             /// <summary></summary>
-            public static readonly Field Description = FindByName(__.Description);
+            public static readonly Field Description = FindByName("Description");
 
             /// <summary></summary>
-            public static readonly Field NormalisedSubject = FindByName(__.NormalisedSubject);
+            public static readonly Field NormalisedSubject = FindByName("NormalisedSubject");
 
             /// <summary></summary>
-            public static readonly Field NormalisedAction = FindByName(__.NormalisedAction);
+            public static readonly Field NormalisedAction = FindByName("NormalisedAction");
 
             /// <summary></summary>
-            public static readonly Field NormalisedResource = FindByName(__.NormalisedResource);
+            public static readonly Field NormalisedResource = FindByName("NormalisedResource");
 
             /// <summary></summary>
-            public static readonly Field NormalisedSource = FindByName(__.NormalisedSource);
+            public static readonly Field NormalisedSource = FindByName("NormalisedSource");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得AuditEntries字段名称的快捷方式</summary>

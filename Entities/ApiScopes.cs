@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -21,56 +24,56 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private String _Name;
         /// <summary></summary>
         [DisplayName("Name")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Name", "", "TEXT", Master = true)]
-        public String Name { get { return _Name; } set { if (OnPropertyChanging(__.Name, value)) { _Name = value; OnPropertyChanged(__.Name); } } }
+        public String Name { get => _Name; set { if (OnPropertyChanging("Name", value)) { _Name = value; OnPropertyChanged("Name"); } } }
 
         private String _DisplayName;
         /// <summary></summary>
         [DisplayName("DisplayName")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("DisplayName", "", "TEXT")]
-        public String DisplayName { get { return _DisplayName; } set { if (OnPropertyChanging(__.DisplayName, value)) { _DisplayName = value; OnPropertyChanged(__.DisplayName); } } }
+        public String DisplayName { get => _DisplayName; set { if (OnPropertyChanging("DisplayName", value)) { _DisplayName = value; OnPropertyChanged("DisplayName"); } } }
 
         private String _Description;
         /// <summary></summary>
         [DisplayName("Description")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Description", "", "TEXT")]
-        public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
+        public String Description { get => _Description; set { if (OnPropertyChanging("Description", value)) { _Description = value; OnPropertyChanged("Description"); } } }
 
         private Boolean _Required;
         /// <summary></summary>
         [DisplayName("Required")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Required", "", "")]
-        public Boolean Required { get { return _Required; } set { if (OnPropertyChanging(__.Required, value)) { _Required = value; OnPropertyChanged(__.Required); } } }
+        public Boolean Required { get => _Required; set { if (OnPropertyChanging("Required", value)) { _Required = value; OnPropertyChanged("Required"); } } }
 
         private Boolean _Emphasize;
         /// <summary></summary>
         [DisplayName("Emphasize")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Emphasize", "", "")]
-        public Boolean Emphasize { get { return _Emphasize; } set { if (OnPropertyChanging(__.Emphasize, value)) { _Emphasize = value; OnPropertyChanged(__.Emphasize); } } }
+        public Boolean Emphasize { get => _Emphasize; set { if (OnPropertyChanging("Emphasize", value)) { _Emphasize = value; OnPropertyChanged("Emphasize"); } } }
 
         private Boolean _ShowInDiscoveryDocument;
         /// <summary></summary>
         [DisplayName("ShowInDiscoveryDocument")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ShowInDiscoveryDocument", "", "")]
-        public Boolean ShowInDiscoveryDocument { get { return _ShowInDiscoveryDocument; } set { if (OnPropertyChanging(__.ShowInDiscoveryDocument, value)) { _ShowInDiscoveryDocument = value; OnPropertyChanged(__.ShowInDiscoveryDocument); } } }
+        public Boolean ShowInDiscoveryDocument { get => _ShowInDiscoveryDocument; set { if (OnPropertyChanging("ShowInDiscoveryDocument", value)) { _ShowInDiscoveryDocument = value; OnPropertyChanged("ShowInDiscoveryDocument"); } } }
 
         private Int64 _ApiResourceId;
         /// <summary></summary>
         [DisplayName("ApiResourceId")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ApiResourceId", "", "INTEGER")]
-        public Int64 ApiResourceId { get { return _ApiResourceId; } set { if (OnPropertyChanging(__.ApiResourceId, value)) { _ApiResourceId = value; OnPropertyChanged(__.ApiResourceId); } } }
+        public Int64 ApiResourceId { get => _ApiResourceId; set { if (OnPropertyChanging("ApiResourceId", value)) { _ApiResourceId = value; OnPropertyChanged("ApiResourceId"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -83,14 +86,14 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.Name : return _Name;
-                    case __.DisplayName : return _DisplayName;
-                    case __.Description : return _Description;
-                    case __.Required : return _Required;
-                    case __.Emphasize : return _Emphasize;
-                    case __.ShowInDiscoveryDocument : return _ShowInDiscoveryDocument;
-                    case __.ApiResourceId : return _ApiResourceId;
+                    case "Id": return _Id;
+                    case "Name": return _Name;
+                    case "DisplayName": return _DisplayName;
+                    case "Description": return _Description;
+                    case "Required": return _Required;
+                    case "Emphasize": return _Emphasize;
+                    case "ShowInDiscoveryDocument": return _ShowInDiscoveryDocument;
+                    case "ApiResourceId": return _ApiResourceId;
                     default: return base[name];
                 }
             }
@@ -98,14 +101,14 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.Name : _Name = Convert.ToString(value); break;
-                    case __.DisplayName : _DisplayName = Convert.ToString(value); break;
-                    case __.Description : _Description = Convert.ToString(value); break;
-                    case __.Required : _Required = value.ToBoolean(); break;
-                    case __.Emphasize : _Emphasize = value.ToBoolean(); break;
-                    case __.ShowInDiscoveryDocument : _ShowInDiscoveryDocument = value.ToBoolean(); break;
-                    case __.ApiResourceId : _ApiResourceId = value.ToLong(); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "Name": _Name = Convert.ToString(value); break;
+                    case "DisplayName": _DisplayName = Convert.ToString(value); break;
+                    case "Description": _Description = Convert.ToString(value); break;
+                    case "Required": _Required = value.ToBoolean(); break;
+                    case "Emphasize": _Emphasize = value.ToBoolean(); break;
+                    case "ShowInDiscoveryDocument": _ShowInDiscoveryDocument = value.ToBoolean(); break;
+                    case "ApiResourceId": _ApiResourceId = value.ToLong(); break;
                     default: base[name] = value; break;
                 }
             }
@@ -117,30 +120,30 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary></summary>
-            public static readonly Field Name = FindByName(__.Name);
+            public static readonly Field Name = FindByName("Name");
 
             /// <summary></summary>
-            public static readonly Field DisplayName = FindByName(__.DisplayName);
+            public static readonly Field DisplayName = FindByName("DisplayName");
 
             /// <summary></summary>
-            public static readonly Field Description = FindByName(__.Description);
+            public static readonly Field Description = FindByName("Description");
 
             /// <summary></summary>
-            public static readonly Field Required = FindByName(__.Required);
+            public static readonly Field Required = FindByName("Required");
 
             /// <summary></summary>
-            public static readonly Field Emphasize = FindByName(__.Emphasize);
+            public static readonly Field Emphasize = FindByName("Emphasize");
 
             /// <summary></summary>
-            public static readonly Field ShowInDiscoveryDocument = FindByName(__.ShowInDiscoveryDocument);
+            public static readonly Field ShowInDiscoveryDocument = FindByName("ShowInDiscoveryDocument");
 
             /// <summary></summary>
-            public static readonly Field ApiResourceId = FindByName(__.ApiResourceId);
+            public static readonly Field ApiResourceId = FindByName("ApiResourceId");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得ApiScopes字段名称的快捷方式</summary>

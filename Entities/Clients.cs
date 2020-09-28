@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -20,7 +23,7 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Id")]
         [DataObjectField(true, true, false, 0)]
         [BindColumn("Id", "", "INTEGER")]
-        public Int32 Id { get { return _Id; } set { if (OnPropertyChanging(__.Id, value)) { _Id = value; OnPropertyChanged(__.Id); } } }
+        public Int32 Id { get => _Id; set { if (OnPropertyChanging("Id", value)) { _Id = value; OnPropertyChanged("Id"); } } }
 
         private Boolean _Enabled;
         /// <summary>启用(默认为true)</summary>
@@ -28,7 +31,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("启用(默认为true)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Enabled", "启用(默认为true)", "")]
-        public Boolean Enabled { get { return _Enabled; } set { if (OnPropertyChanging(__.Enabled, value)) { _Enabled = value; OnPropertyChanged(__.Enabled); } } }
+        public Boolean Enabled { get => _Enabled; set { if (OnPropertyChanging("Enabled", value)) { _Enabled = value; OnPropertyChanged("Enabled"); } } }
 
         private String _ClientId;
         /// <summary>客户端ID(应用程序的唯一识别标识)</summary>
@@ -36,7 +39,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("客户端ID(应用程序的唯一识别标识)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ClientId", "客户端ID(应用程序的唯一识别标识)", "TEXT")]
-        public String ClientId { get { return _ClientId; } set { if (OnPropertyChanging(__.ClientId, value)) { _ClientId = value; OnPropertyChanged(__.ClientId); } } }
+        public String ClientId { get => _ClientId; set { if (OnPropertyChanging("ClientId", value)) { _ClientId = value; OnPropertyChanged("ClientId"); } } }
 
         private String _ProtocolType;
         /// <summary>协议类型(默认oidc)</summary>
@@ -44,7 +47,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("协议类型(默认oidc)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ProtocolType", "协议类型(默认oidc)", "TEXT")]
-        public String ProtocolType { get { return _ProtocolType; } set { if (OnPropertyChanging(__.ProtocolType, value)) { _ProtocolType = value; OnPropertyChanged(__.ProtocolType); } } }
+        public String ProtocolType { get => _ProtocolType; set { if (OnPropertyChanging("ProtocolType", value)) { _ProtocolType = value; OnPropertyChanged("ProtocolType"); } } }
 
         private Boolean _RequireClientSecret;
         /// <summary>需要密钥(指定此客户端是否需要密钥才能从令牌端点请求令牌（默认为true）)</summary>
@@ -52,7 +55,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("需要密钥(指定此客户端是否需要密钥才能从令牌端点请求令牌（默认为true）)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("RequireClientSecret", "需要密钥(指定此客户端是否需要密钥才能从令牌端点请求令牌（默认为true）)", "")]
-        public Boolean RequireClientSecret { get { return _RequireClientSecret; } set { if (OnPropertyChanging(__.RequireClientSecret, value)) { _RequireClientSecret = value; OnPropertyChanged(__.RequireClientSecret); } } }
+        public Boolean RequireClientSecret { get => _RequireClientSecret; set { if (OnPropertyChanging("RequireClientSecret", value)) { _RequireClientSecret = value; OnPropertyChanged("RequireClientSecret"); } } }
 
         private Boolean _RequirePkce;
         /// <summary>校验密钥(使用基于授权代码authorization_code的授权类型的客户端是否必须发送校验密钥)</summary>
@@ -60,7 +63,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("校验密钥(使用基于授权代码authorization_code的授权类型的客户端是否必须发送校验密钥)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("RequirePkce", "校验密钥(使用基于授权代码authorization_code的授权类型的客户端是否必须发送校验密钥)", "")]
-        public Boolean RequirePkce { get { return _RequirePkce; } set { if (OnPropertyChanging(__.RequirePkce, value)) { _RequirePkce = value; OnPropertyChanged(__.RequirePkce); } } }
+        public Boolean RequirePkce { get => _RequirePkce; set { if (OnPropertyChanging("RequirePkce", value)) { _RequirePkce = value; OnPropertyChanged("RequirePkce"); } } }
 
         private Boolean _AllowPlainTextPkce;
         /// <summary>允许纯文本密钥(指定是否可以使用文本方法发送证明密钥（不推荐，默认false）)</summary>
@@ -68,7 +71,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("允许纯文本密钥(指定是否可以使用文本方法发送证明密钥（不推荐，默认false）)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AllowPlainTextPkce", "允许纯文本密钥(指定是否可以使用文本方法发送证明密钥（不推荐，默认false）)", "")]
-        public Boolean AllowPlainTextPkce { get { return _AllowPlainTextPkce; } set { if (OnPropertyChanging(__.AllowPlainTextPkce, value)) { _AllowPlainTextPkce = value; OnPropertyChanged(__.AllowPlainTextPkce); } } }
+        public Boolean AllowPlainTextPkce { get => _AllowPlainTextPkce; set { if (OnPropertyChanging("AllowPlainTextPkce", value)) { _AllowPlainTextPkce = value; OnPropertyChanged("AllowPlainTextPkce"); } } }
 
         private Boolean _AllowOfflineAccess;
         /// <summary>允许刷新token(需要offline_access范围scope)</summary>
@@ -76,7 +79,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("允许刷新token(需要offline_access范围scope)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AllowOfflineAccess", "允许刷新token(需要offline_access范围scope)", "")]
-        public Boolean AllowOfflineAccess { get { return _AllowOfflineAccess; } set { if (OnPropertyChanging(__.AllowOfflineAccess, value)) { _AllowOfflineAccess = value; OnPropertyChanged(__.AllowOfflineAccess); } } }
+        public Boolean AllowOfflineAccess { get => _AllowOfflineAccess; set { if (OnPropertyChanging("AllowOfflineAccess", value)) { _AllowOfflineAccess = value; OnPropertyChanged("AllowOfflineAccess"); } } }
 
         private Boolean _AllowAccessTokensViaBrowser;
         /// <summary>允许通过浏览器接收token(这对于强化允许多种响应类型的流很有用（例如，不允许使用代码id_token添加令牌响应类型的混合流客户端，从而将令牌泄漏到浏览器中）)</summary>
@@ -84,7 +87,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("允许通过浏览器接收token(这对于强化允许多种响应类型的流很有用（例如，不允许使用代码id_token添加令牌响应类型的混合流客户端，从而将令牌泄漏到浏览器中）)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AllowAccessTokensViaBrowser", "允许通过浏览器接收token(这对于强化允许多种响应类型的流很有用（例如，不允许使用代码id_token添加令牌响应类型的混合流客户端，从而将令牌泄漏到浏览器中）)", "")]
-        public Boolean AllowAccessTokensViaBrowser { get { return _AllowAccessTokensViaBrowser; } set { if (OnPropertyChanging(__.AllowAccessTokensViaBrowser, value)) { _AllowAccessTokensViaBrowser = value; OnPropertyChanged(__.AllowAccessTokensViaBrowser); } } }
+        public Boolean AllowAccessTokensViaBrowser { get => _AllowAccessTokensViaBrowser; set { if (OnPropertyChanging("AllowAccessTokensViaBrowser", value)) { _AllowAccessTokensViaBrowser = value; OnPropertyChanged("AllowAccessTokensViaBrowser"); } } }
 
         private String _FrontChannelLogoutUri;
         /// <summary>客户端前端注销URI(用于基于HTTP的前端通道注销。有关详细信息，请参阅 https://openid.net/specs/openid-connect-frontchannel-1_0.html)</summary>
@@ -92,7 +95,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("客户端前端注销URI(用于基于HTTP的前端通道注销。有关详细信息，请参阅 https://openid.net/specs/openid-connect-frontchannel-1_0.html)")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("FrontChannelLogoutUri", "客户端前端注销URI(用于基于HTTP的前端通道注销。有关详细信息，请参阅 https://openid.net/specs/openid-connect-frontchannel-1_0.html)", "TEXT")]
-        public String FrontChannelLogoutUri { get { return _FrontChannelLogoutUri; } set { if (OnPropertyChanging(__.FrontChannelLogoutUri, value)) { _FrontChannelLogoutUri = value; OnPropertyChanged(__.FrontChannelLogoutUri); } } }
+        public String FrontChannelLogoutUri { get => _FrontChannelLogoutUri; set { if (OnPropertyChanging("FrontChannelLogoutUri", value)) { _FrontChannelLogoutUri = value; OnPropertyChanged("FrontChannelLogoutUri"); } } }
 
         private Boolean _FrontChannelLogoutSessionRequired;
         /// <summary>发送会话id到前端注销URI(是否应将用户的会话ID发送到FrontChannelLogoutUri。默认为true)</summary>
@@ -100,7 +103,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("发送会话id到前端注销URI(是否应将用户的会话ID发送到FrontChannelLogoutUri。默认为true)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("FrontChannelLogoutSessionRequired", "发送会话id到前端注销URI(是否应将用户的会话ID发送到FrontChannelLogoutUri。默认为true)", "")]
-        public Boolean FrontChannelLogoutSessionRequired { get { return _FrontChannelLogoutSessionRequired; } set { if (OnPropertyChanging(__.FrontChannelLogoutSessionRequired, value)) { _FrontChannelLogoutSessionRequired = value; OnPropertyChanged(__.FrontChannelLogoutSessionRequired); } } }
+        public Boolean FrontChannelLogoutSessionRequired { get => _FrontChannelLogoutSessionRequired; set { if (OnPropertyChanging("FrontChannelLogoutSessionRequired", value)) { _FrontChannelLogoutSessionRequired = value; OnPropertyChanged("FrontChannelLogoutSessionRequired"); } } }
 
         private String _BackChannelLogoutUri;
         /// <summary>客户端注销URI(用于基于HTTP的反向通道注销。有关更多详细信息，请参阅 https://openid.net/specs/openid-connect-backchannel-1_0.html)</summary>
@@ -108,7 +111,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("客户端注销URI(用于基于HTTP的反向通道注销。有关更多详细信息，请参阅 https://openid.net/specs/openid-connect-backchannel-1_0.html)")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("BackChannelLogoutUri", "客户端注销URI(用于基于HTTP的反向通道注销。有关更多详细信息，请参阅 https://openid.net/specs/openid-connect-backchannel-1_0.html)", "TEXT")]
-        public String BackChannelLogoutUri { get { return _BackChannelLogoutUri; } set { if (OnPropertyChanging(__.BackChannelLogoutUri, value)) { _BackChannelLogoutUri = value; OnPropertyChanged(__.BackChannelLogoutUri); } } }
+        public String BackChannelLogoutUri { get => _BackChannelLogoutUri; set { if (OnPropertyChanging("BackChannelLogoutUri", value)) { _BackChannelLogoutUri = value; OnPropertyChanged("BackChannelLogoutUri"); } } }
 
         private Boolean _BackChannelLogoutSessionRequired;
         /// <summary>发送会话id到注销URI(是否应在请求中将用户的会话ID发送到BackChannelLogoutUri。默认为true)</summary>
@@ -116,7 +119,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("发送会话id到注销URI(是否应在请求中将用户的会话ID发送到BackChannelLogoutUri。默认为true)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("BackChannelLogoutSessionRequired", "发送会话id到注销URI(是否应在请求中将用户的会话ID发送到BackChannelLogoutUri。默认为true)", "")]
-        public Boolean BackChannelLogoutSessionRequired { get { return _BackChannelLogoutSessionRequired; } set { if (OnPropertyChanging(__.BackChannelLogoutSessionRequired, value)) { _BackChannelLogoutSessionRequired = value; OnPropertyChanged(__.BackChannelLogoutSessionRequired); } } }
+        public Boolean BackChannelLogoutSessionRequired { get => _BackChannelLogoutSessionRequired; set { if (OnPropertyChanging("BackChannelLogoutSessionRequired", value)) { _BackChannelLogoutSessionRequired = value; OnPropertyChanged("BackChannelLogoutSessionRequired"); } } }
 
         private Boolean _EnableLocalLogin;
         /// <summary>仅用本地登录(此客户端是否可以仅使用本地帐户或外部IdP。默认为true)</summary>
@@ -124,7 +127,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("仅用本地登录(此客户端是否可以仅使用本地帐户或外部IdP。默认为true)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("EnableLocalLogin", "仅用本地登录(此客户端是否可以仅使用本地帐户或外部IdP。默认为true)", "")]
-        public Boolean EnableLocalLogin { get { return _EnableLocalLogin; } set { if (OnPropertyChanging(__.EnableLocalLogin, value)) { _EnableLocalLogin = value; OnPropertyChanged(__.EnableLocalLogin); } } }
+        public Boolean EnableLocalLogin { get => _EnableLocalLogin; set { if (OnPropertyChanging("EnableLocalLogin", value)) { _EnableLocalLogin = value; OnPropertyChanged("EnableLocalLogin"); } } }
 
         private Int64 _UserSsoLifetime;
         /// <summary>用户身份持续时间(自上次用户进行身份验证以来的最长持续时间（以秒为单位）。默认为0。您可以调整会话令牌的生命周期，以控制在使用Web应用程序时，用户需要重新输入凭据的时间和频率，而不是进行静默身份验证)</summary>
@@ -132,7 +135,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("用户身份持续时间(自上次用户进行身份验证以来的最长持续时间（以秒为单位）。默认为0。您可以调整会话令牌的生命周期，以控制在使用Web应用程序时，用户需要重新输入凭据的时间和频率，而不是进行静默身份验证)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("UserSsoLifetime", "用户身份持续时间(自上次用户进行身份验证以来的最长持续时间（以秒为单位）。默认为0。您可以调整会话令牌的生命周期，以控制在使用Web应用程序时，用户需要重新输入凭据的时间和频率，而不是进行静默身份验证)", "INTEGER")]
-        public Int64 UserSsoLifetime { get { return _UserSsoLifetime; } set { if (OnPropertyChanging(__.UserSsoLifetime, value)) { _UserSsoLifetime = value; OnPropertyChanged(__.UserSsoLifetime); } } }
+        public Int64 UserSsoLifetime { get => _UserSsoLifetime; set { if (OnPropertyChanging("UserSsoLifetime", value)) { _UserSsoLifetime = value; OnPropertyChanged("UserSsoLifetime"); } } }
 
         private Int64 _IdentityTokenLifetime;
         /// <summary>识别令牌生命周期(秒为单位，默认为300秒/5分钟)</summary>
@@ -140,7 +143,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("识别令牌生命周期(秒为单位，默认为300秒/5分钟)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("IdentityTokenLifetime", "识别令牌生命周期(秒为单位，默认为300秒/5分钟)", "INTEGER")]
-        public Int64 IdentityTokenLifetime { get { return _IdentityTokenLifetime; } set { if (OnPropertyChanging(__.IdentityTokenLifetime, value)) { _IdentityTokenLifetime = value; OnPropertyChanged(__.IdentityTokenLifetime); } } }
+        public Int64 IdentityTokenLifetime { get => _IdentityTokenLifetime; set { if (OnPropertyChanging("IdentityTokenLifetime", value)) { _IdentityTokenLifetime = value; OnPropertyChanged("IdentityTokenLifetime"); } } }
 
         private Int64 _AccessTokenLifetime;
         /// <summary>访问令牌生命周期(秒为单位，默认为3600秒/1小时)</summary>
@@ -148,7 +151,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("访问令牌生命周期(秒为单位，默认为3600秒/1小时)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AccessTokenLifetime", "访问令牌生命周期(秒为单位，默认为3600秒/1小时)", "INTEGER")]
-        public Int64 AccessTokenLifetime { get { return _AccessTokenLifetime; } set { if (OnPropertyChanging(__.AccessTokenLifetime, value)) { _AccessTokenLifetime = value; OnPropertyChanged(__.AccessTokenLifetime); } } }
+        public Int64 AccessTokenLifetime { get => _AccessTokenLifetime; set { if (OnPropertyChanging("AccessTokenLifetime", value)) { _AccessTokenLifetime = value; OnPropertyChanged("AccessTokenLifetime"); } } }
 
         private Int64 _AuthorizationCodeLifetime;
         /// <summary>访问令牌生命周期(秒为单位，默认为300秒/5分钟)</summary>
@@ -156,7 +159,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("访问令牌生命周期(秒为单位，默认为300秒/5分钟)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AuthorizationCodeLifetime", "访问令牌生命周期(秒为单位，默认为300秒/5分钟)", "INTEGER")]
-        public Int64 AuthorizationCodeLifetime { get { return _AuthorizationCodeLifetime; } set { if (OnPropertyChanging(__.AuthorizationCodeLifetime, value)) { _AuthorizationCodeLifetime = value; OnPropertyChanged(__.AuthorizationCodeLifetime); } } }
+        public Int64 AuthorizationCodeLifetime { get => _AuthorizationCodeLifetime; set { if (OnPropertyChanging("AuthorizationCodeLifetime", value)) { _AuthorizationCodeLifetime = value; OnPropertyChanged("AuthorizationCodeLifetime"); } } }
 
         private Int64 _AbsoluteRefreshTokenLifetime;
         /// <summary>刷新令牌生命周期(秒为单位，默认为2592000秒/30天)</summary>
@@ -164,7 +167,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("刷新令牌生命周期(秒为单位，默认为2592000秒/30天)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AbsoluteRefreshTokenLifetime", "刷新令牌生命周期(秒为单位，默认为2592000秒/30天)", "INTEGER")]
-        public Int64 AbsoluteRefreshTokenLifetime { get { return _AbsoluteRefreshTokenLifetime; } set { if (OnPropertyChanging(__.AbsoluteRefreshTokenLifetime, value)) { _AbsoluteRefreshTokenLifetime = value; OnPropertyChanged(__.AbsoluteRefreshTokenLifetime); } } }
+        public Int64 AbsoluteRefreshTokenLifetime { get => _AbsoluteRefreshTokenLifetime; set { if (OnPropertyChanging("AbsoluteRefreshTokenLifetime", value)) { _AbsoluteRefreshTokenLifetime = value; OnPropertyChanged("AbsoluteRefreshTokenLifetime"); } } }
 
         private Int64 _SlidingRefreshTokenLifetime;
         /// <summary>滑动刷新令牌生命周期(秒为单位，默认为1296000秒/15天)</summary>
@@ -172,7 +175,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("滑动刷新令牌生命周期(秒为单位，默认为1296000秒/15天)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("SlidingRefreshTokenLifetime", "滑动刷新令牌生命周期(秒为单位，默认为1296000秒/15天)", "INTEGER")]
-        public Int64 SlidingRefreshTokenLifetime { get { return _SlidingRefreshTokenLifetime; } set { if (OnPropertyChanging(__.SlidingRefreshTokenLifetime, value)) { _SlidingRefreshTokenLifetime = value; OnPropertyChanged(__.SlidingRefreshTokenLifetime); } } }
+        public Int64 SlidingRefreshTokenLifetime { get => _SlidingRefreshTokenLifetime; set { if (OnPropertyChanging("SlidingRefreshTokenLifetime", value)) { _SlidingRefreshTokenLifetime = value; OnPropertyChanged("SlidingRefreshTokenLifetime"); } } }
 
         private IdentityServer4.Models.TokenUsage _RefreshTokenUsage;
         /// <summary>刷新令牌句柄是否保持不变(ReUse，OneTime)</summary>
@@ -180,7 +183,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("刷新令牌句柄是否保持不变(ReUse，OneTime)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("RefreshTokenUsage", "刷新令牌句柄是否保持不变(ReUse，OneTime)", "INTEGER")]
-        public IdentityServer4.Models.TokenUsage RefreshTokenUsage { get { return _RefreshTokenUsage; } set { if (OnPropertyChanging(__.RefreshTokenUsage, value)) { _RefreshTokenUsage = value; OnPropertyChanged(__.RefreshTokenUsage); } } }
+        public IdentityServer4.Models.TokenUsage RefreshTokenUsage { get => _RefreshTokenUsage; set { if (OnPropertyChanging("RefreshTokenUsage", value)) { _RefreshTokenUsage = value; OnPropertyChanged("RefreshTokenUsage"); } } }
 
         private IdentityServer4.Models.TokenExpiration _RefreshTokenExpiration;
         /// <summary>刷新令牌期限(Absolute 刷新令牌将在固定时间点到期（由AbsoluteRefreshTokenLifetime指定），Sliding刷新令牌时，将刷新刷新令牌的生命周期（按SlidingRefreshTokenLifetime中指定的数量）。生命周期不会超过AbsoluteRefreshTokenLifetime)</summary>
@@ -188,7 +191,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("刷新令牌期限(Absolute 刷新令牌将在固定时间点到期（由AbsoluteRefreshTokenLifetime指定），Sliding刷新令牌时，将刷新刷新令牌的生命周期（按SlidingRefreshTokenLifetime中指定的数量）。生命周期不会超过AbsoluteRefreshTokenLifetime)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("RefreshTokenExpiration", "刷新令牌期限(Absolute 刷新令牌将在固定时间点到期（由AbsoluteRefreshTokenLifetime指定），Sliding刷新令牌时，将刷新刷新令牌的生命周期（按SlidingRefreshTokenLifetime中指定的数量）。生命周期不会超过AbsoluteRefreshTokenLifetime)", "INTEGER")]
-        public IdentityServer4.Models.TokenExpiration RefreshTokenExpiration { get { return _RefreshTokenExpiration; } set { if (OnPropertyChanging(__.RefreshTokenExpiration, value)) { _RefreshTokenExpiration = value; OnPropertyChanged(__.RefreshTokenExpiration); } } }
+        public IdentityServer4.Models.TokenExpiration RefreshTokenExpiration { get => _RefreshTokenExpiration; set { if (OnPropertyChanging("RefreshTokenExpiration", value)) { _RefreshTokenExpiration = value; OnPropertyChanged("RefreshTokenExpiration"); } } }
 
         private Boolean _UpdateAccessTokenClaimsOnRefresh;
         /// <summary>更新访问令牌(是否应在刷新令牌请求上更新访问令牌（及其声明）)</summary>
@@ -196,7 +199,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("更新访问令牌(是否应在刷新令牌请求上更新访问令牌（及其声明）)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("UpdateAccessTokenClaimsOnRefresh", "更新访问令牌(是否应在刷新令牌请求上更新访问令牌（及其声明）)", "")]
-        public Boolean UpdateAccessTokenClaimsOnRefresh { get { return _UpdateAccessTokenClaimsOnRefresh; } set { if (OnPropertyChanging(__.UpdateAccessTokenClaimsOnRefresh, value)) { _UpdateAccessTokenClaimsOnRefresh = value; OnPropertyChanged(__.UpdateAccessTokenClaimsOnRefresh); } } }
+        public Boolean UpdateAccessTokenClaimsOnRefresh { get => _UpdateAccessTokenClaimsOnRefresh; set { if (OnPropertyChanging("UpdateAccessTokenClaimsOnRefresh", value)) { _UpdateAccessTokenClaimsOnRefresh = value; OnPropertyChanged("UpdateAccessTokenClaimsOnRefresh"); } } }
 
         private IdentityServer4.Models.AccessTokenType _AccessTokenType;
         /// <summary>访问令牌类型(指定访问令牌是引用令牌还是自包含JWT令牌（默认为Jwt）)</summary>
@@ -204,7 +207,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("访问令牌类型(指定访问令牌是引用令牌还是自包含JWT令牌（默认为Jwt）)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AccessTokenType", "访问令牌类型(指定访问令牌是引用令牌还是自包含JWT令牌（默认为Jwt）)", "INTEGER")]
-        public IdentityServer4.Models.AccessTokenType AccessTokenType { get { return _AccessTokenType; } set { if (OnPropertyChanging(__.AccessTokenType, value)) { _AccessTokenType = value; OnPropertyChanged(__.AccessTokenType); } } }
+        public IdentityServer4.Models.AccessTokenType AccessTokenType { get => _AccessTokenType; set { if (OnPropertyChanging("AccessTokenType", value)) { _AccessTokenType = value; OnPropertyChanged("AccessTokenType"); } } }
 
         private Boolean _IncludeJwtId;
         /// <summary>是否嵌入JwtId(指定JWT访问令牌是否应具有嵌入的唯一ID（通过jti声明）)</summary>
@@ -212,7 +215,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("是否嵌入JwtId(指定JWT访问令牌是否应具有嵌入的唯一ID（通过jti声明）)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("IncludeJwtId", "是否嵌入JwtId(指定JWT访问令牌是否应具有嵌入的唯一ID（通过jti声明）)", "")]
-        public Boolean IncludeJwtId { get { return _IncludeJwtId; } set { if (OnPropertyChanging(__.IncludeJwtId, value)) { _IncludeJwtId = value; OnPropertyChanged(__.IncludeJwtId); } } }
+        public Boolean IncludeJwtId { get => _IncludeJwtId; set { if (OnPropertyChanging("IncludeJwtId", value)) { _IncludeJwtId = value; OnPropertyChanged("IncludeJwtId"); } } }
 
         private Boolean _AlwaysSendClientClaims;
         /// <summary>发送客户端声明(如果设置，将为每个流发送客户端声明。如果不是，仅用于客户端凭证流（默认为false）)</summary>
@@ -220,7 +223,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("发送客户端声明(如果设置，将为每个流发送客户端声明。如果不是，仅用于客户端凭证流（默认为false）)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AlwaysSendClientClaims", "发送客户端声明(如果设置，将为每个流发送客户端声明。如果不是，仅用于客户端凭证流（默认为false）)", "")]
-        public Boolean AlwaysSendClientClaims { get { return _AlwaysSendClientClaims; } set { if (OnPropertyChanging(__.AlwaysSendClientClaims, value)) { _AlwaysSendClientClaims = value; OnPropertyChanged(__.AlwaysSendClientClaims); } } }
+        public Boolean AlwaysSendClientClaims { get => _AlwaysSendClientClaims; set { if (OnPropertyChanging("AlwaysSendClientClaims", value)) { _AlwaysSendClientClaims = value; OnPropertyChanged("AlwaysSendClientClaims"); } } }
 
         private Boolean _AlwaysIncludeUserClaimsInIdToken;
         /// <summary>用户声明添加到ID令牌(当同时请求ID令牌和访问令牌时，是否应始终将用户声明添加到ID令牌，而不是重新请求客户端使用userinfo端点。默认值为false)</summary>
@@ -228,7 +231,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("用户声明添加到ID令牌(当同时请求ID令牌和访问令牌时，是否应始终将用户声明添加到ID令牌，而不是重新请求客户端使用userinfo端点。默认值为false)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AlwaysIncludeUserClaimsInIdToken", "用户声明添加到ID令牌(当同时请求ID令牌和访问令牌时，是否应始终将用户声明添加到ID令牌，而不是重新请求客户端使用userinfo端点。默认值为false)", "")]
-        public Boolean AlwaysIncludeUserClaimsInIdToken { get { return _AlwaysIncludeUserClaimsInIdToken; } set { if (OnPropertyChanging(__.AlwaysIncludeUserClaimsInIdToken, value)) { _AlwaysIncludeUserClaimsInIdToken = value; OnPropertyChanged(__.AlwaysIncludeUserClaimsInIdToken); } } }
+        public Boolean AlwaysIncludeUserClaimsInIdToken { get => _AlwaysIncludeUserClaimsInIdToken; set { if (OnPropertyChanging("AlwaysIncludeUserClaimsInIdToken", value)) { _AlwaysIncludeUserClaimsInIdToken = value; OnPropertyChanged("AlwaysIncludeUserClaimsInIdToken"); } } }
 
         private String _ClientClaimsPrefix;
         /// <summary>客户端声明前缀(如果设置，客户端声明将以此为前缀。默认为client_。目的是确保它们不会意外地与用户声明冲突)</summary>
@@ -236,7 +239,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("客户端声明前缀(如果设置，客户端声明将以此为前缀。默认为client_。目的是确保它们不会意外地与用户声明冲突)")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("ClientClaimsPrefix", "客户端声明前缀(如果设置，客户端声明将以此为前缀。默认为client_。目的是确保它们不会意外地与用户声明冲突)", "TEXT")]
-        public String ClientClaimsPrefix { get { return _ClientClaimsPrefix; } set { if (OnPropertyChanging(__.ClientClaimsPrefix, value)) { _ClientClaimsPrefix = value; OnPropertyChanged(__.ClientClaimsPrefix); } } }
+        public String ClientClaimsPrefix { get => _ClientClaimsPrefix; set { if (OnPropertyChanging("ClientClaimsPrefix", value)) { _ClientClaimsPrefix = value; OnPropertyChanged("ClientClaimsPrefix"); } } }
 
         private String _PairWiseSubjectSalt;
         /// <summary>生成成对subjectId使用的盐值</summary>
@@ -244,7 +247,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("生成成对subjectId使用的盐值")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("PairWiseSubjectSalt", "生成成对subjectId使用的盐值", "TEXT")]
-        public String PairWiseSubjectSalt { get { return _PairWiseSubjectSalt; } set { if (OnPropertyChanging(__.PairWiseSubjectSalt, value)) { _PairWiseSubjectSalt = value; OnPropertyChanged(__.PairWiseSubjectSalt); } } }
+        public String PairWiseSubjectSalt { get => _PairWiseSubjectSalt; set { if (OnPropertyChanging("PairWiseSubjectSalt", value)) { _PairWiseSubjectSalt = value; OnPropertyChanged("PairWiseSubjectSalt"); } } }
 
         private Boolean _RequireConsent;
         /// <summary>需要同意(默认为true)</summary>
@@ -252,7 +255,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("需要同意(默认为true)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("RequireConsent", "需要同意(默认为true)", "")]
-        public Boolean RequireConsent { get { return _RequireConsent; } set { if (OnPropertyChanging(__.RequireConsent, value)) { _RequireConsent = value; OnPropertyChanged(__.RequireConsent); } } }
+        public Boolean RequireConsent { get => _RequireConsent; set { if (OnPropertyChanging("RequireConsent", value)) { _RequireConsent = value; OnPropertyChanged("RequireConsent"); } } }
 
         private Boolean _AllowRememberConsent;
         /// <summary>存储同意决策(默认true)</summary>
@@ -260,7 +263,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("存储同意决策(默认true)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("AllowRememberConsent", "存储同意决策(默认true)", "")]
-        public Boolean AllowRememberConsent { get { return _AllowRememberConsent; } set { if (OnPropertyChanging(__.AllowRememberConsent, value)) { _AllowRememberConsent = value; OnPropertyChanged(__.AllowRememberConsent); } } }
+        public Boolean AllowRememberConsent { get => _AllowRememberConsent; set { if (OnPropertyChanging("AllowRememberConsent", value)) { _AllowRememberConsent = value; OnPropertyChanged("AllowRememberConsent"); } } }
 
         private Int64 _ConsentLifetime;
         /// <summary>用户同意的生命周期(默认null，无到期)</summary>
@@ -268,7 +271,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("用户同意的生命周期(默认null，无到期)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ConsentLifetime", "用户同意的生命周期(默认null，无到期)", "INTEGER")]
-        public Int64 ConsentLifetime { get { return _ConsentLifetime; } set { if (OnPropertyChanging(__.ConsentLifetime, value)) { _ConsentLifetime = value; OnPropertyChanged(__.ConsentLifetime); } } }
+        public Int64 ConsentLifetime { get => _ConsentLifetime; set { if (OnPropertyChanging("ConsentLifetime", value)) { _ConsentLifetime = value; OnPropertyChanged("ConsentLifetime"); } } }
 
         private String _ClientName;
         /// <summary>显示名称</summary>
@@ -276,7 +279,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("显示名称")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("ClientName", "显示名称", "TEXT")]
-        public String ClientName { get { return _ClientName; } set { if (OnPropertyChanging(__.ClientName, value)) { _ClientName = value; OnPropertyChanged(__.ClientName); } } }
+        public String ClientName { get => _ClientName; set { if (OnPropertyChanging("ClientName", value)) { _ClientName = value; OnPropertyChanged("ClientName"); } } }
 
         private String _Description;
         /// <summary>说明</summary>
@@ -284,7 +287,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("说明")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("Description", "说明", "TEXT")]
-        public String Description { get { return _Description; } set { if (OnPropertyChanging(__.Description, value)) { _Description = value; OnPropertyChanged(__.Description); } } }
+        public String Description { get => _Description; set { if (OnPropertyChanging("Description", value)) { _Description = value; OnPropertyChanged("Description"); } } }
 
         private String _ClientUri;
         /// <summary>客户端信息url(有关客户端的更多信息的URI（在同意页面上使用）)</summary>
@@ -292,7 +295,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("客户端信息url(有关客户端的更多信息的URI（在同意页面上使用）)")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("ClientUri", "客户端信息url(有关客户端的更多信息的URI（在同意页面上使用）)", "TEXT")]
-        public String ClientUri { get { return _ClientUri; } set { if (OnPropertyChanging(__.ClientUri, value)) { _ClientUri = value; OnPropertyChanged(__.ClientUri); } } }
+        public String ClientUri { get => _ClientUri; set { if (OnPropertyChanging("ClientUri", value)) { _ClientUri = value; OnPropertyChanged("ClientUri"); } } }
 
         private String _LogoUri;
         /// <summary>客户端logo地址(在同意页面上使用)</summary>
@@ -300,7 +303,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("客户端logo地址(在同意页面上使用)")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("LogoUri", "客户端logo地址(在同意页面上使用)", "TEXT")]
-        public String LogoUri { get { return _LogoUri; } set { if (OnPropertyChanging(__.LogoUri, value)) { _LogoUri = value; OnPropertyChanged(__.LogoUri); } } }
+        public String LogoUri { get => _LogoUri; set { if (OnPropertyChanging("LogoUri", value)) { _LogoUri = value; OnPropertyChanged("LogoUri"); } } }
 
         private String _UserCodeType;
         /// <summary>设备流用户代码的类型</summary>
@@ -308,7 +311,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("设备流用户代码的类型")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("UserCodeType", "设备流用户代码的类型", "TEXT")]
-        public String UserCodeType { get { return _UserCodeType; } set { if (OnPropertyChanging(__.UserCodeType, value)) { _UserCodeType = value; OnPropertyChanged(__.UserCodeType); } } }
+        public String UserCodeType { get => _UserCodeType; set { if (OnPropertyChanging("UserCodeType", value)) { _UserCodeType = value; OnPropertyChanged("UserCodeType"); } } }
 
         private Int64 _DeviceCodeLifetime;
         /// <summary>设备代码的生命周期(秒为单位，默认为300秒/5分钟)</summary>
@@ -316,7 +319,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("设备代码的生命周期(秒为单位，默认为300秒/5分钟)")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("DeviceCodeLifetime", "设备代码的生命周期(秒为单位，默认为300秒/5分钟)", "INTEGER")]
-        public Int64 DeviceCodeLifetime { get { return _DeviceCodeLifetime; } set { if (OnPropertyChanging(__.DeviceCodeLifetime, value)) { _DeviceCodeLifetime = value; OnPropertyChanged(__.DeviceCodeLifetime); } } }
+        public Int64 DeviceCodeLifetime { get => _DeviceCodeLifetime; set { if (OnPropertyChanging("DeviceCodeLifetime", value)) { _DeviceCodeLifetime = value; OnPropertyChanged("DeviceCodeLifetime"); } } }
 
         private String _Created;
         /// <summary>创建</summary>
@@ -324,7 +327,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("创建")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("Created", "创建", "TEXT")]
-        public String Created { get { return _Created; } set { if (OnPropertyChanging(__.Created, value)) { _Created = value; OnPropertyChanged(__.Created); } } }
+        public String Created { get => _Created; set { if (OnPropertyChanging("Created", value)) { _Created = value; OnPropertyChanged("Created"); } } }
 
         private String _Updated;
         /// <summary>更新</summary>
@@ -332,7 +335,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("更新")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("Updated", "更新", "TEXT")]
-        public String Updated { get { return _Updated; } set { if (OnPropertyChanging(__.Updated, value)) { _Updated = value; OnPropertyChanged(__.Updated); } } }
+        public String Updated { get => _Updated; set { if (OnPropertyChanging("Updated", value)) { _Updated = value; OnPropertyChanged("Updated"); } } }
 
         private DateTime _LastAccessed;
         /// <summary>上次授权时间</summary>
@@ -340,7 +343,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("上次授权时间")]
         [DataObjectField(false, false, true, 0)]
         [BindColumn("LastAccessed", "上次授权时间", "")]
-        public DateTime LastAccessed { get { return _LastAccessed; } set { if (OnPropertyChanging(__.LastAccessed, value)) { _LastAccessed = value; OnPropertyChanged(__.LastAccessed); } } }
+        public DateTime LastAccessed { get => _LastAccessed; set { if (OnPropertyChanging("LastAccessed", value)) { _LastAccessed = value; OnPropertyChanged("LastAccessed"); } } }
 
         private Boolean _NonEditable;
         /// <summary>不可编辑</summary>
@@ -348,7 +351,7 @@ namespace IdentityServer4.XCode.Entities
         [Description("不可编辑")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("NonEditable", "不可编辑", "")]
-        public Boolean NonEditable { get { return _NonEditable; } set { if (OnPropertyChanging(__.NonEditable, value)) { _NonEditable = value; OnPropertyChanged(__.NonEditable); } } }
+        public Boolean NonEditable { get => _NonEditable; set { if (OnPropertyChanging("NonEditable", value)) { _NonEditable = value; OnPropertyChanged("NonEditable"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -361,48 +364,48 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : return _Id;
-                    case __.Enabled : return _Enabled;
-                    case __.ClientId : return _ClientId;
-                    case __.ProtocolType : return _ProtocolType;
-                    case __.RequireClientSecret : return _RequireClientSecret;
-                    case __.RequirePkce : return _RequirePkce;
-                    case __.AllowPlainTextPkce : return _AllowPlainTextPkce;
-                    case __.AllowOfflineAccess : return _AllowOfflineAccess;
-                    case __.AllowAccessTokensViaBrowser : return _AllowAccessTokensViaBrowser;
-                    case __.FrontChannelLogoutUri : return _FrontChannelLogoutUri;
-                    case __.FrontChannelLogoutSessionRequired : return _FrontChannelLogoutSessionRequired;
-                    case __.BackChannelLogoutUri : return _BackChannelLogoutUri;
-                    case __.BackChannelLogoutSessionRequired : return _BackChannelLogoutSessionRequired;
-                    case __.EnableLocalLogin : return _EnableLocalLogin;
-                    case __.UserSsoLifetime : return _UserSsoLifetime;
-                    case __.IdentityTokenLifetime : return _IdentityTokenLifetime;
-                    case __.AccessTokenLifetime : return _AccessTokenLifetime;
-                    case __.AuthorizationCodeLifetime : return _AuthorizationCodeLifetime;
-                    case __.AbsoluteRefreshTokenLifetime : return _AbsoluteRefreshTokenLifetime;
-                    case __.SlidingRefreshTokenLifetime : return _SlidingRefreshTokenLifetime;
-                    case __.RefreshTokenUsage : return _RefreshTokenUsage;
-                    case __.RefreshTokenExpiration : return _RefreshTokenExpiration;
-                    case __.UpdateAccessTokenClaimsOnRefresh : return _UpdateAccessTokenClaimsOnRefresh;
-                    case __.AccessTokenType : return _AccessTokenType;
-                    case __.IncludeJwtId : return _IncludeJwtId;
-                    case __.AlwaysSendClientClaims : return _AlwaysSendClientClaims;
-                    case __.AlwaysIncludeUserClaimsInIdToken : return _AlwaysIncludeUserClaimsInIdToken;
-                    case __.ClientClaimsPrefix : return _ClientClaimsPrefix;
-                    case __.PairWiseSubjectSalt : return _PairWiseSubjectSalt;
-                    case __.RequireConsent : return _RequireConsent;
-                    case __.AllowRememberConsent : return _AllowRememberConsent;
-                    case __.ConsentLifetime : return _ConsentLifetime;
-                    case __.ClientName : return _ClientName;
-                    case __.Description : return _Description;
-                    case __.ClientUri : return _ClientUri;
-                    case __.LogoUri : return _LogoUri;
-                    case __.UserCodeType : return _UserCodeType;
-                    case __.DeviceCodeLifetime : return _DeviceCodeLifetime;
-                    case __.Created : return _Created;
-                    case __.Updated : return _Updated;
-                    case __.LastAccessed : return _LastAccessed;
-                    case __.NonEditable : return _NonEditable;
+                    case "Id": return _Id;
+                    case "Enabled": return _Enabled;
+                    case "ClientId": return _ClientId;
+                    case "ProtocolType": return _ProtocolType;
+                    case "RequireClientSecret": return _RequireClientSecret;
+                    case "RequirePkce": return _RequirePkce;
+                    case "AllowPlainTextPkce": return _AllowPlainTextPkce;
+                    case "AllowOfflineAccess": return _AllowOfflineAccess;
+                    case "AllowAccessTokensViaBrowser": return _AllowAccessTokensViaBrowser;
+                    case "FrontChannelLogoutUri": return _FrontChannelLogoutUri;
+                    case "FrontChannelLogoutSessionRequired": return _FrontChannelLogoutSessionRequired;
+                    case "BackChannelLogoutUri": return _BackChannelLogoutUri;
+                    case "BackChannelLogoutSessionRequired": return _BackChannelLogoutSessionRequired;
+                    case "EnableLocalLogin": return _EnableLocalLogin;
+                    case "UserSsoLifetime": return _UserSsoLifetime;
+                    case "IdentityTokenLifetime": return _IdentityTokenLifetime;
+                    case "AccessTokenLifetime": return _AccessTokenLifetime;
+                    case "AuthorizationCodeLifetime": return _AuthorizationCodeLifetime;
+                    case "AbsoluteRefreshTokenLifetime": return _AbsoluteRefreshTokenLifetime;
+                    case "SlidingRefreshTokenLifetime": return _SlidingRefreshTokenLifetime;
+                    case "RefreshTokenUsage": return _RefreshTokenUsage;
+                    case "RefreshTokenExpiration": return _RefreshTokenExpiration;
+                    case "UpdateAccessTokenClaimsOnRefresh": return _UpdateAccessTokenClaimsOnRefresh;
+                    case "AccessTokenType": return _AccessTokenType;
+                    case "IncludeJwtId": return _IncludeJwtId;
+                    case "AlwaysSendClientClaims": return _AlwaysSendClientClaims;
+                    case "AlwaysIncludeUserClaimsInIdToken": return _AlwaysIncludeUserClaimsInIdToken;
+                    case "ClientClaimsPrefix": return _ClientClaimsPrefix;
+                    case "PairWiseSubjectSalt": return _PairWiseSubjectSalt;
+                    case "RequireConsent": return _RequireConsent;
+                    case "AllowRememberConsent": return _AllowRememberConsent;
+                    case "ConsentLifetime": return _ConsentLifetime;
+                    case "ClientName": return _ClientName;
+                    case "Description": return _Description;
+                    case "ClientUri": return _ClientUri;
+                    case "LogoUri": return _LogoUri;
+                    case "UserCodeType": return _UserCodeType;
+                    case "DeviceCodeLifetime": return _DeviceCodeLifetime;
+                    case "Created": return _Created;
+                    case "Updated": return _Updated;
+                    case "LastAccessed": return _LastAccessed;
+                    case "NonEditable": return _NonEditable;
                     default: return base[name];
                 }
             }
@@ -410,48 +413,48 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Id : _Id = value.ToInt(); break;
-                    case __.Enabled : _Enabled = value.ToBoolean(); break;
-                    case __.ClientId : _ClientId = Convert.ToString(value); break;
-                    case __.ProtocolType : _ProtocolType = Convert.ToString(value); break;
-                    case __.RequireClientSecret : _RequireClientSecret = value.ToBoolean(); break;
-                    case __.RequirePkce : _RequirePkce = value.ToBoolean(); break;
-                    case __.AllowPlainTextPkce : _AllowPlainTextPkce = value.ToBoolean(); break;
-                    case __.AllowOfflineAccess : _AllowOfflineAccess = value.ToBoolean(); break;
-                    case __.AllowAccessTokensViaBrowser : _AllowAccessTokensViaBrowser = value.ToBoolean(); break;
-                    case __.FrontChannelLogoutUri : _FrontChannelLogoutUri = Convert.ToString(value); break;
-                    case __.FrontChannelLogoutSessionRequired : _FrontChannelLogoutSessionRequired = value.ToBoolean(); break;
-                    case __.BackChannelLogoutUri : _BackChannelLogoutUri = Convert.ToString(value); break;
-                    case __.BackChannelLogoutSessionRequired : _BackChannelLogoutSessionRequired = value.ToBoolean(); break;
-                    case __.EnableLocalLogin : _EnableLocalLogin = value.ToBoolean(); break;
-                    case __.UserSsoLifetime : _UserSsoLifetime = value.ToLong(); break;
-                    case __.IdentityTokenLifetime : _IdentityTokenLifetime = value.ToLong(); break;
-                    case __.AccessTokenLifetime : _AccessTokenLifetime = value.ToLong(); break;
-                    case __.AuthorizationCodeLifetime : _AuthorizationCodeLifetime = value.ToLong(); break;
-                    case __.AbsoluteRefreshTokenLifetime : _AbsoluteRefreshTokenLifetime = value.ToLong(); break;
-                    case __.SlidingRefreshTokenLifetime : _SlidingRefreshTokenLifetime = value.ToLong(); break;
-                    case __.RefreshTokenUsage : _RefreshTokenUsage = (IdentityServer4.Models.TokenUsage)value.ToInt(); break;
-                    case __.RefreshTokenExpiration : _RefreshTokenExpiration = (IdentityServer4.Models.TokenExpiration)value.ToInt(); break;
-                    case __.UpdateAccessTokenClaimsOnRefresh : _UpdateAccessTokenClaimsOnRefresh = value.ToBoolean(); break;
-                    case __.AccessTokenType : _AccessTokenType = (IdentityServer4.Models.AccessTokenType)value.ToInt(); break;
-                    case __.IncludeJwtId : _IncludeJwtId = value.ToBoolean(); break;
-                    case __.AlwaysSendClientClaims : _AlwaysSendClientClaims = value.ToBoolean(); break;
-                    case __.AlwaysIncludeUserClaimsInIdToken : _AlwaysIncludeUserClaimsInIdToken = value.ToBoolean(); break;
-                    case __.ClientClaimsPrefix : _ClientClaimsPrefix = Convert.ToString(value); break;
-                    case __.PairWiseSubjectSalt : _PairWiseSubjectSalt = Convert.ToString(value); break;
-                    case __.RequireConsent : _RequireConsent = value.ToBoolean(); break;
-                    case __.AllowRememberConsent : _AllowRememberConsent = value.ToBoolean(); break;
-                    case __.ConsentLifetime : _ConsentLifetime = value.ToLong(); break;
-                    case __.ClientName : _ClientName = Convert.ToString(value); break;
-                    case __.Description : _Description = Convert.ToString(value); break;
-                    case __.ClientUri : _ClientUri = Convert.ToString(value); break;
-                    case __.LogoUri : _LogoUri = Convert.ToString(value); break;
-                    case __.UserCodeType : _UserCodeType = Convert.ToString(value); break;
-                    case __.DeviceCodeLifetime : _DeviceCodeLifetime = value.ToLong(); break;
-                    case __.Created : _Created = Convert.ToString(value); break;
-                    case __.Updated : _Updated = Convert.ToString(value); break;
-                    case __.LastAccessed : _LastAccessed = value.ToDateTime(); break;
-                    case __.NonEditable : _NonEditable = value.ToBoolean(); break;
+                    case "Id": _Id = value.ToInt(); break;
+                    case "Enabled": _Enabled = value.ToBoolean(); break;
+                    case "ClientId": _ClientId = Convert.ToString(value); break;
+                    case "ProtocolType": _ProtocolType = Convert.ToString(value); break;
+                    case "RequireClientSecret": _RequireClientSecret = value.ToBoolean(); break;
+                    case "RequirePkce": _RequirePkce = value.ToBoolean(); break;
+                    case "AllowPlainTextPkce": _AllowPlainTextPkce = value.ToBoolean(); break;
+                    case "AllowOfflineAccess": _AllowOfflineAccess = value.ToBoolean(); break;
+                    case "AllowAccessTokensViaBrowser": _AllowAccessTokensViaBrowser = value.ToBoolean(); break;
+                    case "FrontChannelLogoutUri": _FrontChannelLogoutUri = Convert.ToString(value); break;
+                    case "FrontChannelLogoutSessionRequired": _FrontChannelLogoutSessionRequired = value.ToBoolean(); break;
+                    case "BackChannelLogoutUri": _BackChannelLogoutUri = Convert.ToString(value); break;
+                    case "BackChannelLogoutSessionRequired": _BackChannelLogoutSessionRequired = value.ToBoolean(); break;
+                    case "EnableLocalLogin": _EnableLocalLogin = value.ToBoolean(); break;
+                    case "UserSsoLifetime": _UserSsoLifetime = value.ToLong(); break;
+                    case "IdentityTokenLifetime": _IdentityTokenLifetime = value.ToLong(); break;
+                    case "AccessTokenLifetime": _AccessTokenLifetime = value.ToLong(); break;
+                    case "AuthorizationCodeLifetime": _AuthorizationCodeLifetime = value.ToLong(); break;
+                    case "AbsoluteRefreshTokenLifetime": _AbsoluteRefreshTokenLifetime = value.ToLong(); break;
+                    case "SlidingRefreshTokenLifetime": _SlidingRefreshTokenLifetime = value.ToLong(); break;
+                    case "RefreshTokenUsage": _RefreshTokenUsage = (IdentityServer4.Models.TokenUsage)value; break;
+                    case "RefreshTokenExpiration": _RefreshTokenExpiration = (IdentityServer4.Models.TokenExpiration)value; break;
+                    case "UpdateAccessTokenClaimsOnRefresh": _UpdateAccessTokenClaimsOnRefresh = value.ToBoolean(); break;
+                    case "AccessTokenType": _AccessTokenType = (IdentityServer4.Models.AccessTokenType)value; break;
+                    case "IncludeJwtId": _IncludeJwtId = value.ToBoolean(); break;
+                    case "AlwaysSendClientClaims": _AlwaysSendClientClaims = value.ToBoolean(); break;
+                    case "AlwaysIncludeUserClaimsInIdToken": _AlwaysIncludeUserClaimsInIdToken = value.ToBoolean(); break;
+                    case "ClientClaimsPrefix": _ClientClaimsPrefix = Convert.ToString(value); break;
+                    case "PairWiseSubjectSalt": _PairWiseSubjectSalt = Convert.ToString(value); break;
+                    case "RequireConsent": _RequireConsent = value.ToBoolean(); break;
+                    case "AllowRememberConsent": _AllowRememberConsent = value.ToBoolean(); break;
+                    case "ConsentLifetime": _ConsentLifetime = value.ToLong(); break;
+                    case "ClientName": _ClientName = Convert.ToString(value); break;
+                    case "Description": _Description = Convert.ToString(value); break;
+                    case "ClientUri": _ClientUri = Convert.ToString(value); break;
+                    case "LogoUri": _LogoUri = Convert.ToString(value); break;
+                    case "UserCodeType": _UserCodeType = Convert.ToString(value); break;
+                    case "DeviceCodeLifetime": _DeviceCodeLifetime = value.ToLong(); break;
+                    case "Created": _Created = Convert.ToString(value); break;
+                    case "Updated": _Updated = Convert.ToString(value); break;
+                    case "LastAccessed": _LastAccessed = value.ToDateTime(); break;
+                    case "NonEditable": _NonEditable = value.ToBoolean(); break;
                     default: base[name] = value; break;
                 }
             }
@@ -463,132 +466,132 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Id = FindByName(__.Id);
+            public static readonly Field Id = FindByName("Id");
 
             /// <summary>启用(默认为true)</summary>
-            public static readonly Field Enabled = FindByName(__.Enabled);
+            public static readonly Field Enabled = FindByName("Enabled");
 
             /// <summary>客户端ID(应用程序的唯一识别标识)</summary>
-            public static readonly Field ClientId = FindByName(__.ClientId);
+            public static readonly Field ClientId = FindByName("ClientId");
 
             /// <summary>协议类型(默认oidc)</summary>
-            public static readonly Field ProtocolType = FindByName(__.ProtocolType);
+            public static readonly Field ProtocolType = FindByName("ProtocolType");
 
             /// <summary>需要密钥(指定此客户端是否需要密钥才能从令牌端点请求令牌（默认为true）)</summary>
-            public static readonly Field RequireClientSecret = FindByName(__.RequireClientSecret);
+            public static readonly Field RequireClientSecret = FindByName("RequireClientSecret");
 
             /// <summary>校验密钥(使用基于授权代码authorization_code的授权类型的客户端是否必须发送校验密钥)</summary>
-            public static readonly Field RequirePkce = FindByName(__.RequirePkce);
+            public static readonly Field RequirePkce = FindByName("RequirePkce");
 
             /// <summary>允许纯文本密钥(指定是否可以使用文本方法发送证明密钥（不推荐，默认false）)</summary>
-            public static readonly Field AllowPlainTextPkce = FindByName(__.AllowPlainTextPkce);
+            public static readonly Field AllowPlainTextPkce = FindByName("AllowPlainTextPkce");
 
             /// <summary>允许刷新token(需要offline_access范围scope)</summary>
-            public static readonly Field AllowOfflineAccess = FindByName(__.AllowOfflineAccess);
+            public static readonly Field AllowOfflineAccess = FindByName("AllowOfflineAccess");
 
             /// <summary>允许通过浏览器接收token(这对于强化允许多种响应类型的流很有用（例如，不允许使用代码id_token添加令牌响应类型的混合流客户端，从而将令牌泄漏到浏览器中）)</summary>
-            public static readonly Field AllowAccessTokensViaBrowser = FindByName(__.AllowAccessTokensViaBrowser);
+            public static readonly Field AllowAccessTokensViaBrowser = FindByName("AllowAccessTokensViaBrowser");
 
             /// <summary>客户端前端注销URI(用于基于HTTP的前端通道注销。有关详细信息，请参阅 https://openid.net/specs/openid-connect-frontchannel-1_0.html)</summary>
-            public static readonly Field FrontChannelLogoutUri = FindByName(__.FrontChannelLogoutUri);
+            public static readonly Field FrontChannelLogoutUri = FindByName("FrontChannelLogoutUri");
 
             /// <summary>发送会话id到前端注销URI(是否应将用户的会话ID发送到FrontChannelLogoutUri。默认为true)</summary>
-            public static readonly Field FrontChannelLogoutSessionRequired = FindByName(__.FrontChannelLogoutSessionRequired);
+            public static readonly Field FrontChannelLogoutSessionRequired = FindByName("FrontChannelLogoutSessionRequired");
 
             /// <summary>客户端注销URI(用于基于HTTP的反向通道注销。有关更多详细信息，请参阅 https://openid.net/specs/openid-connect-backchannel-1_0.html)</summary>
-            public static readonly Field BackChannelLogoutUri = FindByName(__.BackChannelLogoutUri);
+            public static readonly Field BackChannelLogoutUri = FindByName("BackChannelLogoutUri");
 
             /// <summary>发送会话id到注销URI(是否应在请求中将用户的会话ID发送到BackChannelLogoutUri。默认为true)</summary>
-            public static readonly Field BackChannelLogoutSessionRequired = FindByName(__.BackChannelLogoutSessionRequired);
+            public static readonly Field BackChannelLogoutSessionRequired = FindByName("BackChannelLogoutSessionRequired");
 
             /// <summary>仅用本地登录(此客户端是否可以仅使用本地帐户或外部IdP。默认为true)</summary>
-            public static readonly Field EnableLocalLogin = FindByName(__.EnableLocalLogin);
+            public static readonly Field EnableLocalLogin = FindByName("EnableLocalLogin");
 
             /// <summary>用户身份持续时间(自上次用户进行身份验证以来的最长持续时间（以秒为单位）。默认为0。您可以调整会话令牌的生命周期，以控制在使用Web应用程序时，用户需要重新输入凭据的时间和频率，而不是进行静默身份验证)</summary>
-            public static readonly Field UserSsoLifetime = FindByName(__.UserSsoLifetime);
+            public static readonly Field UserSsoLifetime = FindByName("UserSsoLifetime");
 
             /// <summary>识别令牌生命周期(秒为单位，默认为300秒/5分钟)</summary>
-            public static readonly Field IdentityTokenLifetime = FindByName(__.IdentityTokenLifetime);
+            public static readonly Field IdentityTokenLifetime = FindByName("IdentityTokenLifetime");
 
             /// <summary>访问令牌生命周期(秒为单位，默认为3600秒/1小时)</summary>
-            public static readonly Field AccessTokenLifetime = FindByName(__.AccessTokenLifetime);
+            public static readonly Field AccessTokenLifetime = FindByName("AccessTokenLifetime");
 
             /// <summary>访问令牌生命周期(秒为单位，默认为300秒/5分钟)</summary>
-            public static readonly Field AuthorizationCodeLifetime = FindByName(__.AuthorizationCodeLifetime);
+            public static readonly Field AuthorizationCodeLifetime = FindByName("AuthorizationCodeLifetime");
 
             /// <summary>刷新令牌生命周期(秒为单位，默认为2592000秒/30天)</summary>
-            public static readonly Field AbsoluteRefreshTokenLifetime = FindByName(__.AbsoluteRefreshTokenLifetime);
+            public static readonly Field AbsoluteRefreshTokenLifetime = FindByName("AbsoluteRefreshTokenLifetime");
 
             /// <summary>滑动刷新令牌生命周期(秒为单位，默认为1296000秒/15天)</summary>
-            public static readonly Field SlidingRefreshTokenLifetime = FindByName(__.SlidingRefreshTokenLifetime);
+            public static readonly Field SlidingRefreshTokenLifetime = FindByName("SlidingRefreshTokenLifetime");
 
             /// <summary>刷新令牌句柄是否保持不变(ReUse，OneTime)</summary>
-            public static readonly Field RefreshTokenUsage = FindByName(__.RefreshTokenUsage);
+            public static readonly Field RefreshTokenUsage = FindByName("RefreshTokenUsage");
 
             /// <summary>刷新令牌期限(Absolute 刷新令牌将在固定时间点到期（由AbsoluteRefreshTokenLifetime指定），Sliding刷新令牌时，将刷新刷新令牌的生命周期（按SlidingRefreshTokenLifetime中指定的数量）。生命周期不会超过AbsoluteRefreshTokenLifetime)</summary>
-            public static readonly Field RefreshTokenExpiration = FindByName(__.RefreshTokenExpiration);
+            public static readonly Field RefreshTokenExpiration = FindByName("RefreshTokenExpiration");
 
             /// <summary>更新访问令牌(是否应在刷新令牌请求上更新访问令牌（及其声明）)</summary>
-            public static readonly Field UpdateAccessTokenClaimsOnRefresh = FindByName(__.UpdateAccessTokenClaimsOnRefresh);
+            public static readonly Field UpdateAccessTokenClaimsOnRefresh = FindByName("UpdateAccessTokenClaimsOnRefresh");
 
             /// <summary>访问令牌类型(指定访问令牌是引用令牌还是自包含JWT令牌（默认为Jwt）)</summary>
-            public static readonly Field AccessTokenType = FindByName(__.AccessTokenType);
+            public static readonly Field AccessTokenType = FindByName("AccessTokenType");
 
             /// <summary>是否嵌入JwtId(指定JWT访问令牌是否应具有嵌入的唯一ID（通过jti声明）)</summary>
-            public static readonly Field IncludeJwtId = FindByName(__.IncludeJwtId);
+            public static readonly Field IncludeJwtId = FindByName("IncludeJwtId");
 
             /// <summary>发送客户端声明(如果设置，将为每个流发送客户端声明。如果不是，仅用于客户端凭证流（默认为false）)</summary>
-            public static readonly Field AlwaysSendClientClaims = FindByName(__.AlwaysSendClientClaims);
+            public static readonly Field AlwaysSendClientClaims = FindByName("AlwaysSendClientClaims");
 
             /// <summary>用户声明添加到ID令牌(当同时请求ID令牌和访问令牌时，是否应始终将用户声明添加到ID令牌，而不是重新请求客户端使用userinfo端点。默认值为false)</summary>
-            public static readonly Field AlwaysIncludeUserClaimsInIdToken = FindByName(__.AlwaysIncludeUserClaimsInIdToken);
+            public static readonly Field AlwaysIncludeUserClaimsInIdToken = FindByName("AlwaysIncludeUserClaimsInIdToken");
 
             /// <summary>客户端声明前缀(如果设置，客户端声明将以此为前缀。默认为client_。目的是确保它们不会意外地与用户声明冲突)</summary>
-            public static readonly Field ClientClaimsPrefix = FindByName(__.ClientClaimsPrefix);
+            public static readonly Field ClientClaimsPrefix = FindByName("ClientClaimsPrefix");
 
             /// <summary>生成成对subjectId使用的盐值</summary>
-            public static readonly Field PairWiseSubjectSalt = FindByName(__.PairWiseSubjectSalt);
+            public static readonly Field PairWiseSubjectSalt = FindByName("PairWiseSubjectSalt");
 
             /// <summary>需要同意(默认为true)</summary>
-            public static readonly Field RequireConsent = FindByName(__.RequireConsent);
+            public static readonly Field RequireConsent = FindByName("RequireConsent");
 
             /// <summary>存储同意决策(默认true)</summary>
-            public static readonly Field AllowRememberConsent = FindByName(__.AllowRememberConsent);
+            public static readonly Field AllowRememberConsent = FindByName("AllowRememberConsent");
 
             /// <summary>用户同意的生命周期(默认null，无到期)</summary>
-            public static readonly Field ConsentLifetime = FindByName(__.ConsentLifetime);
+            public static readonly Field ConsentLifetime = FindByName("ConsentLifetime");
 
             /// <summary>显示名称</summary>
-            public static readonly Field ClientName = FindByName(__.ClientName);
+            public static readonly Field ClientName = FindByName("ClientName");
 
             /// <summary>说明</summary>
-            public static readonly Field Description = FindByName(__.Description);
+            public static readonly Field Description = FindByName("Description");
 
             /// <summary>客户端信息url(有关客户端的更多信息的URI（在同意页面上使用）)</summary>
-            public static readonly Field ClientUri = FindByName(__.ClientUri);
+            public static readonly Field ClientUri = FindByName("ClientUri");
 
             /// <summary>客户端logo地址(在同意页面上使用)</summary>
-            public static readonly Field LogoUri = FindByName(__.LogoUri);
+            public static readonly Field LogoUri = FindByName("LogoUri");
 
             /// <summary>设备流用户代码的类型</summary>
-            public static readonly Field UserCodeType = FindByName(__.UserCodeType);
+            public static readonly Field UserCodeType = FindByName("UserCodeType");
 
             /// <summary>设备代码的生命周期(秒为单位，默认为300秒/5分钟)</summary>
-            public static readonly Field DeviceCodeLifetime = FindByName(__.DeviceCodeLifetime);
+            public static readonly Field DeviceCodeLifetime = FindByName("DeviceCodeLifetime");
 
             /// <summary>创建</summary>
-            public static readonly Field Created = FindByName(__.Created);
+            public static readonly Field Created = FindByName("Created");
 
             /// <summary>更新</summary>
-            public static readonly Field Updated = FindByName(__.Updated);
+            public static readonly Field Updated = FindByName("Updated");
 
             /// <summary>上次授权时间</summary>
-            public static readonly Field LastAccessed = FindByName(__.LastAccessed);
+            public static readonly Field LastAccessed = FindByName("LastAccessed");
 
             /// <summary>不可编辑</summary>
-            public static readonly Field NonEditable = FindByName(__.NonEditable);
+            public static readonly Field NonEditable = FindByName("NonEditable");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得Clients字段名称的快捷方式</summary>

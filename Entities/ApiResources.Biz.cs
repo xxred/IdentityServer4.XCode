@@ -79,11 +79,6 @@ namespace IdentityServer4.XCode.Entities
             entity.Name = "openid";
             entity.Insert();
 
-            //entity.Id = 3;
-            entity.Enabled = true;
-            entity.Name = "profile";
-            entity.Insert();
-
             if (XTrace.Debug) XTrace.WriteLine("完成初始化ApiResources[ApiResources]数据！");
         }
 

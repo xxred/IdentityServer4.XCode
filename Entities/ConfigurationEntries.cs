@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Runtime.Serialization;
+using System.Web.Script.Serialization;
+using System.Xml.Serialization;
 using XCode;
 using XCode.Configuration;
 using XCode.DataAccessLayer;
@@ -19,14 +22,14 @@ namespace IdentityServer4.XCode.Entities
         [DisplayName("Key")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Key", "", "TEXT")]
-        public String Key { get { return _Key; } set { if (OnPropertyChanging(__.Key, value)) { _Key = value; OnPropertyChanged(__.Key); } } }
+        public String Key { get => _Key; set { if (OnPropertyChanging("Key", value)) { _Key = value; OnPropertyChanged("Key"); } } }
 
         private String _Value;
         /// <summary></summary>
         [DisplayName("Value")]
         [DataObjectField(false, false, false, 0)]
         [BindColumn("Value", "", "TEXT")]
-        public String Value { get { return _Value; } set { if (OnPropertyChanging(__.Value, value)) { _Value = value; OnPropertyChanged(__.Value); } } }
+        public String Value { get => _Value; set { if (OnPropertyChanging("Value", value)) { _Value = value; OnPropertyChanged("Value"); } } }
         #endregion
 
         #region 获取/设置 字段值
@@ -39,8 +42,8 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Key : return _Key;
-                    case __.Value : return _Value;
+                    case "Key": return _Key;
+                    case "Value": return _Value;
                     default: return base[name];
                 }
             }
@@ -48,8 +51,8 @@ namespace IdentityServer4.XCode.Entities
             {
                 switch (name)
                 {
-                    case __.Key : _Key = Convert.ToString(value); break;
-                    case __.Value : _Value = Convert.ToString(value); break;
+                    case "Key": _Key = Convert.ToString(value); break;
+                    case "Value": _Value = Convert.ToString(value); break;
                     default: base[name] = value; break;
                 }
             }
@@ -61,12 +64,12 @@ namespace IdentityServer4.XCode.Entities
         public partial class _
         {
             /// <summary></summary>
-            public static readonly Field Key = FindByName(__.Key);
+            public static readonly Field Key = FindByName("Key");
 
             /// <summary></summary>
-            public static readonly Field Value = FindByName(__.Value);
+            public static readonly Field Value = FindByName("Value");
 
-            static Field FindByName(String name) { return Meta.Table.FindByName(name); }
+            static Field FindByName(String name) => Meta.Table.FindByName(name);
         }
 
         /// <summary>取得ConfigurationEntries字段名称的快捷方式</summary>
